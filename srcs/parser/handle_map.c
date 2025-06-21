@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   handle_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:00:49 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/21 19:44:19 by lbarreto         ###   ########.fr       */
+/*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
+/*   Updated: 2025/06/21 20:11:22 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../includes/kitty3d.h"
 
-int	ft_putnbr(int n)
+char	*open_map(char *map_name)
 {
-	int		number_size;
-	char	number;
+	int	fd;
+	
+	if (map_name_validation(map_name) == 0)
+		handle_error(WRONG_NAME);
 
-	number_size = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
-	{
-		number_size += write (1, "-", 1);
-		n = -n;
-	}
-	if (n > 9)
-	{
-		number_size += ft_putnbr(n / 10);
-		number_size += ft_putnbr(n % 10);
-	}
-	else
-	{
-		number = n + '0';
-		number_size += write(1, &number, 1);
-	}
-	return (number_size);
+	return (NULL);
 }

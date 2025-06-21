@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 13:41:21 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/21 19:44:33 by lbarreto         ###   ########.fr       */
+/*   Created: 2024/10/17 13:40:07 by lbarreto          #+#    #+#             */
+/*   Updated: 2025/06/21 19:29:34 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-static int	mini_strlen(char const *str)
-{
-	int	i;
+# include <unistd.h>
+# include <stdarg.h>
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+int	ft_putchar(char c);
+int	ft_putnbr(int n);
+int	ft_putstr(char const *str);
+int	ft_putnbr_base(unsigned int n, char *base);
+int	ft_putpointer(void *ptr);
+int	my_printf(char const *s, ...);
 
-int	ft_putstr(char const *str)
-{
-	if (!str)
-		return (ft_putstr("(null)"));
-	return (write(1, str, mini_strlen(str)));
-}
+#endif

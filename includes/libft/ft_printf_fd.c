@@ -6,11 +6,11 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 00:48:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/05/27 15:57:01 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/21 19:36:50 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libs/minishell.h"
+#include "libft.h"
 
 static int	print_param(va_list params, char const c, int fd)
 {
@@ -34,7 +34,7 @@ static int	print_param(va_list params, char const c, int fd)
 		return (ft_putchar (c));
 }
 
-int	my_printf_fd(char const *s, int fd, ...)
+int	my_printf_fd(int fd, char const *s, ...)
 {
 	va_list	params;
 	int		i;
@@ -44,7 +44,7 @@ int	my_printf_fd(char const *s, int fd, ...)
 		return (-1);
 	i = 0;
 	len = 0;
-	va_start(params, fd);
+	va_start(params, s);
 	while (s[i])
 	{
 		if (s[i] == '%')

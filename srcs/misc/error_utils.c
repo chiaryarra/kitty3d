@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   error_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:00:49 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/21 19:44:19 by lbarreto         ###   ########.fr       */
+/*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
+/*   Updated: 2025/06/21 20:29:12 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../includes/kitty3d.h"
 
-int	ft_putnbr(int n)
+void	handle_error(int error_type)
 {
-	int		number_size;
-	char	number;
-
-	number_size = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
-	{
-		number_size += write (1, "-", 1);
-		n = -n;
-	}
-	if (n > 9)
-	{
-		number_size += ft_putnbr(n / 10);
-		number_size += ft_putnbr(n % 10);
-	}
-	else
-	{
-		number = n + '0';
-		number_size += write(1, &number, 1);
-	}
-	return (number_size);
+	if (error_type == WRONG_NAME)
+		my_printf_fd(2, "\033[35mKitty3d 😺:\033[1;31m\
+Wrong type of file ❌\033[0\n");
+	exit(1);
 }

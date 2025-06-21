@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   kitty3d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:00:49 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/21 19:44:19 by lbarreto         ###   ########.fr       */
+/*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
+/*   Updated: 2025/06/21 20:28:47 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../includes/kitty3d.h"
 
-int	ft_putnbr(int n)
+int	main(int argc, char **argv)
 {
-	int		number_size;
-	char	number;
+	char    *map_name;
 
-	number_size = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
-	{
-		number_size += write (1, "-", 1);
-		n = -n;
-	}
-	if (n > 9)
-	{
-		number_size += ft_putnbr(n / 10);
-		number_size += ft_putnbr(n % 10);
-	}
-	else
-	{
-		number = n + '0';
-		number_size += write(1, &number, 1);
-	}
-	return (number_size);
+    if (argc != 2)
+        my_printf_fd(2, "\033[35mKitty3d 😺:\033[1;31m \
+Wrong number of arguments ❌\033[0\n");
+    else
+    {
+        map_name = argv[1];
+        open_map(map_name);
+    }
 }

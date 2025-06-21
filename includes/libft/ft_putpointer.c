@@ -6,11 +6,11 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:24:21 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/05/27 16:04:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/21 19:44:58 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libs/ft_printf.h"
+#include "ft_printf.h"
 
 static int	mini_putnbr_base(unsigned long n, char *base)
 {

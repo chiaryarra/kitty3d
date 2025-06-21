@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 13:41:21 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/21 19:44:33 by lbarreto         ###   ########.fr       */
+/*   Created: 2024/11/04 16:14:32 by lbarreto          #+#    #+#             */
+/*   Updated: 2024/12/12 19:45:24 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-static int	mini_strlen(char const *str)
-{
-	int	i;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
+# include <stdlib.h>
+# include <unistd.h>
 
-int	ft_putstr(char const *str)
-{
-	if (!str)
-		return (ft_putstr("(null)"));
-	return (write(1, str, mini_strlen(str)));
-}
+char	*gnl_strdup(char *str);
+int		gnl_strlen(char *str);
+int		linelen(char *line);
+char	*line_cut(char *line);
+char	*next_line(char	*line);
+char	*get_next_line(int fd);
+
+#endif

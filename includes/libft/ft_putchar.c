@@ -6,11 +6,11 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:38:18 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/05/27 16:04:31 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/21 19:45:12 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libs/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {

@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   validation_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:00:49 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/21 19:44:19 by lbarreto         ###   ########.fr       */
+/*   Created: 2025/06/21 19:20:06 by lbarreto          #+#    #+#             */
+/*   Updated: 2025/06/21 20:15:56 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../includes/kitty3d.h"
 
-int	ft_putnbr(int n)
+int	map_name_validation(char *map_name)
 {
-	int		number_size;
-	char	number;
+	int	i;
 
-	number_size = 0;
-	if (n == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (n < 0)
-	{
-		number_size += write (1, "-", 1);
-		n = -n;
-	}
-	if (n > 9)
-	{
-		number_size += ft_putnbr(n / 10);
-		number_size += ft_putnbr(n % 10);
-	}
+	if (!map_name)
+		return (FALSE);
+	while (map_name[i])
+		i++;
+	if (i >= 4)
+		i -= 4;
 	else
-	{
-		number = n + '0';
-		number_size += write(1, &number, 1);
-	}
-	return (number_size);
+		i = 0;
+	if (ft_strncmp(map_name + i, ".cub", ft_strlen(map_name + i)) == 0)
+		return (TRUE);
+	return (FALSE);
 }

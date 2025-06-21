@@ -6,11 +6,11 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:15:41 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/05/27 16:04:27 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/21 19:44:50 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libs/ft_printf.h"
+#include "ft_printf.h"
 
 static int	print_param(va_list params, char const c)
 {
