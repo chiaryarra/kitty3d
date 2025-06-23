@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kitty3d.c                                          :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/22 19:55:55 by lbarreto         ###   ########.fr       */
+/*   Created: 2025/06/22 19:28:04 by lbarreto          #+#    #+#             */
+/*   Updated: 2025/06/22 19:32:06 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/kitty3d.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_isspace(int ch)
 {
-	char    *map_name;
-    char    *map;
-
-    if (argc != 2)
-        my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m \
-Wrong number of arguments ❌\033[0\n");
-    else
-    {
-        map_name = argv[1];
-        map = open_map(map_name);
-        my_printf("%s\n", map);
-        free(map);
-    }
+	if (ch == '\f' || ch == '\n' || ch == '\r' 
+	|| ch == '\t' || ch == '\v' || ch == ' ')
+		return (1);
+	return (0);
 }

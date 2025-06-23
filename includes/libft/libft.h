@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:48:04 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/21 19:43:38 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/22 20:14:57 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_isalpha(int ch);
 int		ft_isalnum(int ch);
 int		ft_isascii(int ch);
 int		ft_isprint(int ch);
+int		ft_isspace(int ch);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 size_t	ft_strlen(const char *str);
