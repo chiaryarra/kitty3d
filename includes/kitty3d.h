@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/22 22:41:46 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/24 20:01:32 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct	s_map {
 
 char	*open_map(char *map_name);
 char	*read_map(int fd);
+t_map	*parse_map(char	*map_file);
 void	set_map(t_map *map, char *map_file, int *i);
 
 // Validations

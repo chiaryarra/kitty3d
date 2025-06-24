@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:10:27 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/22 22:27:43 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/24 20:25:11 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ int	is_kitty3dconfig(char *c, int *i)
 	int	j;
 
 	j = 0;
-	while(c[*i] && c[*i] != ' ')
+	while(c[*i] && ft_isspace(c[*i]) == 0)
 	{
 		(*i)++;
 		j++;
 	}
-	if (ft_strncmp(c, "NO", j) == 0)
+	if (ft_strncmp(c + *i - j, "NO", j) == 0)
 		return (NORTH);
-	if (ft_strncmp(c, "SO", j) == 0)
+	if (ft_strncmp(c + *i - j, "SO", j) == 0)
 		return (SOUTH);
-	if (ft_strncmp(c, "WE", j) == 0)
+	if (ft_strncmp(c + *i - j, "WE", j) == 0)
 		return (WEST);
-	if (ft_strncmp(c, "EA", j) == 0)
+	if (ft_strncmp(c + *i - j, "EA", j) == 0)
 		return (EAST);
-	if (ft_strncmp(c, "C", j) == 0)
+	if (ft_strncmp(c + *i - j, "C", j) == 0)
 		return (CEILING);
-	if (ft_strncmp(c, "F", j) == 0)
+	if (ft_strncmp(c + *i - j, "F", j) == 0)
 		return (FLOOR);
 	return (0);
 }

@@ -12,7 +12,8 @@ SRCS = srcs/misc/kitty3d.c \
 srcs/parser/handle_map.c \
 srcs/parser/validation_utils.c \
 srcs/misc/error_utils.c \
-srcs/misc/general_utils.c
+srcs/misc/general_utils.c \
+srcs/parser/set_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
