@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/24 20:01:32 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/24 22:12:47 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct	s_map {
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
-	int		floor_color;
+	char	*floor_color;
 	int		ceiling_color;
 }	t_map;
 
@@ -55,6 +55,7 @@ char	*open_map(char *map_name);
 char	*read_map(int fd);
 t_map	*parse_map(char	*map_file);
 void	set_map(t_map *map, char *map_file, int *i);
+void	set_floor(t_map *map, char *map_file, int *i);
 
 // Validations
 
