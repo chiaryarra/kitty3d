@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/24 22:12:47 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/28 15:46:25 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ enum	e_errors {
 	OPEN_ERROR,
 	EMPTY_FILE,
 	INVALID_CONFIG,
-	INDENTED_CONFIG
+	INDENTED_CONFIG,
+	INVALID_FLOOR_COORDS,
+	INVALID_CEIL_COORDS
 };
 
 enum	e_configs {
@@ -60,6 +62,8 @@ void	set_floor(t_map *map, char *map_file, int *i);
 // Validations
 
 int		map_name_validation(char *map_name);
+int		validate_colorcoords(char *cords);
+int		verify_coord(char *cords, int *i);
 
 // Error Utils
 
@@ -71,5 +75,6 @@ void	free_map(t_map *map);
 
 int		is_kitty3dconfig(char *c, int *i);
 int		config_len(int config_value);
+int		hexmap_atoi(char *str, int *i);
 
 #endif

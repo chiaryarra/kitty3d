@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/22 22:42:32 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/28 15:34:56 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	parse_error(int error_type, t_map *map)
 The map file has a invalid element for configurations ❌\033[0\n");
 	if (error_type == INDENTED_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
-The configs on map file must be on the start of the line ❌\033[0\n");	
+The configs on map file must be on the start of the line ❌\033[0\n");
+	if (error_type == INVALID_FLOOR_COORDS)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+The color coordinates of the floor color is invalid ❌\033[0\n");	
 	exit(1);
 }
 

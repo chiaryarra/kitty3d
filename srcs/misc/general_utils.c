@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:10:27 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/24 20:25:11 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/28 15:53:21 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,22 @@ int	config_len(int config_value)
 		return (2);
 	else
 		return (0);
+}
+
+int	hexmap_atoi(char *str, int *i)
+{
+	int	not_a_number;
+	int	n;
+
+	n = 0;
+	not_a_number = TRUE;
+	while (ft_isdigit(str[*i]) == 1)
+	{
+		n = n * 10 + (str[*i] - '0');
+		(*i)++;
+		not_a_number = FALSE;
+	}
+	if (not_a_number == TRUE || (n > 255))
+		return (-1);
+	return (n);
 }
