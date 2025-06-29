@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/24 22:12:50 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:33:41 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	set_map(t_map *map, char *map_file, int *i)
 		parse_error(INDENTED_CONFIG, map);
 	if (config_value == FLOOR)
 	 	set_floor(map, map_file, i);
-	// else if (config_value == CEILING)
-	// 	set_ceiling(map, map_file, i);
-	// else if (config_value == NORTH)
-	// 	set_north(map, map_file, i);
+	else if (config_value == CEILING)
+		set_ceiling(map, map_file, i);
+	else if (config_value == NORTH)
+	 	set_north(map, map_file, i);
 	// else if (config_value == SOUTH)
 	// 	set_south(map, map_file, i);
 	// else if (config_value == EAST)

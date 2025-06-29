@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:10:27 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/28 15:53:21 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:47:26 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,16 @@ int	hexmap_atoi(char *str, int *i)
 	if (not_a_number == TRUE || (n > 255))
 		return (-1);
 	return (n);
+}
+char	*generate_texture_text(int texture_type)
+{
+	if (texture_type == NORTH)
+		return (ft_strdup("north texture(NO)"));
+	if (texture_type == SOUTH)
+		return (ft_strdup("south texture(SO)"));
+	if (texture_type == EAST)
+		return (ft_strdup("east texture(EA)"));
+	if (texture_type == WEST)
+		return (ft_strdup("west texture(WE)"));
+	return (ft_strdup("invalid texture"));
 }

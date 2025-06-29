@@ -13,7 +13,8 @@ srcs/parser/handle_map.c \
 srcs/parser/validation_utils.c \
 srcs/misc/error_utils.c \
 srcs/misc/general_utils.c \
-srcs/parser/set_utils.c
+srcs/parser/set_utils.c \
+srcs/misc/rgb_handling.c
 
 OBJS = $(SRCS:.c=.o)
 

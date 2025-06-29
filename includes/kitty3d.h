@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/28 15:46:25 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:47:41 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include <fcntl.h>
+# include <math.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -26,7 +27,10 @@ enum	e_errors {
 	INVALID_CONFIG,
 	INDENTED_CONFIG,
 	INVALID_FLOOR_COORDS,
-	INVALID_CEIL_COORDS
+	INVALID_CEIL_COORDS,
+	REPEATED_FLOOR_CONFIG,
+	REPEATED_CEIL_CONFIG,
+	REPEATED_TEXTURE_CONFIG,
 };
 
 enum	e_configs {
@@ -47,8 +51,10 @@ typedef struct	s_map {
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
-	char	*floor_color;
+	int		floor_color;
+	int		floor_color_is_set;
 	int		ceiling_color;
+	int		ceiling_color_is_set;
 }	t_map;
 
 // Map reading 
@@ -58,6 +64,7 @@ char	*read_map(int fd);
 t_map	*parse_map(char	*map_file);
 void	set_map(t_map *map, char *map_file, int *i);
 void	set_floor(t_map *map, char *map_file, int *i);
+void	set_ceiling(t_map *map,char *map_file, int *i);
 
 // Validations
 
@@ -76,5 +83,7 @@ void	free_map(t_map *map);
 int		is_kitty3dconfig(char *c, int *i);
 int		config_len(int config_value);
 int		hexmap_atoi(char *str, int *i);
+int		rgb_to_int(char *floor_rgbcode);
+char	*generate_texture_text(int texture_type);
 
 #endif
