@@ -1,7 +1,12 @@
 F 000             , 001            ,          110   
 C 255          , 255, 255
-NO
-SO
-WE
-EA
+NO testNO
+WE testEA
+SO testSO
+EA testWE
 
+111111
+10 1 1
+101001
+1100N1
+111111

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 18:47:41 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 23:31:53 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ enum	e_errors {
 	INDENTED_CONFIG,
 	INVALID_FLOOR_COORDS,
 	INVALID_CEIL_COORDS,
+	INVALID_TEXTURE_CONFIG,
 	REPEATED_FLOOR_CONFIG,
 	REPEATED_CEIL_CONFIG,
 	REPEATED_TEXTURE_CONFIG,
+	INVALID_MAP_CONTENT,
+	MAP_EMPTY_LINE,
+	REPEATED_STARTING_DIRECTION
 };
 
 enum	e_configs {
@@ -45,16 +49,19 @@ enum	e_configs {
 typedef struct	s_map {
 	char	*map;
 	char	**grid;
+	char	*map_string;
 	int		x_size;
 	int		y_size;
 	char	*north_texture;
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
+	int		start_direction;
 	int		floor_color;
 	int		floor_color_is_set;
 	int		ceiling_color;
 	int		ceiling_color_is_set;
+	int		map_configs_set;
 }	t_map;
 
 // Map reading 
@@ -62,20 +69,26 @@ typedef struct	s_map {
 char	*open_map(char *map_name);
 char	*read_map(int fd);
 t_map	*parse_map(char	*map_file);
-void	set_map(t_map *map, char *map_file, int *i);
+void	set_map_configs(t_map *map, char *map_file, int *i);
 void	set_floor(t_map *map, char *map_file, int *i);
 void	set_ceiling(t_map *map,char *map_file, int *i);
+void	set_texture(t_map *map, char *map_file, int *i, int texture_type);
+void	set_map_grid(t_map *map, char *map_file, int *i);
 
 // Validations
 
 int		map_name_validation(char *map_name);
-int		validate_colorcoords(char *cords);
 int		verify_coord(char *cords, int *i);
+int		verify_texture(t_map *map, int texture_type);
+int		validate_colorcoords(char *cords);
+int		validate_texture(char *texture_name);
 
 // Error Utils
 
 void	read_error(int error_type);
 void	parse_error(int error_type, t_map *map);
+void	texture_error(int error_type, t_map *map, int texture_type);
+void	map_error(int error_type, t_map *map);
 void	free_map(t_map *map);
 
 // Utils
@@ -85,5 +98,6 @@ int		config_len(int config_value);
 int		hexmap_atoi(char *str, int *i);
 int		rgb_to_int(char *floor_rgbcode);
 char	*generate_texture_text(int texture_type);
+int		is_map_direction(char c);
 
 #endif

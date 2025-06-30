@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 18:33:41 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 23:28:55 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,25 @@
 
 char	*read_map(int fd)
 {
-	char	*map;
+	char	*temp_map;
+	char	*return_map;
 	char	*line;
 	int		i;
 
 	i = 0;
-	map = get_next_line(fd);
+	temp_map = get_next_line(fd);
 	line = get_next_line(fd);
 	while (line)
 	{
-		map = ft_strjoinfree(map, line);
+		temp_map = ft_strjoinfree(temp_map, line);
 		line = get_next_line(fd);
 	}
-	if (!map)
+	if (!temp_map)
 		read_error(EMPTY_FILE);
-	return (map);
+	return_map = ft_strtrim(temp_map, "\n");
+	free(temp_map);
+	return (return_map);
 }
-
-// void	validate_map_file(char *map_file)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (is_kitty3dconfig(map_file, &i) == FALSE)
-// 	{
-// 		free(map_file);
-// 		handle_error(INVALID_CONFIG);
-// 	}
-// 	while (map_file[i])
-// 	{
-// 		if (ft_isspace(map_file[i]) == TRUE)
-// 			i++;
-// 		else if (is_kitty3dconfig(map_file, &i) == FALSE)
-// 		{
-// 			free(map_file);
-// 			handle_error(INVALID_CONFIG);
-// 		}
-// 		else if (map_file[i - 1] != '\n')
-// 		{
-// 			free(map_file);
-// 			handle_error(INVALID_CONFIG);
-// 		}
-// 		else
-// 			i++;
-// 	}
-// }
 
 char	*open_map(char *map_name)
 {
@@ -75,7 +49,7 @@ char	*open_map(char *map_name)
 	return (map);
 }
 
-void	set_map(t_map *map, char *map_file, int *i)
+void	set_map_configs(t_map *map, char *map_file, int *i)
 {
 	int	config_value;
 
@@ -88,14 +62,14 @@ void	set_map(t_map *map, char *map_file, int *i)
 	else if (config_value == CEILING)
 		set_ceiling(map, map_file, i);
 	else if (config_value == NORTH)
-	 	set_north(map, map_file, i);
-	// else if (config_value == SOUTH)
-	// 	set_south(map, map_file, i);
-	// else if (config_value == EAST)
-	// 	set_east(map, map_file, i);
-	// else if (config_value == WEST)
-	// 	set_west(map, map_file, i);
-	else if (config_value == 0)
+	 	set_texture(map, map_file, i, config_value);
+	else if (config_value == SOUTH)
+		set_texture(map, map_file, i, config_value);
+	else if (config_value == EAST)
+		set_texture(map, map_file, i, config_value);
+	else if (config_value == WEST)
+		set_texture(map, map_file, i, config_value);
+	else
 		parse_error(INVALID_CONFIG, map);
 }
 
@@ -111,8 +85,10 @@ t_map	*parse_map(char	*map_file)
 	{
 		if (ft_isspace(map->map[i]) == TRUE)
 			i++;
+		else if (map->map_configs_set == FALSE)
+			set_map_configs(map, map->map, &i);
 		else
-			set_map(map, map->map, &i);
+			set_map_grid(map, map->map, &i);
 	}
 	return (map);
 }

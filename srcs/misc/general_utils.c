@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:10:27 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 18:47:26 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 21:51:25 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,14 @@ int	is_kitty3dconfig(char *c, int *i)
 		return (CEILING);
 	if (ft_strncmp(c + *i - j, "F", j) == 0)
 		return (FLOOR);
-	return (0);
+	return (FALSE);
+}
+
+int	is_map_direction(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (TRUE);
+	return (FALSE);
 }
 
 int	config_len(int config_value)
@@ -67,13 +74,17 @@ int	hexmap_atoi(char *str, int *i)
 }
 char	*generate_texture_text(int texture_type)
 {
+	char	*texture_text;
+	
 	if (texture_type == NORTH)
-		return (ft_strdup("north texture(NO)"));
-	if (texture_type == SOUTH)
-		return (ft_strdup("south texture(SO)"));
-	if (texture_type == EAST)
-		return (ft_strdup("east texture(EA)"));
-	if (texture_type == WEST)
-		return (ft_strdup("west texture(WE)"));
-	return (ft_strdup("invalid texture"));
+		texture_text = ft_strdup("north texture(NO)");
+	else if (texture_type == SOUTH)
+		texture_text = ft_strdup("south texture(SO)");
+	else if (texture_type == EAST)
+		texture_text = ft_strdup("east texture(EA)");
+	else if (texture_type == WEST)
+		texture_text = ft_strdup("west texture(WE)");
+	else
+		texture_text = ft_strdup("invalid texture");
+	return (texture_text);
 }

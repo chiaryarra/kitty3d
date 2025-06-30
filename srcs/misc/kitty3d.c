@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 18:30:26 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 23:47:41 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ Wrong number of arguments ❌\033[0\n");
         map = parse_map(map_file);
         my_printf("floor config: %d\n", map->floor_color);
         my_printf("ceiling config: %d\n", map->ceiling_color);
+        my_printf("north texture: %s\n", map->north_texture);
+        my_printf("south texture: %s\n", map->south_texture);
+        my_printf("east texture: %s\n", map->east_texture);
+        my_printf("west texture: %s\n", map->west_texture);
+        my_printf("map: \n%s\n", map->map_string);
         free_map(map);
     }
 }

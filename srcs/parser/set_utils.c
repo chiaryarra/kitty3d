@@ -6,11 +6,20 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:45:12 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 18:30:44 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/29 23:30:56 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d.h"
+
+static void	verify_if_all_configs_set(t_map *map)
+{
+	if (map->ceiling_color_is_set == TRUE && map->floor_color_is_set == TRUE \
+	&& map->north_texture != NULL && map->south_texture != NULL \
+	&& map->west_texture != NULL && map->east_texture != NULL)
+		map->map_configs_set = TRUE;
+}
+
 
 void	set_floor(t_map *map, char *map_file, int *i)
 {
@@ -34,6 +43,7 @@ void	set_floor(t_map *map, char *map_file, int *i)
 	map->floor_color = rgb_to_int(floor_rgbcode);
 	map->floor_color_is_set = TRUE;
 	free(floor_rgbcode);
+	verify_if_all_configs_set(map);
 }
 
 void	set_ceiling(t_map *map,char *map_file, int *i)
@@ -58,4 +68,40 @@ void	set_ceiling(t_map *map,char *map_file, int *i)
 	map->ceiling_color = rgb_to_int(ceiling_rgbcode);
 	map->ceiling_color_is_set = TRUE;
 	free(ceiling_rgbcode);
+	verify_if_all_configs_set(map);
 }
+static void	set_texture_address(t_map *map, char *texture_name, int texture_type)
+{
+	if (texture_type == NORTH)
+		map->north_texture = texture_name;
+	if (texture_type == SOUTH)
+		map->south_texture = texture_name;
+	if (texture_type == EAST)
+		map->east_texture = texture_name;
+	if (texture_type == WEST)
+		map->west_texture = texture_name;
+}
+
+void	set_texture(t_map *map, char *map_file, int *i, int texture_type)
+{
+	char	*texture_name;
+	int		j;
+	
+	j = 0;
+	if (verify_texture(map, texture_type) == TRUE)
+		texture_error(REPEATED_TEXTURE_CONFIG, map, texture_type);
+	while (map_file[*i] == ' ')
+		(*i)++;
+	while (map_file[*i + j] != '\n')
+		j++;
+	texture_name = ft_substr(map_file + *i, 0, j);
+	*i += j;
+	if (validate_texture(texture_name) == -1)
+	{
+		free(texture_name);
+		texture_error(INVALID_TEXTURE_CONFIG, map, texture_type);
+	}
+	set_texture_address(map, texture_name, texture_type);
+	verify_if_all_configs_set(map);
+}
+
