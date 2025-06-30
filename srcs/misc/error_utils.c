@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 23:50:25 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/30 19:12:38 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ The color coordinates of the ceiling color(C) is invalid ❌\033[0\n");
 You must not repeat the floor color(F) configuration ❌\033[0\n");
 	if (error_type == REPEATED_CEIL_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
-You must not repeat the ceiling color(C) configuration ❌\033[0\n");	
+You must not repeat the ceiling color(C) configuration ❌\033[0\n");
+	if (error_type == MISSING_CONFIGS)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+The map file is missing some informations ❌\033[0\n");	
 	exit(1);
 }
 
@@ -77,6 +80,9 @@ The map can't have empty lines ❌\033[0\n");
 	if (error_type == REPEATED_STARTING_DIRECTION)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 The map cant have more than one starting direction (N, S, E, W) ❌\033[0\n");
+	if (error_type == MISSING_START_DIRECTION)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+The map need to have one starting direction (N, S, E, W) ❌\033[0\n");
 	free_map(map);
 	exit(1);
 }
@@ -97,9 +103,9 @@ void	free_map(t_map *map)
 		free(map->west_texture);
 	if (map->map_string)
 		free(map->map_string);
-	if (map->x_size != 0 && map->y_size != 0)
+	if (map->grid_x_size != 0 && map->grid_y_size != 0)
 	{
-		while (++i < map->y_size)
+		while (++i < map->grid_y_size)
 			free(map->grid[i]);
 		free(map->grid);
 	}

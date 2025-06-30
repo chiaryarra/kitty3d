@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 23:31:53 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/30 19:11:15 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ enum	e_errors {
 	REPEATED_TEXTURE_CONFIG,
 	INVALID_MAP_CONTENT,
 	MAP_EMPTY_LINE,
-	REPEATED_STARTING_DIRECTION
+	REPEATED_STARTING_DIRECTION,
+	MISSING_CONFIGS,
+	MISSING_START_DIRECTION
 };
 
 enum	e_configs {
@@ -50,8 +52,8 @@ typedef struct	s_map {
 	char	*map;
 	char	**grid;
 	char	*map_string;
-	int		x_size;
-	int		y_size;
+	int		grid_x_size;
+	int		grid_y_size;
 	char	*north_texture;
 	char	*south_texture;
 	char	*west_texture;
@@ -74,6 +76,8 @@ void	set_floor(t_map *map, char *map_file, int *i);
 void	set_ceiling(t_map *map,char *map_file, int *i);
 void	set_texture(t_map *map, char *map_file, int *i, int texture_type);
 void	set_map_grid(t_map *map, char *map_file, int *i);
+int		get_grid_x_size(char **grid);
+int		get_grid_y_size(char *map_string);
 
 // Validations
 

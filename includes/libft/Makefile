@@ -15,6 +15,7 @@ ft_memmove.c \
 ft_split.c \
 ft_strlcpy.c \
 ft_strtrim.c \
+ft_strendtrim.c \
 ft_bzero.c \
 ft_isprint.c \
 ft_memset.c \

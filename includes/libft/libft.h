@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:48:04 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/22 20:14:57 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:12:21 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strjoinfree(char *s1, char *s2);
 char	*ft_strconcat(char *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strendtrim(char *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

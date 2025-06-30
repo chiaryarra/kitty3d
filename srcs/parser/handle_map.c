@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 23:28:55 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:14:00 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	*read_map(int fd)
 	}
 	if (!temp_map)
 		read_error(EMPTY_FILE);
-	return_map = ft_strtrim(temp_map, "\n");
+	return_map = ft_strtrim(temp_map, "\n ");
+	return_map = ft_strendtrim(return_map, " ");
 	free(temp_map);
 	return (return_map);
 }
@@ -90,5 +91,7 @@ t_map	*parse_map(char	*map_file)
 		else
 			set_map_grid(map, map->map, &i);
 	}
+	if (map->map_configs_set == FALSE || map->grid == NULL)
+		parse_error(MISSING_CONFIGS, map);
 	return (map);
 }

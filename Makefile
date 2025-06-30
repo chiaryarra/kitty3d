@@ -15,7 +15,8 @@ srcs/misc/rgb_handling.c \
 srcs/parser/handle_map.c \
 srcs/parser/validation_utils.c \
 srcs/parser/set_utils.c \
-srcs/parser/handle_grid.c
+srcs/parser/handle_grid.c \
+srcs/parser/map_grid_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

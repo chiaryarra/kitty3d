@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 23:47:41 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:58:48 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ Wrong number of arguments ❌\033[0\n");
         my_printf("east texture: %s\n", map->east_texture);
         my_printf("west texture: %s\n", map->west_texture);
         my_printf("map: \n%s\n", map->map_string);
+        my_printf("grid x size: %d\n", map->grid_x_size);
+		my_printf("grid y size: %d\n", map->grid_y_size);
         free_map(map);
     }
 }
