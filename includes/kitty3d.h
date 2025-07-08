@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/07 23:19:35 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:49:16 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ enum	e_errors {
 	GRID_ERROR
 };
 
+enum	e_keycodes {
+	LEFT = 65361,
+	UP = 65362,
+	RIGHT = 65363,
+	DOWN = 65364,
+	A = 97,
+	W = 119,
+	S = 115,
+	D = 100,
+	ESC = 65307
+};
+
 enum	e_configs {
 	FLOOR = 1,
 	CEILING,
@@ -48,6 +60,15 @@ enum	e_configs {
 	EAST,
 	WEST
 };
+
+typedef struct	s_mlx {
+	void	*mlx;
+	void	*window;
+}	t_mlx;
+
+typedef struct	s_raycast {
+
+}	t_raycast;
 
 typedef struct	s_map {
 	char	*map;
@@ -66,6 +87,13 @@ typedef struct	s_map {
 	int		ceiling_color_is_set;
 	int		map_configs_set;
 }	t_map;
+
+typedef struct s_data {
+	t_map		*map;
+	t_raycast	*raycast;
+	t_mlx		*mlx;
+}	t_data;
+
 
 // Map reading 
 
