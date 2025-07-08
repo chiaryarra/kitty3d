@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/30 19:11:18 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:33:11 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,53 @@ static int	verify_grid_characters(t_map *map, char *map_file, int *i)
 	}
 }
 
+static char	*re_gen_grid_line(char *grid_line, int grid_lenght)
+{
+	char	*new_line;
+	int		i;
+
+	i = -1;
+	new_line = (char *)malloc((grid_lenght + 3) * sizeof(char));
+	if (!new_line)
+		return (NULL);
+	new_line[0] = 'x';
+	while (grid_line[++i])
+	{
+		new_line[i + 1] = grid_line[i];
+		if (grid_line[i] == 'x')
+			grid_line[i] = ' ';
+	}
+	while (++i < grid_lenght + 2)
+		new_line[i] = 'x';
+	new_line[i] = '\0';
+	return (new_line);
+}
+
+static void	verify_and_clear_grid(t_map *map)
+{
+	char	**new_grid;
+	int		i;
+
+	i = 0;
+	new_grid = (char **)malloc((map->grid_y_size + 3) * sizeof(char *)); 
+	new_grid[0] = fill_line(map->grid_x_size + 2);
+	while (map->grid[i])
+	{
+		new_grid[i + 1] = re_gen_grid_line(map->grid[i], map->grid_x_size);
+		i++;
+	}
+	new_grid[i + 1] = fill_line(map->grid_x_size + 2);
+	new_grid[i + 2] = NULL;
+	verify_grid(map, new_grid);
+	i = 0;
+	while (new_grid[i])
+	{
+		free(new_grid[i]);
+		i++;
+	}
+	free(new_grid);
+}
+
 void	set_map_grid(t_map *map, char *map_file, int *i)
 {
 	int		temp_i;
@@ -66,5 +113,6 @@ void	set_map_grid(t_map *map, char *map_file, int *i)
 	map->map_string = ft_strdup(map_file + temp_i);
 	map->grid = ft_split(map->map_string, '\n');
 	map->grid_x_size = get_grid_x_size(map->grid);
-	map->grid_y_size = get_grid_y_size(map->map_string); 
+	map->grid_y_size = get_grid_y_size(map->map_string);
+	verify_and_clear_grid(map);
 }

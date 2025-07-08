@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:20:58 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/30 17:00:26 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:36:10 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,62 @@ int	get_grid_y_size(char *map_string)
 		i++;
 	}
 	return (lines_count);
+}
+
+static void	kitty_flood_fill(t_map *map, char **grid, int x, int y)
+{
+	int	i;
+
+	i = -1;
+	if (x < 0 || y < 0 || x >= map->grid_x_size + 2|| y >= map->grid_y_size + 2)
+		return ;
+	if (grid[y][x] == 'X' || grid[y][x] == '1')
+		return ;
+	if (grid[y][x] != 'x')
+	{
+		while (grid[++i])
+			free(grid[i]);
+		free(grid);
+		map_error(GRID_ERROR, map);
+	}
+	grid[y][x] = 'X';
+	kitty_flood_fill(map, grid, x + 1, y);
+	kitty_flood_fill(map, grid, x - 1, y);
+	kitty_flood_fill(map, grid, x, y + 1);
+	kitty_flood_fill(map, grid, x, y - 1);
+}
+
+void	verify_grid(t_map *map, char **grid)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < map->grid_y_size + 2)
+	{
+		x = -1;
+		while (++x < map->grid_x_size + 2)
+		{
+			if (grid[y][x] == 'x')
+				kitty_flood_fill(map, grid, x, y);
+		}
+	}
+}
+
+char	*fill_line(int lenght_of_line)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = (char *)malloc((lenght_of_line + 1) * sizeof(char));
+	if (!line)
+		return (NULL);
+	while (i < lenght_of_line)
+	{
+		line[i] = 'x';
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
 }

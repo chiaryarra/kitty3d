@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/30 19:11:15 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:19:35 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ enum	e_errors {
 	MAP_EMPTY_LINE,
 	REPEATED_STARTING_DIRECTION,
 	MISSING_CONFIGS,
-	MISSING_START_DIRECTION
+	MISSING_START_DIRECTION,
+	GRID_ERROR
 };
 
 enum	e_configs {
@@ -78,6 +79,7 @@ void	set_texture(t_map *map, char *map_file, int *i, int texture_type);
 void	set_map_grid(t_map *map, char *map_file, int *i);
 int		get_grid_x_size(char **grid);
 int		get_grid_y_size(char *map_string);
+void	verify_grid(t_map *map, char **grid);
 
 // Validations
 
@@ -103,5 +105,6 @@ int		hexmap_atoi(char *str, int *i);
 int		rgb_to_int(char *floor_rgbcode);
 char	*generate_texture_text(int texture_type);
 int		is_map_direction(char c);
+char	*fill_line(int lenght_of_line);
 
 #endif

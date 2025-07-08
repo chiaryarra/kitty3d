@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/30 16:58:48 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:23:22 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	main(int argc, char **argv)
 	char    *map_name;
     char    *map_file;
     t_map   *map;
+    int     i;
 
+    i = 0;
     if (argc != 2)
         my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m \
 Wrong number of arguments ❌\033[0\n");
@@ -32,9 +34,14 @@ Wrong number of arguments ❌\033[0\n");
         my_printf("south texture: %s\n", map->south_texture);
         my_printf("east texture: %s\n", map->east_texture);
         my_printf("west texture: %s\n", map->west_texture);
-        my_printf("map: \n%s\n", map->map_string);
         my_printf("grid x size: %d\n", map->grid_x_size);
 		my_printf("grid y size: %d\n", map->grid_y_size);
+        my_printf("map:\n");
+        while (map->grid[i])
+        {
+            my_printf("%s\n", map->grid[i]);
+            i++;
+        }
         free_map(map);
     }
 }

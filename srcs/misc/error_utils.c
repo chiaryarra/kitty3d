@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/30 19:12:38 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:38:32 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ The map cant have more than one starting direction (N, S, E, W) ❌\033[0\n");
 	if (error_type == MISSING_START_DIRECTION)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 The map need to have one starting direction (N, S, E, W) ❌\033[0\n");
+	if (error_type == GRID_ERROR)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+The map grid is not closed by walls or has a space inside of it ❌\033[0\n");
 	free_map(map);
 	exit(1);
 }
@@ -105,7 +108,7 @@ void	free_map(t_map *map)
 		free(map->map_string);
 	if (map->grid_x_size != 0 && map->grid_y_size != 0)
 	{
-		while (++i < map->grid_y_size)
+		while (map->grid[++i])
 			free(map->grid[i]);
 		free(map->grid);
 	}
