@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   kitty3d.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
+/*   By: yathayde <yathayde@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/07 23:49:16 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:15:39 by yathayde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,17 @@ typedef struct	s_raycast {
 
 }	t_raycast;
 
+
+typedef struct s_img
+{
+   void   *img;
+   char   *addr;
+   int     bpp;
+   int     line;
+   int     endian;
+}   t_img;
+
+
 typedef struct	s_map {
 	char	*map;
 	char	**grid;
@@ -86,6 +97,25 @@ typedef struct	s_map {
 	int		ceiling_color;
 	int		ceiling_color_is_set;
 	int		map_configs_set;
+	
+   /* ——————— engine gráfico (stub) ——————— */
+   int     screen_w;
+   int     screen_h;
+
+   /* Para simplificar, sobrepondo t_mlx: */
+   void    *mlx;
+   void    *win;
+
+   /* imagem back-buffer */
+   t_img    img;
+
+   /* estado do “player” */
+   double  pos_x;
+   double  pos_y;
+   double  dir_x;
+   double  dir_y;
+   double  plane_x;
+   double  plane_y;
 }	t_map;
 
 typedef struct s_data {
@@ -124,6 +154,7 @@ void	parse_error(int error_type, t_map *map);
 void	texture_error(int error_type, t_map *map, int texture_type);
 void	map_error(int error_type, t_map *map);
 void	free_map(t_map *map);
+void    exit_with_error(char *msg, t_map *m);
 
 // Utils
 
