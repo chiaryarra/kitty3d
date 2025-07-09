@@ -6,7 +6,7 @@
 /*   By: yathayde <yathayde@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/09 17:26:05 by yathayde         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:38:14 by yathayde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 void cast_rays(t_map *m)
 {
-    for (int x = 0; x < m->screen_w; x++)
+    int x = 0;
+    while (x < m->screen_w)
     {
         /* 1) calcular direção do raio para esta coluna */
         double camera_x = 2 * x / (double)m->screen_w - 1;
@@ -80,30 +81,53 @@ void cast_rays(t_map *m)
         /* 6) calcular distância perpendicular do jogador até a parede */
         double perp_dist;
         if (side == 0)
+        {
             perp_dist = (map_x - m->pos_x + (1 - step_x) / 2.0) / ray_dir_x;
+        }
         else
+        {
             perp_dist = (map_y - m->pos_y + (1 - step_y) / 2.0) / ray_dir_y;
+        }
 
         /* 7) altura da linha de parede a desenhar */
         int line_h = (int)(m->screen_h / perp_dist);
 
         /* 8) limites de desenho vertical */
         int draw_start = -line_h / 2 + m->screen_h / 2;
-        if (draw_start < 0) draw_start = 0;
+        if (draw_start < 0)
+            draw_start = 0;
         int draw_end = line_h / 2 + m->screen_h / 2;
-        if (draw_end >= m->screen_h) draw_end = m->screen_h - 1;
+        if (draw_end >= m->screen_h)
+            draw_end = m->screen_h - 1;
 
         /* 9) cor simples: um tom diferente se foi hit no eixo Y */
-        int color = side ? 0x888888 : 0xCCCCCC;
+        int color;
+        if (side)
+            color = 0x888888;
+        else
+            color = 0xCCCCCC;
 
         /* 10) desenha a “faixa” da parede */
-        for (int y = draw_start; y < draw_end; y++)
+        int y = draw_start;
+        while (y < draw_end)
+        {
             put_pixel(m, x, y, color);
+            y++;
+        }
 
-        /* 11) desenha teto e chão ao redor (opcional: já fazia antes) */
-        for (int y = 0; y < draw_start; y++)
+        /* 11) desenha teto e chão ao redor */
+        y = 0;
+        while (y < draw_start)
+        {
             put_pixel(m, x, y, m->ceiling_color);
-        for (int y = draw_end; y < m->screen_h; y++)
+            y++;
+        }
+        y = draw_end;
+        while (y < m->screen_h)
+        {
             put_pixel(m, x, y, m->floor_color);
+            y++;
+        }
+        x++;
     }
 }
