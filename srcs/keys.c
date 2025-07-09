@@ -6,7 +6,7 @@
 /*   By: yathayde <yathayde@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/09 17:32:43 by yathayde         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:34:47 by yathayde         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,4 @@ int key_press(int key, t_map *m)
 
     printf("Player pos: (%.2f, %.2f)\n", m->pos_x, m->pos_y);
     return (0);
-}
-
 }
