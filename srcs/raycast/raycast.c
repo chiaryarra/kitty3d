@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yathayde <yathayde@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/09 17:38:14 by yathayde         ###   ########.fr       */
+/*   Updated: 2025/07/12 21:09:50 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>         /* fabs */
 #include <mlx.h>
-#include "test_map.h"
-#include "pixel_utils.h"
-
 void cast_rays(t_map *m)
 {
     int x = 0;

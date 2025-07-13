@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/07 23:33:11 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/08 14:45:18 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*re_gen_grid_line(char *grid_line, int grid_lenght)
 	{
 		new_line[i + 1] = grid_line[i];
 		if (grid_line[i] == 'x')
-			grid_line[i] = ' ';
+			grid_line[i] = '0';
 	}
 	while (++i < grid_lenght + 2)
 		new_line[i] = 'x';

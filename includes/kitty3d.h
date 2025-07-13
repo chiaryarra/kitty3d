@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   kitty3d.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yathayde <yathayde@student.42.rio>         +#+  +:+       +#+        */
+/*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/09 16:15:39 by yathayde         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:44:17 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@
 # include "libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
+# include <mlx.h>
 
 # define TRUE 1
 # define FALSE 0
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 1080
+# define MOVE_STEP   0.1
+# define ROT_ANGLE   0.05
 
 enum	e_errors {
 	WRONG_FILENAME,
@@ -37,7 +42,11 @@ enum	e_errors {
 	REPEATED_STARTING_DIRECTION,
 	MISSING_CONFIGS,
 	MISSING_START_DIRECTION,
-	GRID_ERROR
+	GRID_ERROR,
+	MALLOC_ERROR,
+	MLX_INIT_ERROR,
+	MLX_WINDOW_ERROR,
+	MLX_IMAGE_ERROR
 };
 
 enum	e_keycodes {
@@ -61,16 +70,6 @@ enum	e_configs {
 	WEST
 };
 
-typedef struct	s_mlx {
-	void	*mlx;
-	void	*window;
-}	t_mlx;
-
-typedef struct	s_raycast {
-
-}	t_raycast;
-
-
 typedef struct s_img
 {
    void   *img;
@@ -80,6 +79,24 @@ typedef struct s_img
    int     endian;
 }   t_img;
 
+typedef struct	s_mlx {
+	void	*mlx;
+	void	*window;
+	/* imagem back-buffer */
+	t_img	*img;
+}	t_mlx;
+
+typedef struct	s_raycast {
+	double	pos_x;
+	double	pos_y;
+	double	pov_x;
+	double	pov_y;
+	double	plane_x;
+	double	plane_y;
+	double	temp_x;
+	double	temp_y;
+	double	move_vect;
+}	t_raycast;
 
 typedef struct	s_map {
 	char	*map;
@@ -97,25 +114,6 @@ typedef struct	s_map {
 	int		ceiling_color;
 	int		ceiling_color_is_set;
 	int		map_configs_set;
-	
-   /* ——————— engine gráfico (stub) ——————— */
-   int     screen_w;
-   int     screen_h;
-
-   /* Para simplificar, sobrepondo t_mlx: */
-   void    *mlx;
-   void    *win;
-
-   /* imagem back-buffer */
-   t_img    img;
-
-   /* estado do “player” */
-   double  pos_x;
-   double  pos_y;
-   double  dir_x;
-   double  dir_y;
-   double  plane_x;
-   double  plane_y;
 }	t_map;
 
 typedef struct s_data {
@@ -139,6 +137,11 @@ int		get_grid_x_size(char **grid);
 int		get_grid_y_size(char *map_string);
 void	verify_grid(t_map *map, char **grid);
 
+// Mlx and raycasting handling
+
+int		key_press(int key, t_data *data);
+void    close_window(t_data *data);
+
 // Validations
 
 int		map_name_validation(char *map_name);
@@ -153,8 +156,14 @@ void	read_error(int error_type);
 void	parse_error(int error_type, t_map *map);
 void	texture_error(int error_type, t_map *map, int texture_type);
 void	map_error(int error_type, t_map *map);
-void	free_map(t_map *map);
 void    exit_with_error(char *msg, t_map *m);
+void	general_errors(int error_type, t_data *data);
+
+// Free Utils 
+
+void	free_mlx(t_mlx *mlx);
+void	free_map(t_map *map);
+void	free_all(t_data *data);
 
 // Utils
 

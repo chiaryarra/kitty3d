@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/07 23:38:32 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:07:31 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,27 +90,20 @@ The map grid is not closed by walls or has a space inside of it ❌\033[0\n");
 	exit(1);
 }
 
-void	free_map(t_map *map)
+void	general_errors(int error_type, t_data *data)
 {
-	int	i;
-
-	i = -1;
-	free(map->map);
-	if (map->north_texture)
-		free(map->north_texture);
-	if (map->south_texture)
-		free(map->south_texture);
-	if (map->east_texture)
-		free(map->east_texture);
-	if (map->west_texture)
-		free(map->west_texture);
-	if (map->map_string)
-		free(map->map_string);
-	if (map->grid_x_size != 0 && map->grid_y_size != 0)
-	{
-		while (map->grid[++i])
-			free(map->grid[i]);
-		free(map->grid);
-	}
-	free(map);
+	if (error_type == MALLOC_ERROR)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+malloc failed to execute ❌\033[0\n");
+	if (error_type == MLX_INIT_ERROR)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+mlx_init failed to execute ❌\033[0\n");
+	if (error_type == MLX_WINDOW_ERROR)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+mlx_new_window failed to execute ❌\033[0\n");
+	if (error_type == MLX_IMAGE_ERROR)
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+mlx_new_image failed to execute ❌\033[0\n");
+	free_all(data);
+	exit(1);
 }

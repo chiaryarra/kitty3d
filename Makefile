@@ -1,66 +1,60 @@
 # Nome do executável principal e do bonus
-NAME        = cub3d
-BONUS_NAME  = cub3d_bonus
+NAME = cub3d
+BONUS_NAME = cub3d_bonus
 
 # Compilador e flags
-CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
 
-# Includes e libs do MiniLibX/Linux e X11
-CPPFLAGS    = -I includes -I includes/minilibx-linux
-LDFLAGS     = -L includes/minilibx-linux -lmlx_Linux -lXext -lX11 -lm
+# Includes e linkers da MinilibX
+MLXFLAGS = -lmlx_Linux -L./includes/minilibx-linux -lXext -lX11 -lm
+
+# Include da libft
+LIB = includes/libft/libft.a
 
 # Diretório da MiniLibX
 MLX_DIR     = includes/minilibx-linux
 
-# Fontes stub
-SRCS        = \
-    srcs/main.c \
-    srcs/test_map.c \
-    srcs/init_engine.c \
-    srcs/render_frame.c \
-    srcs/keys.c \
-    srcs/close_window_stub.c \
-    srcs/pixel_utils.c \
-	srcs/exit_with_error.c \
-	srcs/raycast.c \
-	srcs/colision.c 
+# Fontes dos arquivos .c para compilar
+SRCS = srcs/misc/kitty3d.c \
+srcs/misc/error_utils.c \
+srcs/misc/general_utils.c \
+srcs/misc/rgb_handling.c \
+srcs/misc/free_utils.c \
+srcs/parser/handle_map.c \
+srcs/parser/validation_utils.c \
+srcs/parser/set_utils.c \
+srcs/parser/handle_grid.c \
+srcs/parser/map_grid_utils.c \
+srcs/raycast/keys.c \
 
-OBJS        = $(SRCS:.c=.o)
 
-# Alvos “virtuais”
-.PHONY: all bonus clean fclean re
+# Objetos .o dos arquivos a compilar
+OBJS = $(SRCS:.c=.o)
 
-# Regra padrão: compila MLX e o binário principal
-all: mlx $(NAME)
+# Regra padrão: compila MLX, libft e binário principal
+all: $(NAME)
 
-# Regra para o “bonus”: produz um executável separado
-bonus: mlx $(BONUS_NAME)
-
-# Compila a MiniLibX (se ainda não foi feita)
-mlx:
-	make -C $(MLX_DIR)
-
-# Linka o executável principal
+# Linka o executável com os objetos e libft, mlx e do projeto
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+	make -C includes/libft
+	make -C $(MLX_DIR)
+	$(CC) $(MLXFLAGS) $(OBJS) -o $(NAME) $(LIB)
 
-# Linka o executável de bonus (ainda sem fontes extras)
-$(BONUS_NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) $(LDFLAGS) -o $(BONUS_NAME)
+# Regra genérica de compilação de cada .c como um .o
+.c.o:
+	$(CC) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
-# Regra genérica de compilação de cada .c para .o
-%.o: %.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-
-# Limpa objetos do projeto e da MLX
+# Limpa todos os objetos .o do projeto, libft e minilibx 
 clean:
-	make clean -C $(MLX_DIR)
+	make clean -C includes/libft
+	make clean -C includes/minilibx-linux
 	rm -f $(OBJS)
 
 # Limpa tudo: objetos + executáveis
 fclean: clean
-	rm -f $(NAME) $(BONUS_NAME)
+	make fclean -C includes/libft
+	rm -f $(NAME)
 
 # Rebuild completo
-re: fclean all
+re: fclean $(NAME)
