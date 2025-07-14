@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/12 20:44:17 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:59:12 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ typedef struct	s_mlx {
 	void	*mlx;
 	void	*window;
 	/* imagem back-buffer */
-	t_img	*img;
+	t_img	*textures;
+	t_img	main_img;
 }	t_mlx;
 
 typedef struct	s_raycast {
@@ -114,6 +115,8 @@ typedef struct	s_map {
 	int		ceiling_color;
 	int		ceiling_color_is_set;
 	int		map_configs_set;
+	int		player_x;
+	int		player_y;
 }	t_map;
 
 typedef struct s_data {
@@ -139,6 +142,8 @@ void	verify_grid(t_map *map, char **grid);
 
 // Mlx and raycasting handling
 
+void	put_pixel(t_data *d, int x, int y, int color);
+void 	render_frame(t_data *data);
 int		key_press(int key, t_data *data);
 void    close_window(t_data *data);
 

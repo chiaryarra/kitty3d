@@ -6,14 +6,11 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/12 20:45:44 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:57:36 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d.h"
- 
-extern void  render_frame(t_map *m);
-extern int   close_window_stub(t_map *m);
 
 /* ——— Wrapper que casa a assinatura esperada pela mlx_loop_hook ——— */
 static int  render_loop(void *param)
@@ -71,10 +68,10 @@ t_mlx   *init_engine(t_data *data)
         mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Kitty3D");
     if (!mlx->window)
 		general_errors(MLX_WINDOW_ERROR, data);
-    mlx->img = init_textures(data);
+    mlx->textures = init_textures(data);
     /* agora usa o wrapper, que retorna int e aceita void* */
     mlx_loop_hook(mlx->mlx, render_loop, data);
-    mlx_hook(mlx->window, 2, 1L<<0, key_press, mlx);
-    mlx_hook(mlx->window, 17, 0, close_window, mlx);
+    mlx_hook(mlx->window, 2, 1L<<0, key_press, data);
+    mlx_hook(mlx->window, 17, 0, close_window, data);
     mlx_loop(mlx->mlx);
 }
