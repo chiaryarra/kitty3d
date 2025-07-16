@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/15 15:46:34 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:45:14 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void    move_front_back(t_data *data, int direction)
         data->raycast->move_vect = -1.0;
     data->raycast->temp_x = data->raycast->pos_x + data->raycast->move_vect * data->raycast->pov_x * MOVE_STEP;
     data->raycast->temp_y = data->raycast->pos_y;
-    if (can_move(data->raycast, data->raycast->temp_x, data))
+    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
         data->raycast->pos_x = data->raycast->temp_x;
     data->raycast->temp_x = data->raycast->pos_x;
     data->raycast->temp_y = data->raycast->pos_y + data->raycast->move_vect * data->raycast->pov_x * MOVE_STEP;
-    if (can_move(data->raycast, data->raycast->temp_x, data))
+    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
         data->raycast->pos_y = data->raycast->temp_y;
 }
 
@@ -37,12 +37,12 @@ void    move_sides(t_data *data, int direction)
 
     data->raycast->temp_x = data->raycast->pos_x + data->raycast->move_vect * data->raycast->plane_x * MOVE_STEP;
     data->raycast->temp_y = data->raycast->pos_y;
-    if (can_move(data->raycast, data->raycast->temp_x, data->raycast->temp_y))
+    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
         data->raycast->pos_x = data->raycast->temp_x;
 
     data->raycast->temp_x = data->raycast->pos_x;
     data->raycast->temp_y = data->raycast->pos_y + data->raycast->move_vect * data->raycast->plane_y * MOVE_STEP;
-    if (can_move(data->raycast, data->raycast->temp_x, data->raycast->temp_y))
+    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
         data->raycast->pos_y = data->raycast->temp_y;
 }
 

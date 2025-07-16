@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/15 15:50:43 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:43:27 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -144,10 +145,14 @@ void	verify_grid(t_map *map, char **grid);
 
 // Mlx and raycasting handling
 
-void	put_pixel(t_data *d, int x, int y, int color);
-void 	render_frame(t_data *data);
-int		key_press(int key, t_data *data);
-void    close_window(t_data *data);
+void		put_pixel(t_data *d, int x, int y, int color);
+void 		render_frame(t_data *data);
+int			key_press(int key, t_data *data);
+void		close_window(t_data *data);
+t_raycast	*create_starting_position(t_data *data);
+t_mlx		*init_engine(t_data *data);
+void		cast_rays(t_data *d);
+int			can_move(t_data *d, double x, double y);
 
 // Validations
 
@@ -163,7 +168,6 @@ void	read_error(int error_type);
 void	parse_error(int error_type, t_map *map);
 void	texture_error(int error_type, t_map *map, int texture_type);
 void	map_error(int error_type, t_map *map);
-void    exit_with_error(char *msg, t_map *m);
 void	general_errors(int error_type, t_data *data);
 
 // Free Utils 

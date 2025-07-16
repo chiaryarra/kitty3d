@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/14 15:57:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:28:39 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* ——— Wrapper que casa a assinatura esperada pela mlx_loop_hook ——— */
 static int  render_loop(void *param)
 {
-    render_frame((t_data *)param);
+	render_frame((t_data *)param);
     return (0);
 }
 
@@ -64,14 +64,18 @@ t_mlx   *init_engine(t_data *data)
     mlx->mlx = mlx_init();
     if (!mlx->mlx)
         general_errors(MLX_INIT_ERROR, data);
-    mlx->window = mlx_new_window(
-        mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Kitty3D");
+    mlx->window = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Kitty3D");
+	mlx->main_img.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	mlx->main_img.addr = mlx_get_data_addr(mlx->main_img.img, &mlx->main_img.bpp, \
+	&mlx->main_img.line, &mlx->main_img.endian);
+	//my_printf("main_img.addr: %s\n", mlx->main_img.addr);
     if (!mlx->window)
 		general_errors(MLX_WINDOW_ERROR, data);
-    mlx->textures = init_textures(data);
+    // mlx->textures = init_textures(data);
     /* agora usa o wrapper, que retorna int e aceita void* */
     mlx_loop_hook(mlx->mlx, render_loop, data);
     mlx_hook(mlx->window, 2, 1L<<0, key_press, data);
     mlx_hook(mlx->window, 17, 0, close_window, data);
     mlx_loop(mlx->mlx);
+	return (mlx);
 }

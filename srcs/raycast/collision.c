@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:31:59 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/15 15:35:24 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:43:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d.h"
 
-int can_move(t_map *m, double x, double y)
+int can_move(t_data *d, double x, double y)
 {
     int mx;
     int my;
@@ -29,7 +29,7 @@ int can_move(t_map *m, double x, double y)
     if (my >= 8)    /* altura fixa do stub */
         return (0);
     /* parede: */
-    if (m->grid[my][mx] == '1')
+    if (d->map->grid[my][mx] == '1')
         return (0);
     return (1);
 }

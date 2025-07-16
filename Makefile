@@ -4,7 +4,7 @@ BONUS_NAME = cub3d_bonus
 
 # Compilador e flags
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 # Includes e linkers da MinilibX
 MLXFLAGS = -lmlx_Linux -L./includes/minilibx-linux -lXext -lX11 -lm
@@ -33,6 +33,7 @@ srcs/raycast/collision.c \
 srcs/raycast/init_engine.c \
 srcs/raycast/raycast.c \
 srcs/raycast/render_frame.c \
+srcs/raycast/set_raycast.c
 
 
 # Objetos .o dos arquivos a compilar
@@ -49,7 +50,7 @@ $(NAME): $(OBJS)
 
 # Regra genérica de compilação de cada .c como um .o
 .c.o:
-	$(CC) $(MLXFLAGS)-O3 -c $< -o $@
+	$(CC) $(CFLAGS) -O3 -c $< -o $@
 
 # Limpa todos os objetos .o do projeto, libft e minilibx 
 clean:

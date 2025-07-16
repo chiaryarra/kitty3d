@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:20:06 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 20:46:52 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:39:20 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	map_name_validation(char *map_name)
 {
 	int	i;
 
-	if (!map_name)
-		return (FALSE);
+	i = 0;
 	while (map_name[i])
 		i++;
 	if (i >= 4)
