@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/08 14:45:18 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:54:50 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,8 @@ void	set_map_grid(t_map *map, char *map_file, int *i)
 	map->grid = ft_split(map->map_string, '\n');
 	map->grid_x_size = get_grid_x_size(map->grid);
 	map->grid_y_size = get_grid_y_size(map->map_string);
+	map->player_x = get_player_x(map);
+	my_printf("oi\n");
+	map->player_y = get_player_y(map);
 	verify_and_clear_grid(map);
 }

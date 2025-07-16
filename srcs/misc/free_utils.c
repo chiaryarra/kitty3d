@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/12 20:43:40 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:30:12 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static void	free_textures(t_mlx *mlx)
 	int	i;
 	
 	i = 0;
-	while (&mlx->img[i])
+	while (&mlx->textures[i])
 	{
-		if ((&mlx->img[i])->addr)
-			free((&mlx->img[i])->addr);
-		mlx_destroy_image(mlx->mlx, (&mlx->img[i])->img);
+		if ((&mlx->textures[i])->addr)
+			free((&mlx->textures[i])->addr);
+		mlx_destroy_image(mlx->mlx, (&mlx->textures[i])->img);
 		i++;
 	}
-	free(mlx->img);
+	free(mlx->textures);
 }
 
 void	free_mlx(t_mlx *mlx)

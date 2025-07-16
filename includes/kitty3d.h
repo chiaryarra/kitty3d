@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/14 15:59:12 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:50:43 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define KITTY3D_H
 
 # include "libft/libft.h"
+# include "minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -138,6 +138,8 @@ void	set_texture(t_map *map, char *map_file, int *i, int texture_type);
 void	set_map_grid(t_map *map, char *map_file, int *i);
 int		get_grid_x_size(char **grid);
 int		get_grid_y_size(char *map_string);
+int		get_player_x(t_map *map);
+int		get_player_y(t_map *map);
 void	verify_grid(t_map *map, char **grid);
 
 // Mlx and raycasting handling

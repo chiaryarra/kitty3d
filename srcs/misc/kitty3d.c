@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/07 16:23:22 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:48:40 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ Wrong number of arguments ❌\033[0\n");
         my_printf("west texture: %s\n", map->west_texture);
         my_printf("grid x size: %d\n", map->grid_x_size);
 		my_printf("grid y size: %d\n", map->grid_y_size);
+        my_printf("player x: %d\n", map->player_x);
+        my_printf("player y: %d\n", map->player_y);
         my_printf("map:\n");
         while (map->grid[i])
         {

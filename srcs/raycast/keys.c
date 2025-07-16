@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/12 21:05:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:46:34 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int key_press(int key, t_data *data)
     else if (key == LEFT || key == RIGHT)
         rotate_pov(data, key);
     else if (key == ESC)
-        close_window_stub(data);
+        close_window(data);
     printf("Player pos: (%.2f, %.2f)\n", data->raycast->pos_x, data->raycast->pos_y);
     return (0);
 }
