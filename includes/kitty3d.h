@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/16 16:43:27 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:48:09 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define SCREEN_HEIGHT 1080
 # define MOVE_STEP   0.1
 # define ROT_ANGLE   0.05
+# define COLLISION_RAY 0.1
 
 enum	e_errors {
 	WRONG_FILENAME,
@@ -148,11 +149,12 @@ void	verify_grid(t_map *map, char **grid);
 void		put_pixel(t_data *d, int x, int y, int color);
 void 		render_frame(t_data *data);
 int			key_press(int key, t_data *data);
-void		close_window(t_data *data);
+int			close_window(void *pointer);
 t_raycast	*create_starting_position(t_data *data);
 t_mlx		*init_engine(t_data *data);
 void		cast_rays(t_data *d);
-int			can_move(t_data *d, double x, double y);
+int			can_move_front_back(t_data *d, double x, double y, double move_vect);
+int			can_move_side(t_data *d, double x, double y, double move_vector);
 
 // Validations
 

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/15 15:30:12 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:13:35 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	free_textures(t_mlx *mlx)
 void	free_mlx(t_mlx *mlx)
 {
 	free_textures(mlx);
+	my_printf("oi2\n");
 	mlx_loop_end(mlx);
 	mlx_destroy_window(mlx, mlx->window);
 	mlx_destroy_display(mlx);

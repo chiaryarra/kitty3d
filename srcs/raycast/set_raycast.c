@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:56:43 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/16 15:36:14 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:33:56 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,11 @@ t_raycast  *create_starting_position(t_data *data)
 	t_raycast *raycast; 		
 	raycast = (t_raycast *)malloc(sizeof(t_raycast) * 1);
 	if (!raycast)
-	{
-		perror("Error\nmalloc falhou");
-		exit(EXIT_FAILURE);
-	}
+		general_errors(MALLOC_ERROR, data);
 	raycast->pos_x = (double)(data->map->player_x + 0.5);
 	raycast->pos_y = (double)(data->map->player_y + 0.5);
 	set_pov(data, raycast);
-	raycast->plane_x = 0.66;
-	raycast->plane_y = 0.0;
+	raycast->plane_x = raycast->pov_y * 0.66;
+	raycast->plane_y = -raycast->pov_x * 0.66;
 	return (raycast);
 }

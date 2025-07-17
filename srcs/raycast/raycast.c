@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/16 16:05:56 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 14:41:40 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ void cast_rays(t_data *d)
         /* 9) cor simples: um tom diferente se foi hit no eixo Y */
         int color;
         if (side)
-            color = 0x888888;
+            color = 0x42F5E0;
         else
-        color = 0xCCCCCC;
+        color = 0xE82E15;
         
         /* 10) desenha a “faixa” da parede */
         int y = draw_start;

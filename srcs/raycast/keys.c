@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/16 16:45:14 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:48:34 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void    move_front_back(t_data *data, int direction)
         data->raycast->move_vect = -1.0;
     data->raycast->temp_x = data->raycast->pos_x + data->raycast->move_vect * data->raycast->pov_x * MOVE_STEP;
     data->raycast->temp_y = data->raycast->pos_y;
-    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
+    if (can_move_front_back(data, data->raycast->temp_x, data->raycast->temp_y, data->raycast->move_vect))
         data->raycast->pos_x = data->raycast->temp_x;
     data->raycast->temp_x = data->raycast->pos_x;
-    data->raycast->temp_y = data->raycast->pos_y + data->raycast->move_vect * data->raycast->pov_x * MOVE_STEP;
-    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
+    data->raycast->temp_y = data->raycast->pos_y + data->raycast->move_vect * data->raycast->pov_y * MOVE_STEP;
+    if (can_move_front_back(data, data->raycast->temp_x, data->raycast->temp_y, data->raycast->move_vect))
         data->raycast->pos_y = data->raycast->temp_y;
 }
 
@@ -36,13 +36,11 @@ void    move_sides(t_data *data, int direction)
         data->raycast->move_vect = -1.0;
 
     data->raycast->temp_x = data->raycast->pos_x + data->raycast->move_vect * data->raycast->plane_x * MOVE_STEP;
-    data->raycast->temp_y = data->raycast->pos_y;
-    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
+    if (can_move_side(data, data->raycast->temp_x, data->raycast->pos_y, data->raycast->move_vect))
         data->raycast->pos_x = data->raycast->temp_x;
-
-    data->raycast->temp_x = data->raycast->pos_x;
+	
     data->raycast->temp_y = data->raycast->pos_y + data->raycast->move_vect * data->raycast->plane_y * MOVE_STEP;
-    if (can_move(data, data->raycast->temp_x, data->raycast->temp_y))
+    if (can_move_side(data, data->raycast->pos_x, data->raycast->temp_y, data->raycast->move_vect))
         data->raycast->pos_y = data->raycast->temp_y;
 }
 
@@ -67,10 +65,14 @@ void    rotate_pov(t_data *data, int direction)
     data->raycast->plane_y = old_plane_x * sin(rotate_ang) + data->raycast->plane_y * cos(rotate_ang);
 }
 
-void    close_window(t_data *data)
+int	close_window(void *pointer)
 {
+    t_data *data;
+
+    data = (t_data *)pointer;
     free_map(data->map);
     free_mlx(data->mlx);
+	my_printf("oi\n");
     free(data->raycast);
     free(data);
     exit(0);
