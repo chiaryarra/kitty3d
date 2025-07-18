@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 20:43:35 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:01:37 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define MOVE_STEP   0.1
 # define ROT_ANGLE   0.05
 # define COLLISION_RAY 0.1
+
+typedef int t_bool;
 
 enum	e_errors {
 	WRONG_FILENAME,
@@ -89,6 +91,26 @@ typedef struct	s_mlx {
 	t_img	main_img;
 }	t_mlx;
 
+typedef struct	s_rays {
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	delta_x;
+	double	delta_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	perp_dist;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	t_bool	wall_hit;
+	t_bool	wall_is_side;
+} t_rays;
+
 typedef struct	s_raycast {
 	double	pos_x;
 	double	pos_y;
@@ -99,6 +121,7 @@ typedef struct	s_raycast {
 	double	temp_x;
 	double	temp_y;
 	double	move_vect;
+	t_rays	ray;
 }	t_raycast;
 
 typedef struct	s_map {
