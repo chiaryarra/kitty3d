@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 14:33:48 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 20:43:27 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Wrong number of arguments ❌\033[0\n");
     	data->map = parse_map(map_file);
 		data->raycast = create_starting_position(data);
 		//data->map->grid = grid;
-		data->mlx = init_engine(data);
+		init_engine(data);
         // my_printf("floor config: %d\n", map->floor_color);
         // my_printf("ceiling config: %d\n", map->ceiling_color);
         // my_printf("north texture: %s\n", map->north_texture);

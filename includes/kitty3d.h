@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 18:48:09 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 20:43:35 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void 		render_frame(t_data *data);
 int			key_press(int key, t_data *data);
 int			close_window(void *pointer);
 t_raycast	*create_starting_position(t_data *data);
-t_mlx		*init_engine(t_data *data);
+void		init_engine(t_data *data);
 void		cast_rays(t_data *d);
 int			can_move_front_back(t_data *d, double x, double y, double move_vect);
 int			can_move_side(t_data *d, double x, double y, double move_vector);

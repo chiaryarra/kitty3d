@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 14:13:35 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 21:01:51 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,35 @@ void	free_map(t_map *map)
 	free(map);
 }
 
-static void	free_textures(t_mlx *mlx)
-{
-	int	i;
+// static void	free_textures(t_mlx *mlx)
+// {
+// 	int	i;
 	
-	i = 0;
-	while (&mlx->textures[i])
-	{
-		if ((&mlx->textures[i])->addr)
-			free((&mlx->textures[i])->addr);
-		mlx_destroy_image(mlx->mlx, (&mlx->textures[i])->img);
-		i++;
-	}
-	free(mlx->textures);
-}
+// 	i = 0;
+// 	while (&mlx->textures[i])
+// 	{
+// 		if ((&mlx->textures[i])->addr)
+// 			free((&mlx->textures[i])->addr);
+// 		mlx_destroy_image(mlx->mlx, (&mlx->textures[i])->img);
+// 		i++;
+// 	}
+// 	free(mlx->textures);
+// }
 
 void	free_mlx(t_mlx *mlx)
 {
-	free_textures(mlx);
-	my_printf("oi2\n");
-	mlx_loop_end(mlx);
-	mlx_destroy_window(mlx, mlx->window);
-	mlx_destroy_display(mlx);
+	//free_textures(mlx);
+	if (mlx->main_img.img && mlx->mlx)
+		mlx_destroy_image(mlx->mlx, mlx->main_img.img);
+	if (mlx->window && mlx->mlx)
+		mlx_destroy_window(mlx->mlx, mlx->window);
+	if (mlx->mlx)
+	{
+		mlx_loop_end(mlx->mlx);
+		mlx_destroy_display(mlx->mlx);
+		free(mlx->mlx);
+		mlx->mlx = NULL;
+	}
 	free(mlx);
 }
 

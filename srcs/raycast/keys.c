@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/17 18:48:34 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 21:01:55 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	close_window(void *pointer)
     data = (t_data *)pointer;
     free_map(data->map);
     free_mlx(data->mlx);
-	my_printf("oi\n");
     free(data->raycast);
     free(data);
     exit(0);

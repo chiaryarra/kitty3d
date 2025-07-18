@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/16 16:28:39 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 20:51:47 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ t_img	*init_textures(t_data *data)
 	return (textures);
 }
 
-t_mlx   *init_engine(t_data *data)
+void   init_engine(t_data *data)
 {
     t_mlx   *mlx;
 
-    mlx = (t_mlx *)malloc(sizeof(t_mlx *));
+    mlx = (t_mlx *)malloc(sizeof(t_mlx) * 1);
     if (!mlx)
         general_errors(MALLOC_ERROR, data);
     data->mlx = mlx;
@@ -77,5 +77,4 @@ t_mlx   *init_engine(t_data *data)
     mlx_hook(mlx->window, 2, 1L<<0, key_press, data);
     mlx_hook(mlx->window, 17, 0, close_window, data);
     mlx_loop(mlx->mlx);
-	return (mlx);
 }

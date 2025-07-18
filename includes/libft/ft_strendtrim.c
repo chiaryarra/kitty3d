@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:07:15 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 14:34:32 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 20:31:01 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ char	*ft_strendtrim(char *s1, char const *set)
 
 	end = ft_strlen(s1);
 	i = 0;
-	my_printf("Map grid[j]: %s\n", s1);
 	while (end > 0 && verif(s1[end - 1], set) == 0)
 		end--;
-	my_printf("end na trim: %d\n", end);
 	str = (char *)malloc((end + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
