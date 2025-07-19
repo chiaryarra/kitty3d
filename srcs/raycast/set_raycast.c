@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:56:43 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 18:33:56 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/19 17:13:03 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	set_pov(t_data *data, t_raycast *raycast)
 t_raycast  *create_starting_position(t_data *data)
 {
 	t_raycast *raycast; 		
-	raycast = (t_raycast *)malloc(sizeof(t_raycast) * 1);
+	raycast = (t_raycast *)ft_calloc(sizeof(t_raycast), 1);
 	if (!raycast)
 		general_errors(MALLOC_ERROR, data);
 	raycast->pos_x = (double)(data->map->player_x + 0.5);
