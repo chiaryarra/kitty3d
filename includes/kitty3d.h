@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/18 21:19:45 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/19 16:18:01 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ typedef struct	s_raycast {
 	double	temp_x;
 	double	temp_y;
 	double	move_vect;
-	t_rays	ray;
+	t_rays	*ray;
 }	t_raycast;
 
 typedef struct	s_map {
