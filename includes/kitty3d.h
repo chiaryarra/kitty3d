@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/18 16:01:37 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/18 21:19:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct	s_rays {
 	int		map_y;
 	int		step_x;
 	int		step_y;
-	int		line_height;
+	int		line_h;
 	int		draw_start;
 	int		draw_end;
 	t_bool	wall_hit;
@@ -170,6 +170,7 @@ void	verify_grid(t_map *map, char **grid);
 // Mlx and raycasting handling
 
 void		put_pixel(t_data *d, int x, int y, int color);
+void		draw_rays(t_data *d, int x, int color);
 void 		render_frame(t_data *data);
 int			key_press(int key, t_data *data);
 int			close_window(void *pointer);
