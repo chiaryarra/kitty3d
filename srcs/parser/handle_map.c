@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/19 17:08:02 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/19 21:55:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*read_map(int fd)
 	char	*temp_map;
 	char	*return_map;
 	char	*line;
-
+	
 	temp_map = get_next_line(fd);
 	line = get_next_line(fd);
 	while (line)

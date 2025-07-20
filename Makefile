@@ -33,7 +33,8 @@ srcs/raycast/collision.c \
 srcs/raycast/init_engine.c \
 srcs/raycast/raycast.c \
 srcs/raycast/render_frame.c \
-srcs/raycast/set_raycast.c
+srcs/raycast/set_raycast.c \
+srcs/raycast/render_textures.c
 
 
 # Objetos .o dos arquivos a compilar

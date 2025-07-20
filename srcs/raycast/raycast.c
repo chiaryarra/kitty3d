@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/19 16:26:43 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:41:20 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static void	wall_check(t_data *d)
 
 void	set_draw_points(t_data *d)
 {
+	set_wall_hit_direction(d->raycast->ray);
 	if (d->raycast->ray->wall_is_side == FALSE)
 		d->raycast->ray->perp_dist = \
 		(d->raycast->ray->map_x - d->raycast->pos_x + \
@@ -103,7 +104,7 @@ void	cast_rays(t_data *d)
     int x = 0;
     while (x < SCREEN_WIDTH)
     {
-		d->raycast->ray = (t_rays *)malloc(sizeof(t_rays) * 1);
+		d->raycast->ray = (t_rays *)ft_calloc(sizeof(t_rays), 1);
 		if (!d->raycast->ray)
 			general_errors(MALLOC_ERROR, d);
 		set_rays_data(d, x);
@@ -116,6 +117,7 @@ void	cast_rays(t_data *d)
 		set_draw_points(d);
 		draw_rays(d, x, color);
         x++;
+		//my_printf("wall_side_hit :%d\n", d->raycast->ray->wall_side_hit);
 		free(d->raycast->ray);
     }
 }

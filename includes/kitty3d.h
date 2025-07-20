@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/19 16:18:01 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/19 23:32:57 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define MOVE_STEP   0.1
 # define ROT_ANGLE   0.05
 # define COLLISION_RAY 0.1
+# define FOV_RANGE 0.66
 
 typedef int t_bool;
 
@@ -76,17 +77,18 @@ enum	e_configs {
 
 typedef struct s_img
 {
-   void   *img;
-   char   *addr;
-   int     bpp;
-   int     line;
-   int     endian;
+   void	*img;
+   char	*addr;
+   int	bpp;
+   int	line;
+   int	endian;
+   int	width;
+   int	height;
 }   t_img;
 
 typedef struct	s_mlx {
 	void	*mlx;
 	void	*window;
-	/* imagem back-buffer */
 	t_img	*textures;
 	t_img	main_img;
 }	t_mlx;
@@ -109,6 +111,7 @@ typedef struct	s_rays {
 	int		draw_end;
 	t_bool	wall_hit;
 	t_bool	wall_is_side;
+	int		wall_side_hit;
 } t_rays;
 
 typedef struct	s_raycast {
@@ -179,6 +182,7 @@ void		init_engine(t_data *data);
 void		cast_rays(t_data *d);
 int			can_move_front_back(t_data *d, double x, double y, double move_vect);
 int			can_move_side(t_data *d, double x, double y, double move_vector);
+void		set_wall_hit_direction(t_rays *ray);
 
 // Validations
 

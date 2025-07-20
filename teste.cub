@@ -3,12 +3,12 @@ F 0,0,110
 C           0 ,            94           ,            0
 
 
-WE testEA
-SO testSO
+WE testNO.xpm
+SO testNO.xpm
 
 
-NO testNO
-EA testWE
+NO testNO.xpm
+EA testNO.xpm
 
 
 
@@ -18,5 +18,5 @@ EA testWE
 10000000000001
 10000000000001
 10000011111111
-100S000001
+10000000W1
 1111111111
