@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/19 23:41:20 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:59:00 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,20 @@ static void	calculate_step_and_distance(t_data *d)
 static void	wall_check(t_data *d)
 {
 	d->raycast->ray->wall_hit = FALSE;
-	d->raycast->ray->wall_is_side = FALSE;
+	d->raycast->ray->wall_is_horizontal = FALSE;
 	while (d->raycast->ray->wall_hit == FALSE)
 	{
 		if (d->raycast->ray->side_dist_x < d->raycast->ray->side_dist_y)
 		{
 			d->raycast->ray->side_dist_x += d->raycast->ray->delta_x;
 			d->raycast->ray->map_x += d->raycast->ray->step_x;
-			d->raycast->ray->wall_is_side = FALSE;
+			d->raycast->ray->wall_is_horizontal = FALSE;
 		}
 		else
 		{
 			d->raycast->ray->side_dist_y += d->raycast->ray->delta_y;
 			d->raycast->ray->map_y += d->raycast->ray->step_y;
-			d->raycast->ray->wall_is_side = TRUE;
+			d->raycast->ray->wall_is_horizontal = TRUE;
 		}
 		if (d->map->grid[d->raycast->ray->map_y][d->raycast->ray->map_x] \
 		== '1')
@@ -79,8 +79,8 @@ static void	wall_check(t_data *d)
 
 void	set_draw_points(t_data *d)
 {
-	set_wall_hit_direction(d->raycast->ray);
-	if (d->raycast->ray->wall_is_side == FALSE)
+	// if (d->raycast->ray->wall_is_horizontal == TRUE)
+	if (d->raycast->ray->wall_is_horizontal == FALSE)
 		d->raycast->ray->perp_dist = \
 		(d->raycast->ray->map_x - d->raycast->pos_x + \
 		(1 - d->raycast->ray->step_x) / 2.0) / d->raycast->ray->ray_dir_x;
@@ -110,14 +110,16 @@ void	cast_rays(t_data *d)
 		set_rays_data(d, x);
         calculate_step_and_distance(d);
 		wall_check(d);
-        if (d->raycast->ray->wall_is_side)
+		set_draw_points(d);
+        if (d->raycast->ray->wall_is_horizontal)
 			color = 0x00F5E0;
         else
 			color = 0xE82E15;
-		set_draw_points(d);
+		set_wall_hit_direction(d->raycast);
 		draw_rays(d, x, color);
         x++;
-		//my_printf("wall_side_hit :%d\n", d->raycast->ray->wall_side_hit);
+		if (x == SCREEN_WIDTH - 1)
+			printf("impact on wall :%f\n", d->raycast->ray->wall_hit_point);
 		free(d->raycast->ray);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/19 23:32:57 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:58:31 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,15 @@ typedef struct	s_rays {
 	int		map_y;
 	int		step_x;
 	int		step_y;
+	double	impact_x;
+	double	impact_y;
 	int		line_h;
 	int		draw_start;
 	int		draw_end;
 	t_bool	wall_hit;
-	t_bool	wall_is_side;
+	t_bool	wall_is_horizontal;
 	int		wall_side_hit;
+	double	wall_hit_point;
 } t_rays;
 
 typedef struct	s_raycast {
@@ -182,7 +185,7 @@ void		init_engine(t_data *data);
 void		cast_rays(t_data *d);
 int			can_move_front_back(t_data *d, double x, double y, double move_vect);
 int			can_move_side(t_data *d, double x, double y, double move_vector);
-void		set_wall_hit_direction(t_rays *ray);
+void		set_wall_hit_direction(t_raycast *raycast);
 
 // Validations
 

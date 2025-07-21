@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:56:43 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/19 23:44:10 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/21 15:09:58 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	set_pov(t_data *data, t_raycast *raycast)
 	if (data->map->start_direction == NORTH)
 	{
 		raycast->pov_x = 0;
-		raycast->pov_y = 1.0;
+		raycast->pov_y = -1.0;
 	}
 	else if (data->map->start_direction == SOUTH)
 	{
 		raycast->pov_x = 0;
-		raycast->pov_y = -1.0;
+		raycast->pov_y = 1.0;
 	}
 	else if (data->map->start_direction == WEST)
 	{
@@ -44,7 +44,7 @@ t_raycast  *create_starting_position(t_data *data)
 	raycast->pos_x = (double)(data->map->player_x + 0.5);
 	raycast->pos_y = (double)(data->map->player_y + 0.5);
 	set_pov(data, raycast);
-	raycast->plane_x = raycast->pov_y * FOV_RANGE;
-	raycast->plane_y = -raycast->pov_x * FOV_RANGE;
+	raycast->plane_x = -raycast->pov_y * FOV_RANGE;
+	raycast->plane_y = raycast->pov_x * FOV_RANGE;
 	return (raycast);
 }
