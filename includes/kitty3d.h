@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/21 15:58:31 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 00:02:59 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,10 @@ typedef struct	s_rays {
 	t_bool	wall_is_horizontal;
 	int		wall_side_hit;
 	double	wall_hit_point;
+	double	tex_step;
+	int		tex_x;
+	int		tex_y;
+	double	tex_y_start;
 } t_rays;
 
 typedef struct	s_raycast {
@@ -176,7 +180,8 @@ void	verify_grid(t_map *map, char **grid);
 // Mlx and raycasting handling
 
 void		put_pixel(t_data *d, int x, int y, int color);
-void		draw_rays(t_data *d, int x, int color);
+void		draw_rays(t_data *d, int x, t_img texture);
+void		check_to_draw_rays(t_data *d, int x);
 void 		render_frame(t_data *data);
 int			key_press(int key, t_data *data);
 int			close_window(void *pointer);
@@ -186,6 +191,7 @@ void		cast_rays(t_data *d);
 int			can_move_front_back(t_data *d, double x, double y, double move_vect);
 int			can_move_side(t_data *d, double x, double y, double move_vector);
 void		set_wall_hit_direction(t_raycast *raycast);
+void		check_to_calculate_texture_positions(t_data *d);
 
 // Validations
 

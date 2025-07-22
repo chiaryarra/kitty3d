@@ -1,14 +1,14 @@
 F 0,0,110   
 
-C           0 ,            94           ,            0
+C           0 ,            94           ,            0    
 
 
-WE testNO.xpm
-SO testNO.xpm
+WE textureNO.xpm
+SO textureSO.xpm
 
 
-NO testNO.xpm
-EA testNO.xpm
+NO textureNO.xpm
+EA textureEA.xpm
 
 
 
@@ -18,5 +18,5 @@ EA testNO.xpm
 10000000000001
 10000000000001
 10000011111111
-1W00000001
+1N00000001
 1111111111

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:45:12 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 23:30:56 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:14:26 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	set_texture(t_map *map, char *map_file, int *i, int texture_type)
 		j++;
 	texture_name = ft_substr(map_file + *i, 0, j);
 	*i += j;
+	texture_name = ft_strendtrim(texture_name, " ");
 	if (validate_texture(texture_name) == -1)
 	{
 		free(texture_name);

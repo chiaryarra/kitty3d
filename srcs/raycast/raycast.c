@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/21 15:59:00 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 00:16:26 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	set_draw_points(t_data *d)
 
 void	cast_rays(t_data *d)
 {
-	int color;
+	// int color;
     int x = 0;
     while (x < SCREEN_WIDTH)
     {
@@ -111,15 +111,14 @@ void	cast_rays(t_data *d)
         calculate_step_and_distance(d);
 		wall_check(d);
 		set_draw_points(d);
-        if (d->raycast->ray->wall_is_horizontal)
-			color = 0x00F5E0;
-        else
-			color = 0xE82E15;
+        // if (d->raycast->ray->wall_is_horizontal)
+		// 	color = 0x00F5E0;
+        // else
+		// 	color = 0xE82E15;
 		set_wall_hit_direction(d->raycast);
-		draw_rays(d, x, color);
+		check_to_calculate_texture_positions(d);
+		check_to_draw_rays(d, x);
         x++;
-		if (x == SCREEN_WIDTH - 1)
-			printf("impact on wall :%f\n", d->raycast->ray->wall_hit_point);
 		free(d->raycast->ray);
     }
 }

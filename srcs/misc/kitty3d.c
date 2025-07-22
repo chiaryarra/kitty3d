@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/18 21:20:18 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:33:20 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ int	main(int argc, char **argv)
 	// };
 
     i = 0;
-	//t_map *map;
-	data = (t_data *)malloc(sizeof(t_data) * 1);
+	t_map *map;
     if (argc != 2)
-        my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m \
-Wrong number of arguments ❌\033[0\n");
-    else
-    {
+    my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m \
+        Wrong number of arguments ❌\033[0\n");
+        else
+        {
         map_name = argv[1];
         map_file = open_map(map_name);
-    	data->map = parse_map(map_file);
+        map = parse_map(map_file);
+        data = (t_data *)malloc(sizeof(t_data) * 1);
+        data->map = map;
 		data->raycast = create_starting_position(data);
 		//data->map->grid = grid;
 		init_engine(data);
@@ -52,12 +53,13 @@ Wrong number of arguments ❌\033[0\n");
         // my_printf("west texture: %s\n", map->west_texture);
         // my_printf("grid x size: %d\n", map->grid_x_size);
 		// my_printf("grid y size: %d\n", map->grid_y_size);
-        my_printf("map:\n");
-        while (data->map->grid[i])
-        {
-            my_printf("%s\n", data->map->grid[i]);
-            i++;
-        }
+        // my_printf("map:\n");
+        // while (data->map->grid[i])
+        // {
+        //     my_printf("%s\n", data->map->grid[i]);
+        //     i++;
+        // }
         free_map(data->map);
+
     }
 }

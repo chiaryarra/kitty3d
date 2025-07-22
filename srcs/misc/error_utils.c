@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/12 20:07:31 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/21 18:24:38 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	parse_error(int error_type, t_map *map)
 	free_map(map);
 	if (error_type == INVALID_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
-The map file has a invalid element for configurations ❌\033[0\n");
+The map file has an invalid element for configurations ❌\033[0\n");
 	if (error_type == INDENTED_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 The configs on map file must be on the start of the line ❌\033[0\n");
