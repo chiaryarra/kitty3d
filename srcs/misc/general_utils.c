@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:10:27 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 21:51:25 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:34:38 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	is_kitty3dconfig(char *c, int *i)
 	int	j;
 
 	j = 0;
-	while(c[*i] && ft_isspace(c[*i]) == 0)
+	while (c[*i] && ft_isspace(c[*i]) == 0)
 	{
 		(*i)++;
 		j++;
@@ -72,10 +72,11 @@ int	hexmap_atoi(char *str, int *i)
 		return (-1);
 	return (n);
 }
+
 char	*generate_texture_text(int texture_type)
 {
 	char	*texture_text;
-	
+
 	if (texture_type == NORTH)
 		texture_text = ft_strdup("north texture(NO)");
 	else if (texture_type == SOUTH)

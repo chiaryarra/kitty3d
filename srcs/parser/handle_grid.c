@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/07 23:33:11 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/17 20:58:31 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	direction_setter(char c)
 }
 
 
-static int	verify_grid_characters(t_map *map, char *map_file, int *i)
+static void	verify_grid_characters(t_map *map, char *map_file, int *i)
 {
 	int	recent_newline;
 
@@ -105,7 +105,9 @@ static void	verify_and_clear_grid(t_map *map)
 void	set_map_grid(t_map *map, char *map_file, int *i)
 {
 	int		temp_i;
+	int		j;
 
+	j = -1;
 	temp_i = *i;
 	verify_grid_characters(map, map_file, i);
 	if (map->start_direction == FALSE)
@@ -115,4 +117,9 @@ void	set_map_grid(t_map *map, char *map_file, int *i)
 	map->grid_x_size = get_grid_x_size(map->grid);
 	map->grid_y_size = get_grid_y_size(map->map_string);
 	verify_and_clear_grid(map);
+	while (map->grid[++j])
+		map->grid[j] = ft_strendtrim(map->grid[j], " \t\v\b");
+	map->grid_x_size = get_grid_x_size(map->grid);
+	map->player_x = get_player_x(map);
+	map->player_y = get_player_y(map);
 }

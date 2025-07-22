@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kitty3d.c                                          :+:      :+:    :+:   */
+/*   render_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/21 17:51:32 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/22 17:37:44 by lbarreto         ###   ########.fr       */
+/*   Created: 2025/07/09 16:00:36 by yathayde          #+#    #+#             */
+/*   Updated: 2025/07/19 23:16:06 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d.h"
 
-int	main(int argc, char **argv)
+void render_frame(t_data *data)
 {
-	char	*map_file;
-	t_data	*data;
-	int		i;
-	t_map	*map;
-
-	i = 0;
-	if (argc != 2)
-		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m \
-Wrong number of arguments ❌\033[0\n");
-	else
-	{
-		map_file = open_map(argv[1]);
-		map = parse_map(map_file);
-		data = (t_data *)malloc(sizeof(t_data) * 1);
-		data->map = map;
-		data->raycast = create_starting_position(data);
-		init_engine(data);
-		free_map(data->map);
-	}
+    /* 1) em cada frame, faça o ray-casting para desenhar paredes, teto e chão */
+    cast_rays(data);
+    /* 2) então envie o buffer para a janela */
+    mlx_put_image_to_window(data->mlx->mlx, data->mlx->window, \
+    data->mlx->main_img.img, 0, 0);
+//     mlx_put_image_to_window(data->mlx->mlx, data->mlx->window, \
+//     data->mlx->textures[0].img, 0, 0);
 }
