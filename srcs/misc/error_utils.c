@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/21 18:24:38 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:33:43 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,19 @@ You must not repeat the floor color(F) configuration ❌\033[0\n");
 You must not repeat the ceiling color(C) configuration ❌\033[0\n");
 	if (error_type == MISSING_CONFIGS)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
-The map file is missing some informations ❌\033[0\n");	
+The map file is missing some informations ❌\033[0\n");
 	exit(1);
 }
 
 void	texture_error(int error_type, t_map *map, int texture_type)
 {
-	char *texture_text;
+	char	*texture_text;
 
 	texture_text = generate_texture_text(texture_type);
 	if (error_type == INVALID_TEXTURE_CONFIG)
-	my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
+		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 The path to %s configuration is invalid ❌\033[0\n", texture_text);
-		if (error_type == REPEATED_TEXTURE_CONFIG)
+	if (error_type == REPEATED_TEXTURE_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 You must not repeat the %s configuration ❌\033[0\n", texture_text);
 	free_map(map);

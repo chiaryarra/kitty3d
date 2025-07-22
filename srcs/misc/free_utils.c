@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/19 21:48:35 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:34:06 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	free_map(t_map *map)
 static void	free_textures(t_mlx *mlx)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < 4)
 	{

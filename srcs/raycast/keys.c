@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/21 15:11:39 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:40:19 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d.h"
 
-void    move_front_back(t_data *data, int direction)
+static void    move_front_back(t_data *data, int direction)
 {
     if (direction == W)
         data->raycast->move_vect = 1.0;
@@ -28,7 +28,7 @@ void    move_front_back(t_data *data, int direction)
         data->raycast->pos_y = data->raycast->temp_y;
 }
 
-void    move_sides(t_data *data, int direction)
+static void    move_sides(t_data *data, int direction)
 {
     if (direction == D)
         data->raycast->move_vect = 1.0;
@@ -44,7 +44,7 @@ void    move_sides(t_data *data, int direction)
         data->raycast->pos_y = data->raycast->temp_y;
 }
 
-void    rotate_pov(t_data *data, int direction)
+static void    rotate_pov(t_data *data, int direction)
 {
     double  rotate_ang;
     double  old_pov_x;

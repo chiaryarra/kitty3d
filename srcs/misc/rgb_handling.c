@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:22:51 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 18:11:18 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:39:30 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	decimal_to_hex(int decimal)
 	return (decimal + '0');
 }
 
-static int		hex_to_decimal(char hex)
+static int	hex_to_decimal(char hex)
 {
 	if (hex == 'F')
 		return (15);
