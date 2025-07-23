@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:20:58 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/22 21:05:55 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/23 15:43:35 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ void	verify_grid(t_map *map, char **grid)
 	int	x;
 	int	y;
 
+	y = -1;
+	my_printf("map: \n");
+	while (++y < map->grid_y_size + 2)
+		my_printf("%s\n", grid[y]);
 	y = -1;
 	while (++y < map->grid_y_size + 2)
 	{

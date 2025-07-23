@@ -1,15 +1,15 @@
-F 25, 100, 219  
+F 210, 235, 250 
 
-C           255 ,            255           ,           255   
+C 255, 210, 195
 
 
-WE assets/textureNO.xpm
+WE assets/textureWE.xpm
 SO assets/textureSO.xpm
 
 
 NO assets/textureNO.xpm
-EA assets/textureEA.xpm
 
+EA assets/textureEA.xpm
 
 
 

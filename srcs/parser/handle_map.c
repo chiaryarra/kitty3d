@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/22 21:05:27 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/23 16:00:00 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_map	*parse_map(char	*map_file)
 	map->map = map_file;
 	while (map->map[i])
 	{
-		if (ft_isspace(map->map[i]) == TRUE)
+		if (ft_isspace(map->map[i]) == TRUE && map->map_configs_set == FALSE)
 			i++;
 		else if (map->map_configs_set == FALSE)
 			set_map_configs(map, map->map, &i);
