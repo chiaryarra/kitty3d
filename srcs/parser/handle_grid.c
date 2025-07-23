@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 20:58:31 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:03:22 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	direction_setter(char c)
 	return (0);
 }
 
-
 static void	verify_grid_characters(t_map *map, char *map_file, int *i)
 {
 	int	recent_newline;
@@ -36,13 +35,13 @@ static void	verify_grid_characters(t_map *map, char *map_file, int *i)
 		if (map_file[*i] == ' ')
 			map_file[*i] = 'x';
 		else if (is_map_direction(map_file[*i]) == TRUE)
-			{
-				if (map->start_direction != 0)
-					map_error(REPEATED_STARTING_DIRECTION, map);
-				else
-					map->start_direction = direction_setter(map_file[*i]);
-				recent_newline = FALSE;
-			}
+		{
+			if (map->start_direction != 0)
+				map_error(REPEATED_STARTING_DIRECTION, map);
+			else
+				map->start_direction = direction_setter(map_file[*i]);
+			recent_newline = FALSE;
+		}
 		else if (map_file[*i] == '1' || map_file[*i] == '0')
 			recent_newline = FALSE;
 		else if (map_file[*i] == '\n' && recent_newline == TRUE)
@@ -83,7 +82,7 @@ static void	verify_and_clear_grid(t_map *map)
 	int		i;
 
 	i = 0;
-	new_grid = (char **)malloc((map->grid_y_size + 3) * sizeof(char *)); 
+	new_grid = (char **)malloc((map->grid_y_size + 3) * sizeof(char *));
 	new_grid[0] = fill_line(map->grid_x_size + 2);
 	while (map->grid[i])
 	{

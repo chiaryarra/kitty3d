@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:00:02 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 21:00:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:06:07 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	get_player_x(t_map *map)
 	}
 	return (-1);
 }
+
 int	get_player_y(t_map *map)
 {
 	int	y;

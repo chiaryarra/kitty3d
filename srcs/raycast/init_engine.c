@@ -6,16 +6,16 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/19 21:53:33 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:18:54 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d.h"
 
-static int  render_loop(void *param)
+static int	render_loop(void *param)
 {
 	render_frame((t_data *)param);
-    return (0);
+	return (0);
 }
 
 static void	import_texture(char *file_path, t_data *data, t_img *texture)
@@ -54,27 +54,28 @@ void	validate_textures(t_data *data)
 	}
 }
 
-void   init_engine(t_data *data)
+void	init_engine(t_data *data)
 {
-    t_mlx   *mlx;
+	t_mlx	*mlx;
 
-    mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-    if (!mlx)
-        general_errors(MALLOC_ERROR, data);
-    data->mlx = mlx;
-    mlx->mlx = mlx_init();
-    if (!mlx->mlx)
+	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
+	if (!mlx)
+		general_errors(MALLOC_ERROR, data);
+	data->mlx = mlx;
+	mlx->mlx = mlx_init();
+	if (!mlx->mlx)
 		general_errors(MLX_INIT_ERROR, data);
 	mlx->textures = init_textures(data);
 	validate_textures(data);
-    mlx->window = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Kitty3D");
+	mlx->window = mlx_new_window(mlx->mlx, SCREEN_WIDTH, \
+	SCREEN_HEIGHT, "Kitty3D");
 	mlx->main_img.img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!mlx->window)
 		general_errors(MLX_WINDOW_ERROR, data);
-	mlx->main_img.addr = mlx_get_data_addr(mlx->main_img.img, &mlx->main_img.bpp, \
-	&mlx->main_img.line, &mlx->main_img.endian);
-    mlx_loop_hook(mlx->mlx, render_loop, data);
-    mlx_hook(mlx->window, 2, 1L<<0, key_press, data);
-    mlx_hook(mlx->window, 17, 0, close_window, data);
-    mlx_loop(mlx->mlx);
+	mlx->main_img.addr = mlx_get_data_addr(mlx->main_img.img, \
+	&mlx->main_img.bpp, &mlx->main_img.line, &mlx->main_img.endian);
+	mlx_loop_hook(mlx->mlx, render_loop, data);
+	mlx_hook(mlx->window, 2, 1L << 0, key_press, data);
+	mlx_hook(mlx->window, 17, 0, close_window, data);
+	mlx_loop(mlx->mlx);
 }
