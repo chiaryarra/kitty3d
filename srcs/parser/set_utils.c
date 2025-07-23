@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:45:12 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/29 23:30:56 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:06:54 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static void	verify_if_all_configs_set(t_map *map)
 	&& map->west_texture != NULL && map->east_texture != NULL)
 		map->map_configs_set = TRUE;
 }
-
 
 void	set_floor(t_map *map, char *map_file, int *i)
 {
@@ -46,7 +45,7 @@ void	set_floor(t_map *map, char *map_file, int *i)
 	verify_if_all_configs_set(map);
 }
 
-void	set_ceiling(t_map *map,char *map_file, int *i)
+void	set_ceiling(t_map *map, char *map_file, int *i)
 {
 	char	*ceiling_rgbcode;
 	int		j;
@@ -70,7 +69,9 @@ void	set_ceiling(t_map *map,char *map_file, int *i)
 	free(ceiling_rgbcode);
 	verify_if_all_configs_set(map);
 }
-static void	set_texture_address(t_map *map, char *texture_name, int texture_type)
+
+static void	set_texture_address(t_map *map, char *texture_name, \
+	int texture_type)
 {
 	if (texture_type == NORTH)
 		map->north_texture = texture_name;
@@ -86,7 +87,7 @@ void	set_texture(t_map *map, char *map_file, int *i, int texture_type)
 {
 	char	*texture_name;
 	int		j;
-	
+
 	j = 0;
 	if (verify_texture(map, texture_type) == TRUE)
 		texture_error(REPEATED_TEXTURE_CONFIG, map, texture_type);
@@ -96,6 +97,7 @@ void	set_texture(t_map *map, char *map_file, int *i, int texture_type)
 		j++;
 	texture_name = ft_substr(map_file + *i, 0, j);
 	*i += j;
+	texture_name = ft_strendtrim(texture_name, " ");
 	if (validate_texture(texture_name) == -1)
 	{
 		free(texture_name);
@@ -104,4 +106,3 @@ void	set_texture(t_map *map, char *map_file, int *i, int texture_type)
 	set_texture_address(map, texture_name, texture_type);
 	verify_if_all_configs_set(map);
 }
-

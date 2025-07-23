@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/30 17:14:00 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:05:27 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ char	*read_map(int fd)
 	char	*temp_map;
 	char	*return_map;
 	char	*line;
-	int		i;
 
-	i = 0;
 	temp_map = get_next_line(fd);
 	line = get_next_line(fd);
 	while (line)
@@ -55,15 +53,15 @@ void	set_map_configs(t_map *map, char *map_file, int *i)
 	int	config_value;
 
 	config_value = is_kitty3dconfig(map_file, i);
-	if ((*i - config_len(config_value) != 0)
+	if ((*i - config_len(config_value) != 0) \
 	&& config_value > 0 && map_file[*i - config_len(config_value) - 1] != '\n')
 		parse_error(INDENTED_CONFIG, map);
 	if (config_value == FLOOR)
-	 	set_floor(map, map_file, i);
+		set_floor(map, map_file, i);
 	else if (config_value == CEILING)
 		set_ceiling(map, map_file, i);
 	else if (config_value == NORTH)
-	 	set_texture(map, map_file, i, config_value);
+		set_texture(map, map_file, i, config_value);
 	else if (config_value == SOUTH)
 		set_texture(map, map_file, i, config_value);
 	else if (config_value == EAST)

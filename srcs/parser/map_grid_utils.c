@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:20:58 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/07 23:36:10 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:05:55 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	get_grid_x_size(char **grid)
 	bigger_line = 0;
 	while (grid[i])
 	{
-		if (ft_strlen(grid[i]) > bigger_line)
+		if ((int)ft_strlen(grid[i]) > bigger_line)
 			bigger_line = ft_strlen(grid[i]);
 		i++;
 	}
@@ -53,7 +53,8 @@ static void	kitty_flood_fill(t_map *map, char **grid, int x, int y)
 	int	i;
 
 	i = -1;
-	if (x < 0 || y < 0 || x >= map->grid_x_size + 2|| y >= map->grid_y_size + 2)
+	if (x < 0 || y < 0 || x >= map->grid_x_size + 2 \
+	|| y >= map->grid_y_size + 2)
 		return ;
 	if (grid[y][x] == 'X' || grid[y][x] == '1')
 		return ;
