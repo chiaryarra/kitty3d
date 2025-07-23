@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:20:06 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/19 17:09:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:07:21 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	map_name_validation(char *map_name)
 
 int	verify_coord(char *cords, int *i)
 {
-	while(cords[*i] && cords[*i] == ' ')
+	while (cords[*i] && cords[*i] == ' ')
 		(*i)++;
 	if (hexmap_atoi(cords, i) == -1)
 		return (-1);
-	while(cords[*i] && cords[*i] == ' ')
+	while (cords[*i] && cords[*i] == ' ')
 		(*i)++;
 	if (cords[*i] != ',')
 		return (-1);
@@ -64,11 +64,11 @@ int	validate_colorcoords(char *cords)
 		return (-1);
 	if (verify_coord(cords, &i) == -1)
 		return (-1);
-	while(cords[i] && cords[i] == ' ')
+	while (cords[i] && cords[i] == ' ')
 		i++;
 	if (hexmap_atoi(cords, &i) == -1)
 		return (-1);
-	while(cords[i] && cords[i] == ' ')
+	while (cords[i] && cords[i] == ' ')
 		i++;
 	if (cords[i])
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:56:43 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/21 18:59:42 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:08:15 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ static void	set_pov(t_data *data, t_raycast *raycast)
 		raycast->pov_y = 0;
 	}
 }
-t_raycast  *create_starting_position(t_data *data)
+
+t_raycast	*create_starting_position(t_data *data)
 {
-	t_raycast *raycast;
+	t_raycast	*raycast;
+
 	raycast = (t_raycast *)ft_calloc(sizeof(t_raycast), 1);
 	if (!raycast)
 		general_errors(MALLOC_ERROR, data);
