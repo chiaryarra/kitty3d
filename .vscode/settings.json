@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "libft.h": "c",
-        "kitty3d.h": "c",
-        "random": "c",
-        "stdio.h": "c"
-    }
-}
