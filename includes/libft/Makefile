@@ -56,7 +56,8 @@ ft_strconcat.c \
 ft_strjoinfree.c \
 get_next_line.c \
 get_next_line_utils.c \
-ft_isspace.c
+ft_isspace.c \
+ft_unsplit.c
 
 
 BONUS_SRCS = ft_lstnew_bonus.c	ft_lstadd_front_bonus.c	ft_lstsize_bonus.c \

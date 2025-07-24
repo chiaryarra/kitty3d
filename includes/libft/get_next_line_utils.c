@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:08:42 by lbarreto          #+#    #+#             */
-/*   Updated: 2024/12/12 19:42:49 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:52:40 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*gnl_strdup(char *str)
 	}
 	dup[i] = '\0';
 	return (dup);
-} 
+}
 
 int	gnl_strlen(char *str)
 {

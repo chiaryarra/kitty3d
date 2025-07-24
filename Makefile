@@ -28,6 +28,7 @@ srcs/parser/set_utils.c \
 srcs/parser/handle_grid.c \
 srcs/parser/map_grid_utils.c \
 srcs/parser/player_utils.c \
+srcs/parser/grid_utils.c \
 srcs/raycast/keys.c \
 srcs/raycast/collision.c \
 srcs/raycast/init_engine.c \
