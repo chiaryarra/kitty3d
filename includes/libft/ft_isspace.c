@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 19:28:04 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/06/22 19:32:06 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 12:53:19 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isspace(int ch)
 {
-	if (ch == '\f' || ch == '\n' || ch == '\r' 
+	if (ch == '\f' || ch == '\n' || ch == '\r' \
 	|| ch == '\t' || ch == '\v' || ch == ' ')
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/22 21:03:22 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 13:19:13 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,12 @@ void	set_map_grid(t_map *map, char *map_file, int *i)
 	int		j;
 
 	j = -1;
-	temp_i = *i;
-	verify_grid_characters(map, map_file, i);
+	temp_i = 0;
+	map->map_string = clear_lines(map_file, *i);
+	*i += ft_strlen(map_file + *i);
+	verify_grid_characters(map, map->map_string, &temp_i);
 	if (map->start_direction == FALSE)
 		map_error(MISSING_START_DIRECTION, map);
-	map->map_string = ft_strdup(map_file + temp_i);
 	map->grid = ft_split(map->map_string, '\n');
 	map->grid_x_size = get_grid_x_size(map->grid);
 	map->grid_y_size = get_grid_y_size(map->map_string);
