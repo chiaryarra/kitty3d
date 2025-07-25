@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/24 21:47:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:53:56 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	verify_and_clear_grid(t_map *map)
 	int		i;
 
 	i = 0;
-	//my_printf("grid_x_size: %d\n", map->grid_x_size);
 	new_grid = (char **)malloc((map->grid_y_size + 3) * sizeof(char *));
 	new_grid[0] = fill_line(map->grid_x_size + 2);
 	while (map->grid[i])

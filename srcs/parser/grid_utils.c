@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:56:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/24 21:46:49 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:53:39 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	*clear_lines(char *map_file, int *i)
 	while (map_file[*i])
 	{
 		if (map_file[*i] == '\n')
-		space_count = 0;
+			space_count = 0;
 		else if (ft_isspace(map_file[*i]) == TRUE)
-		space_count++;
+			space_count++;
 		else
 		{
 			*i -= space_count;
-			break;
+			break ;
 		}
 		*i = *i + 1;
 	}
@@ -42,7 +42,7 @@ char	*recreate_grid_line(char *grid_line, int grid_x_size)
 
 	i = -1;
 	new_line = (char *)malloc((grid_x_size + 1) * sizeof(char));
-	while(grid_line[++i])
+	while (grid_line[++i])
 		new_line[i] = grid_line[i];
 	while (i < grid_x_size)
 	{
@@ -53,4 +53,3 @@ char	*recreate_grid_line(char *grid_line, int grid_x_size)
 	free(grid_line);
 	return (new_line);
 }
-
