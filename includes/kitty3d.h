@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/24 13:05:02 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:41:35 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,8 @@ int			get_grid_y_size(char *map_string);
 int			get_player_x(t_map *map);
 int			get_player_y(t_map *map);
 void		verify_grid(t_map *map, char **grid);
-char		*clear_lines(char *map_file, int i);
+char		*clear_lines(char *map_file, int *i);
+char		*recreate_grid_line(char *grid_line, int grid_x_size);
 
 // Mlx and raycasting handling
 

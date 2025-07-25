@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:07:15 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/17 20:31:01 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:14:27 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strendtrim(char *s1, char const *set)
 	i = 0;
 	while (end > 0 && verif(s1[end - 1], set) == 0)
 		end--;
-	str = (char *)malloc((end + 1) * sizeof(char));
+	str = (char *)ft_calloc((end + 1), sizeof(char));
 	if (!str)
 		return (NULL);
 	while (i < end)

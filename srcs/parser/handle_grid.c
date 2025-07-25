@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/24 13:19:13 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:47:54 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,14 @@ static void	verify_and_clear_grid(t_map *map)
 	int		i;
 
 	i = 0;
+	//my_printf("grid_x_size: %d\n", map->grid_x_size);
 	new_grid = (char **)malloc((map->grid_y_size + 3) * sizeof(char *));
 	new_grid[0] = fill_line(map->grid_x_size + 2);
 	while (map->grid[i])
 	{
 		new_grid[i + 1] = re_gen_grid_line(map->grid[i], map->grid_x_size);
+		if ((int)ft_strlen(map->grid[i]) < map->grid_x_size)
+			map->grid[i] = recreate_grid_line(map->grid[i], map->grid_x_size);
 		i++;
 	}
 	new_grid[i + 1] = fill_line(map->grid_x_size + 2);
@@ -108,7 +111,7 @@ void	set_map_grid(t_map *map, char *map_file, int *i)
 
 	j = -1;
 	temp_i = 0;
-	map->map_string = clear_lines(map_file, *i);
+	map->map_string = clear_lines(map_file, i);
 	*i += ft_strlen(map_file + *i);
 	verify_grid_characters(map, map->map_string, &temp_i);
 	if (map->start_direction == FALSE)
