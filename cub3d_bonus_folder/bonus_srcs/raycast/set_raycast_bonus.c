@@ -6,11 +6,11 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:56:43 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/25 16:46:09 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/kitty3d.h"
+#include "../../includes/kitty3d_bonus.h"
 
 static void	set_pov(t_data *data, t_raycast *raycast)
 {

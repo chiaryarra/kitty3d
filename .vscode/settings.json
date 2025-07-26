@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "libft.h": "c",
+        "kitty3d_bonus.h": "c",
+        "kitty3d.h": "c"
+    }
+}

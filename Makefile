@@ -42,7 +42,26 @@ OBJS = $(SRCS:.c=.o)
 
 # Fontes do arquivos .c da parte bônus para compilar
 
-BONUS_SRCS = 
+BONUS_SRCS = cub3d_bonus_folder/bonus_srcs/misc/kitty3d_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/error_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/general_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/rgb_handling_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/free_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/pixel_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/handle_map_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/validation_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/set_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/handle_grid_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/map_grid_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/player_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/grid_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/keys_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/collision_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/init_engine_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/raycast_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/render_frame_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/set_raycast_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/render_textures_bonus.c
 
 # Objetos .o dos arquivos da parte bônus a compilar
 
@@ -76,5 +95,4 @@ fclean: clean
 re: fclean $(NAME)
 
 bonus: $(BONUS_OBJS)
-	rm $(NAME)
-	$(CC) $(OBJS) $(BONUS_OBJS) -o $(BONUS_NAME) $(LIB) $(MLXFLAGS)
+	$(CC) $(BONUS_OBJS) -o $(BONUS_NAME) $(LIB) $(MLXFLAGS)

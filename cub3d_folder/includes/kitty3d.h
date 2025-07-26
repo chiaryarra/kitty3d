@@ -6,15 +6,15 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/25 16:39:52 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 15:27:37 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KITTY3D_H
 # define KITTY3D_H
 
-# include "../libs/libft/libft.h"
-# include "../libs/minilibx-linux/mlx.h"
+# include "../../libs/libft/libft.h"
+# include "../../libs/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <math.h>
 
