@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:33:27 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 16:17:31 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,23 @@
 # include <fcntl.h>
 # include <math.h>
 
+// Generic macros
+
 # define TRUE 1
 # define FALSE 0
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1080
+
+// Game referent macros
+
 # define MOVE_STEP   0.1
 # define ROT_ANGLE   0.05
 # define COLLISION_RAY 0.2
 # define FOV_RANGE 0.66
 
+// Retypings
+
 typedef int	t_bool;
+
+// Errors enum
 
 enum	e_errors {
 	WRONG_FILENAME,
@@ -53,6 +60,8 @@ enum	e_errors {
 	MLX_IMAGE_ERROR
 };
 
+// Enum with the keycodes of the keyboard (could have been defined with #define too)
+
 enum	e_keycodes {
 	LEFT = 65361,
 	UP = 65362,
@@ -65,6 +74,8 @@ enum	e_keycodes {
 	ESC = 65307
 };
 
+// Enum with some macros used by the program
+
 enum	e_configs {
 	FLOOR = 1,
 	CEILING,
@@ -73,6 +84,8 @@ enum	e_configs {
 	EAST,
 	WEST
 };
+
+// Struct with all the infos referent to the mlx_img pointer
 
 typedef struct s_img
 {
@@ -85,12 +98,18 @@ typedef struct s_img
 	int		height;
 }	t_img;
 
+// Struct with all mlx referent data used by the program
+
 typedef struct s_mlx {
 	void	*mlx;
 	void	*window;
 	t_img	*textures;
 	t_img	main_img;
+	int		s_width;
+	int		s_height;
 }	t_mlx;
+
+// Struct with all data used by the cast_rays function
 
 typedef struct s_rays {
 	double	camera_x;
@@ -120,6 +139,8 @@ typedef struct s_rays {
 	double	tex_y_start;
 }	t_rays;
 
+// Struct with my basic double type data gathered from the map
+
 typedef struct s_raycast {
 	double	pos_x;
 	double	pos_y;
@@ -132,6 +153,8 @@ typedef struct s_raycast {
 	double	move_vect;
 	t_rays	*ray;
 }	t_raycast;
+
+// Struct with the data gathered by the parser of the program
 
 typedef struct s_map {
 	char	*map;
@@ -152,6 +175,8 @@ typedef struct s_map {
 	int		player_x;
 	int		player_y;
 }	t_map;
+
+// Struct unifying everything
 
 typedef struct s_data {
 	t_map		*map;

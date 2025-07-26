@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 15:49:33 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	set_rays_data(t_data *d, int x)
 {
-	d->raycast->ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
+	d->raycast->ray->camera_x = 2 * x / (double)d->mlx->s_width - 1;
 	d->raycast->ray->ray_dir_x = d->raycast->pov_x + \
 	d->raycast->plane_x * d->raycast->ray->camera_x;
 	d->raycast->ray->ray_dir_y = d->raycast->pov_y + \
@@ -87,14 +87,16 @@ void	set_draw_points(t_data *d)
 		d->raycast->ray->perp_dist = \
 		(d->raycast->ray->map_y - d->raycast->pos_y + \
 		(1 - d->raycast->ray->step_y) / 2.0) / d->raycast->ray->ray_dir_y;
-	d->raycast->ray->line_h = (int)(SCREEN_HEIGHT / d->raycast->ray->perp_dist);
+	d->raycast->ray->line_h = (int)\
+	(d->mlx->s_height / d->raycast->ray->perp_dist);
 	d->raycast->ray->draw_start = -d->raycast->ray->line_h / 2 + \
-	SCREEN_HEIGHT / 2;
+	d->mlx->s_height / 2;
 	if (d->raycast->ray->draw_start < 0)
 		d->raycast->ray->draw_start = 0;
-	d->raycast->ray->draw_end = d->raycast->ray->line_h / 2 + SCREEN_HEIGHT / 2;
-	if (d->raycast->ray->draw_end >= SCREEN_HEIGHT)
-		d->raycast->ray->draw_end = SCREEN_HEIGHT - 1;
+	d->raycast->ray->draw_end = \
+	d->raycast->ray->line_h / 2 + d->mlx->s_height / 2;
+	if (d->raycast->ray->draw_end >= d->mlx->s_height)
+		d->raycast->ray->draw_end = d->mlx->s_height - 1;
 }
 
 void	cast_rays(t_data *d)
@@ -102,7 +104,7 @@ void	cast_rays(t_data *d)
 	int	x;
 
 	x = 0;
-	while (x < SCREEN_WIDTH)
+	while (x < d->mlx->s_width)
 	{
 		d->raycast->ray = (t_rays *)ft_calloc(sizeof(t_rays), 1);
 		if (!d->raycast->ray)

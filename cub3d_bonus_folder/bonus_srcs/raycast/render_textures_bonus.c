@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 23:13:30 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 15:49:53 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	calculate_texture_position(t_data *d, t_img texture)
 	d->raycast->ray->tex_step = (double)(texture.height) \
 	/ d->raycast->ray->line_h;
 	d->raycast->ray->tex_y_start = (d->raycast->ray->draw_start - \
-	SCREEN_HEIGHT / 2 + d->raycast->ray->line_h / 2) \
+	d->mlx->s_height / 2 + d->raycast->ray->line_h / 2) \
 	* d->raycast->ray->tex_step;
 }
 
