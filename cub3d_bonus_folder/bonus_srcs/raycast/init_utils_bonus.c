@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_frame_bonus.c                               :+:      :+:    :+:   */
+/*   init_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:00:36 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/26 17:36:12 by lbarreto         ###   ########.fr       */
+/*   Created: 2025/07/26 17:19:04 by lbarreto          #+#    #+#             */
+/*   Updated: 2025/07/26 17:25:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-void	render_frame(t_data *data)
+void	init_bonuses(t_data *d)
 {
-	cast_rays(data);
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->window, \
-	data->mlx->main_img.img, 0, 0);
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->window, \
-	data->mlx->minimap.img, 0, 0);
+	d->mlx->minimap.img = mlx_new_image(d->mlx->mlx, \
+	d->mlx->s_width * 0.2, d->mlx->s_height * 0.2);
+	d->mlx->minimap.addr = mlx_get_data_addr(d->mlx->minimap.img, \
+	&d->mlx->minimap.bpp, &d->mlx->minimap.line, &d->mlx->minimap.endian);
 }

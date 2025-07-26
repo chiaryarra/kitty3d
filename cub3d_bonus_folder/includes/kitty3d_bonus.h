@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 16:17:31 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:29:31 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_mlx {
 	void	*window;
 	t_img	*textures;
 	t_img	main_img;
+	t_img	minimap;
 	int		s_width;
 	int		s_height;
 }	t_mlx;
@@ -218,6 +219,7 @@ double y, double move_vect);
 int			can_move_side(t_data *d, double x, double y, double move_vector);
 void		set_wall_hit_direction(t_raycast *raycast);
 void		check_to_calculate_texture_positions(t_data *d);
+void		init_bonuses(t_data *d);
 
 // Validations
 

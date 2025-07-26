@@ -61,7 +61,8 @@ cub3d_bonus_folder/bonus_srcs/raycast/init_engine_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/raycast_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/render_frame_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/set_raycast_bonus.c \
-cub3d_bonus_folder/bonus_srcs/raycast/render_textures_bonus.c
+cub3d_bonus_folder/bonus_srcs/raycast/render_textures_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/init_utils_bonus.c
 
 # Objetos .o dos arquivos da parte bônus a compilar
 

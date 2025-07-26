@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/26 15:46:23 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:33:05 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	init_engine(t_data *data)
 		general_errors(MLX_WINDOW_ERROR, data);
 	mlx->main_img.addr = mlx_get_data_addr(mlx->main_img.img, \
 	&mlx->main_img.bpp, &mlx->main_img.line, &mlx->main_img.endian);
+	init_bonuses(data);
 	mlx_loop_hook(mlx->mlx, render_loop, data);
 	mlx_hook(mlx->window, 2, 1L << 0, key_press, data);
 	mlx_hook(mlx->window, 17, 0, close_window, data);
