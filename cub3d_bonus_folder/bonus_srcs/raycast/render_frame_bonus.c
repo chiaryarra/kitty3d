@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:36 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/26 17:36:12 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/26 21:11:07 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	render_frame(t_data *data)
 	cast_rays(data);
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->window, \
 	data->mlx->main_img.img, 0, 0);
+	draw_minimap(data);
 	mlx_put_image_to_window(data->mlx->mlx, data->mlx->window, \
 	data->mlx->minimap.img, 0, 0);
 }
