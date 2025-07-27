@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:41 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/26 15:47:55 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/27 16:39:22 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,5 @@ void	check_to_draw_rays(t_data *d, int x)
 	if (d->raycast->ray->wall_side_hit == WEST)
 		draw_rays(d, x, d->mlx->textures[3]);
 }
+
+

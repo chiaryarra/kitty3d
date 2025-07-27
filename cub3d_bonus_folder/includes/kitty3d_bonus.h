@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 21:10:35 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/27 20:15:21 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ enum	e_configs {
 	WEST
 };
 
+// Struct for vectors and coordinates
+
+typedef struct s_vec {
+	float	x;
+	float	y;
+}	t_vec;
+
 // Struct with all the infos referent to the mlx_img pointer
 
 typedef struct s_img
@@ -108,6 +115,11 @@ typedef struct s_mlx {
 	t_img	minimap;
 	int		s_width;
 	int		s_height;
+	int		minimap_step_x;
+	int		minimap_step_y;
+	int		minimap_cs;
+	int		minimap_cs_px;
+	int		minimap_cs_py;
 }	t_mlx;
 
 // Struct with all data used by the cast_rays function
@@ -143,16 +155,16 @@ typedef struct s_rays {
 // Struct with my basic double type data gathered from the map
 
 typedef struct s_raycast {
-	double	pos_x;
-	double	pos_y;
-	double	pov_x;
-	double	pov_y;
-	double	plane_x;
-	double	plane_y;
-	double	temp_x;
-	double	temp_y;
-	double	move_vect;
-	t_rays	*ray;
+	double		pos_x;
+	double		pos_y;
+	double		pov_x;
+	double		pov_y;
+	double		plane_x;
+	double		plane_y;
+	double		temp_x;
+	double		temp_y;
+	double		move_vect;
+	t_rays		*ray;
 }	t_raycast;
 
 // Struct with the data gathered by the parser of the program
@@ -219,8 +231,6 @@ double y, double move_vect);
 int			can_move_side(t_data *d, double x, double y, double move_vector);
 void		set_wall_hit_direction(t_raycast *raycast);
 void		check_to_calculate_texture_positions(t_data *d);
-void		init_bonuses(t_data *d);
-void		draw_minimap(t_data *d);
 
 // Validations
 
@@ -253,5 +263,13 @@ int			rgb_to_int(char *floor_rgbcode);
 char		*generate_texture_text(int texture_type);
 int			is_map_direction(char c);
 char		*fill_line(int lenght_of_line);
+
+
+// Bonus: Minimap
+
+void		put_minimap_pixel(t_data *d, int x, int y, int color);
+void		init_bonuses(t_data *d);
+void		draw_minimap(t_data *d);
+void		draw_cat_paw(t_data *d);
 
 #endif

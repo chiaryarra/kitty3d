@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/27 15:20:00 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	free_mlx(t_mlx *mlx)
 	free_textures(mlx);
 	if (mlx->main_img.img && mlx->mlx)
 		mlx_destroy_image(mlx->mlx, mlx->main_img.img);
+	if (mlx->minimap.img && mlx->mlx)
+		mlx_destroy_image(mlx->mlx, mlx->minimap.img);
 	if (mlx->window && mlx->mlx)
 		mlx_destroy_window(mlx->mlx, mlx->window);
 	if (mlx->mlx)
