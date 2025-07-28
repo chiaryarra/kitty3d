@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/27 20:15:21 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/27 21:16:07 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # define ROT_ANGLE   0.05
 # define COLLISION_RAY 0.2
 # define FOV_RANGE 0.66
+
+// Bonus referent macros
+
+# define MOUSE_SENSIBILITY 0.002
 
 // Retypings
 
@@ -271,5 +275,9 @@ void		put_minimap_pixel(t_data *d, int x, int y, int color);
 void		init_bonuses(t_data *d);
 void		draw_minimap(t_data *d);
 void		draw_cat_paw(t_data *d);
+
+// Bonus: Mouse Movements
+
+int			mouse_move_handler(int x, int y, t_data *d);
 
 #endif
