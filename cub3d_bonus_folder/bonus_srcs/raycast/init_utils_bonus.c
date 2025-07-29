@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 17:19:04 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/27 20:45:15 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:10:01 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 static void	init_minimap(t_data *d)
 {
-	d->mlx->minimap_cs = d->mlx->s_width * 0.2 / d->map->grid_x_size;
+	if (d->mlx->s_height * 0.2 / d->map->grid_y_size < \
+	d->mlx->s_width * 0.2 / d->map->grid_x_size)
+		d->mlx->minimap_cs = d->mlx->s_height * 0.2 / d->map->grid_y_size;
+	else
+		d->mlx->minimap_cs = d->mlx->s_width * 0.2 / d->map->grid_x_size;
 	d->mlx->minimap.height = d->map->grid_y_size * d->mlx->minimap_cs;
 	d->mlx->minimap.width = d->map->grid_x_size * d->mlx->minimap_cs;
 	d->mlx->minimap.img = mlx_new_image(d->mlx->mlx, \
