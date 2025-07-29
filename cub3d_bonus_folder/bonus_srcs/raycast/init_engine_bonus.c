@@ -6,19 +6,19 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/27 21:15:45 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:45:36 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-static int	render_loop(void *param)
+static int	render_loop_b(void *param)
 {
-	render_frame((t_data *)param);
+	render_frame_b((t_data *)param);
 	return (0);
 }
 
-static void	import_texture(char *file_path, t_data *data, t_img *texture)
+static void	import_texture_b(char *file_path, t_data *data, t_img *texture)
 {
 	texture->img = mlx_xpm_file_to_image(data->mlx->mlx, file_path, \
 	&texture->width, &texture->height);
@@ -27,21 +27,21 @@ static void	import_texture(char *file_path, t_data *data, t_img *texture)
 		&texture->line, &texture->endian);
 }
 
-t_img	*init_textures(t_data *data)
+t_img	*init_textures_b(t_data *data)
 {
 	t_img	*texts;
 
 	texts = (t_img *)ft_calloc(sizeof(t_img), 5);
 	if (!texts)
-		general_errors(MALLOC_ERROR, data);
-	import_texture(data->map->north_texture, data, &texts[0]);
-	import_texture(data->map->east_texture, data, &texts[1]);
-	import_texture(data->map->south_texture, data, &texts[2]);
-	import_texture(data->map->west_texture, data, &texts[3]);
+		general_errors_b(MALLOC_ERROR, data);
+	import_texture_b(data->map->north_texture, data, &texts[0]);
+	import_texture_b(data->map->east_texture, data, &texts[1]);
+	import_texture_b(data->map->south_texture, data, &texts[2]);
+	import_texture_b(data->map->west_texture, data, &texts[3]);
 	return (texts);
 }
 
-void	validate_textures(t_data *data)
+void	validate_textures_b(t_data *data)
 {
 	int	i;
 
@@ -49,36 +49,36 @@ void	validate_textures(t_data *data)
 	while (i < 4)
 	{
 		if (!data->mlx->textures[i].img)
-			general_errors(MLX_IMAGE_ERROR, data);
+			general_errors_b(MLX_IMAGE_ERROR, data);
 		i++;
 	}
 }
 
-void	init_engine(t_data *data)
+void	init_engine_b(t_data *data)
 {
 	t_mlx	*mlx;
 
 	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
 	if (!mlx)
-		general_errors(MALLOC_ERROR, data);
+		general_errors_b(MALLOC_ERROR, data);
 	data->mlx = mlx;
 	mlx->mlx = mlx_init();
 	if (!mlx->mlx)
-		general_errors(MLX_INIT_ERROR, data);
-	mlx->textures = init_textures(data);
-	validate_textures(data);
+		general_errors_b(MLX_INIT_ERROR, data);
+	mlx->textures = init_textures_b(data);
+	validate_textures_b(data);
 	mlx_get_screen_size(mlx->mlx, &mlx->s_width, &mlx->s_height);
 	mlx->window = mlx_new_window(mlx->mlx, mlx->s_width, \
 	mlx->s_height, "Kitty3D");
 	mlx->main_img.img = mlx_new_image(mlx->mlx, mlx->s_width, mlx->s_height);
 	if (!mlx->window)
-		general_errors(MLX_WINDOW_ERROR, data);
+		general_errors_b(MLX_WINDOW_ERROR, data);
 	mlx->main_img.addr = mlx_get_data_addr(mlx->main_img.img, \
 	&mlx->main_img.bpp, &mlx->main_img.line, &mlx->main_img.endian);
-	init_bonuses(data);
-	mlx_loop_hook(mlx->mlx, render_loop, data);
-	mlx_hook(mlx->window, 2, 1L << 0, key_press, data);
-	mlx_hook(mlx->window, 6, 1L << 6, mouse_move_handler, data);
-	mlx_hook(mlx->window, 17, 0, close_window, data);
+	init_bonuses_b(data);
+	mlx_loop_hook(mlx->mlx, render_loop_b, data);
+	mlx_hook(mlx->window, 2, 1L << 0, key_press_b, data);
+	mlx_hook(mlx->window, 6, 1L << 6, mouse_move_handler_b, data);
+	mlx_hook(mlx->window, 17, 0, close_window_b, data);
 	mlx_loop(mlx->mlx);
 }

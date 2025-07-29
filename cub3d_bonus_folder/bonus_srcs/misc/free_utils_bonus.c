@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/27 15:20:00 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:31:44 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-void	free_map(t_map *map)
+void	free_map_b(t_map *map)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ void	free_map(t_map *map)
 	free(map);
 }
 
-static void	free_textures(t_mlx *mlx)
+static void	free_textures_b(t_mlx *mlx)
 {
 	int	i;
 
@@ -51,9 +51,9 @@ static void	free_textures(t_mlx *mlx)
 	free(mlx->textures);
 }
 
-void	free_mlx(t_mlx *mlx)
+void	free_mlx_b(t_mlx *mlx)
 {
-	free_textures(mlx);
+	free_textures_b(mlx);
 	if (mlx->main_img.img && mlx->mlx)
 		mlx_destroy_image(mlx->mlx, mlx->main_img.img);
 	if (mlx->minimap.img && mlx->mlx)
@@ -70,13 +70,13 @@ void	free_mlx(t_mlx *mlx)
 	free(mlx);
 }
 
-void	free_all(t_data *data)
+void	free_all_b(t_data *data)
 {
 	if (data->raycast != NULL)
 		free(data->raycast);
 	if (data->mlx != NULL)
-		free_mlx(data->mlx);
+		free_mlx_b(data->mlx);
 	if (data->map != NULL)
-		free_map(data->map);
+		free_map_b(data->map);
 	free(data);
 }

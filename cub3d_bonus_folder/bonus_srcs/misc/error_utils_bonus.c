@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 20:00:19 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:53:51 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-void	read_error(int error_type)
+void	read_error_b(int error_type)
 {
 	if (error_type == WRONG_FILENAME)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
@@ -26,9 +26,9 @@ The map file is empty ❌\033[0\n");
 	exit(1);
 }
 
-void	parse_error(int error_type, t_map *map)
+void	parse_error_b(int error_type, t_map *map)
 {
-	free_map(map);
+	free_map_b(map);
 	if (error_type == INVALID_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 The map file has an invalid element for configurations ❌\033[0\n");
@@ -53,23 +53,23 @@ The map file is missing some informations ❌\033[0\n");
 	exit(1);
 }
 
-void	texture_error(int error_type, t_map *map, int texture_type)
+void	texture_error_b(int error_type, t_map *map, int texture_type)
 {
 	char	*texture_text;
 
-	texture_text = generate_texture_text(texture_type);
+	texture_text = generate_texture_text_b(texture_type);
 	if (error_type == INVALID_TEXTURE_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 The path to %s configuration is invalid ❌\033[0\n", texture_text);
 	if (error_type == REPEATED_TEXTURE_CONFIG)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 You must not repeat the %s configuration ❌\033[0\n", texture_text);
-	free_map(map);
+	free_map_b(map);
 	free(texture_text);
 	exit(1);
 }
 
-void	map_error(int error_type, t_map *map)
+void	map_error_b(int error_type, t_map *map)
 {
 	if (error_type == INVALID_MAP_CONTENT)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
@@ -86,11 +86,11 @@ The map need to have one starting direction (N, S, E, W) ❌\033[0\n");
 	if (error_type == GRID_ERROR)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 The map grid is not closed by walls or has a space inside of it ❌\033[0\n");
-	free_map(map);
+	free_map_b(map);
 	exit(1);
 }
 
-void	general_errors(int error_type, t_data *data)
+void	general_errors_b(int error_type, t_data *data)
 {
 	if (error_type == MALLOC_ERROR)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
@@ -104,6 +104,6 @@ mlx_new_window failed to execute ❌\033[0\n");
 	if (error_type == MLX_IMAGE_ERROR)
 		my_printf_fd(2, "\033[35mKitty3d 😺: Error: \033[1;31m\
 mlx_new_image failed to execute ❌\033[0\n");
-	free_all(data);
+	free_all_b(data);
 	exit(1);
 }

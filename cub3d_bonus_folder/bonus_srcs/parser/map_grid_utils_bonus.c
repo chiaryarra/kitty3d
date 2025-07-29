@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:20:58 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:40:09 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-int	get_grid_x_size(char **grid)
+int	get_grid_x_size_b(char **grid)
 {
 	int	i;
 	int	bigger_line;
@@ -30,7 +30,7 @@ int	get_grid_x_size(char **grid)
 	return (bigger_line);
 }
 
-int	get_grid_y_size(char *map_string)
+int	get_grid_y_size_b(char *map_string)
 {
 	int	i;
 	int	lines_count;
@@ -48,7 +48,7 @@ int	get_grid_y_size(char *map_string)
 	return (lines_count);
 }
 
-static void	kitty_flood_fill(t_map *map, char **grid, int x, int y)
+static void	kitty_flood_fill_b(t_map *map, char **grid, int x, int y)
 {
 	int	i;
 
@@ -63,16 +63,16 @@ static void	kitty_flood_fill(t_map *map, char **grid, int x, int y)
 		while (grid[++i])
 			free(grid[i]);
 		free(grid);
-		map_error(GRID_ERROR, map);
+		map_error_b(GRID_ERROR, map);
 	}
 	grid[y][x] = 'X';
-	kitty_flood_fill(map, grid, x + 1, y);
-	kitty_flood_fill(map, grid, x - 1, y);
-	kitty_flood_fill(map, grid, x, y + 1);
-	kitty_flood_fill(map, grid, x, y - 1);
+	kitty_flood_fill_b(map, grid, x + 1, y);
+	kitty_flood_fill_b(map, grid, x - 1, y);
+	kitty_flood_fill_b(map, grid, x, y + 1);
+	kitty_flood_fill_b(map, grid, x, y - 1);
 }
 
-void	verify_grid(t_map *map, char **grid)
+void	verify_grid_b(t_map *map, char **grid)
 {
 	int	x;
 	int	y;
@@ -84,12 +84,12 @@ void	verify_grid(t_map *map, char **grid)
 		while (++x < map->grid_x_size + 2)
 		{
 			if (grid[y][x] == 'x')
-				kitty_flood_fill(map, grid, x, y);
+				kitty_flood_fill_b(map, grid, x, y);
 		}
 	}
 }
 
-char	*fill_line(int lenght_of_line)
+char	*fill_line_b(int lenght_of_line)
 {
 	char	*line;
 	int		i;

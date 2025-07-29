@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/26 15:49:33 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:47:52 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-static void	set_rays_data(t_data *d, int x)
+static void	set_rays_data_b(t_data *d, int x)
 {
 	d->raycast->ray->camera_x = 2 * x / (double)d->mlx->s_width - 1;
 	d->raycast->ray->ray_dir_x = d->raycast->pov_x + \
@@ -25,7 +25,7 @@ static void	set_rays_data(t_data *d, int x)
 	d->raycast->ray->delta_y = fabs(1 / d->raycast->ray->ray_dir_y);
 }
 
-static void	calculate_step_and_distance(t_data *d)
+static void	calculate_step_and_distance_b(t_data *d)
 {
 	if (d->raycast->ray->ray_dir_x < 0)
 	{
@@ -53,7 +53,7 @@ static void	calculate_step_and_distance(t_data *d)
 	}
 }
 
-static void	wall_check(t_data *d)
+static void	wall_check_b(t_data *d)
 {
 	d->raycast->ray->wall_hit = FALSE;
 	d->raycast->ray->wall_is_horizontal = FALSE;
@@ -77,7 +77,7 @@ static void	wall_check(t_data *d)
 	}
 }
 
-void	set_draw_points(t_data *d)
+void	set_draw_points_b(t_data *d)
 {
 	if (d->raycast->ray->wall_is_horizontal == FALSE)
 		d->raycast->ray->perp_dist = \
@@ -99,7 +99,7 @@ void	set_draw_points(t_data *d)
 		d->raycast->ray->draw_end = d->mlx->s_height - 1;
 }
 
-void	cast_rays(t_data *d)
+void	cast_rays_b(t_data *d)
 {
 	int	x;
 
@@ -108,14 +108,14 @@ void	cast_rays(t_data *d)
 	{
 		d->raycast->ray = (t_rays *)ft_calloc(sizeof(t_rays), 1);
 		if (!d->raycast->ray)
-			general_errors(MALLOC_ERROR, d);
-		set_rays_data(d, x);
-		calculate_step_and_distance(d);
-		wall_check(d);
-		set_draw_points(d);
-		set_wall_hit_direction(d->raycast);
-		check_to_calculate_texture_positions(d);
-		check_to_draw_rays(d, x);
+			general_errors_b(MALLOC_ERROR, d);
+		set_rays_data_b(d, x);
+		calculate_step_and_distance_b(d);
+		wall_check_b(d);
+		set_draw_points_b(d);
+		set_wall_hit_direction_b(d->raycast);
+		check_to_calculate_texture_positions_b(d);
+		check_to_draw_rays_b(d, x);
 		x++;
 		free(d->raycast->ray);
 	}

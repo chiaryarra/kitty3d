@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:10:27 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:54:28 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ enum	e_configs {
 	NORTH,
 	SOUTH,
 	EAST,
-	WEST
+	WEST,
+	DOOR
 };
 
 // Struct for vectors and coordinates
@@ -183,6 +184,7 @@ typedef struct s_map {
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
+	char	*door_texture;
 	int		start_direction;
 	int		floor_color;
 	int		floor_color_is_set;
@@ -203,81 +205,81 @@ typedef struct s_data {
 
 // Map reading 
 
-char		*open_map(char *map_name);
-char		*read_map(int fd);
-t_map		*parse_map(char	*map_file);
-void		set_map_configs(t_map *map, char *map_file, int *i);
-void		set_floor(t_map *map, char *map_file, int *i);
-void		set_ceiling(t_map *map, char *map_file, int *i);
-void		set_texture(t_map *map, char *map_file, int *i, int texture_type);
-void		set_map_grid(t_map *map, char *map_file, int *i);
-int			get_grid_x_size(char **grid);
-int			get_grid_y_size(char *map_string);
-int			get_player_x(t_map *map);
-int			get_player_y(t_map *map);
-void		verify_grid(t_map *map, char **grid);
-char		*clear_lines(char *map_file, int *i);
-char		*recreate_grid_line(char *grid_line, int grid_x_size);
+char		*open_map_b(char *map_name);
+char		*read_map_b(int fd);
+t_map		*parse_map_b(char	*map_file);
+void		set_map_configs_b(t_map *map, char *map_file, int *i);
+void		set_floor_b(t_map *map, char *map_file, int *i);
+void		set_ceiling_b(t_map *map, char *map_file, int *i);
+void		set_texture_b(t_map *map, char *map_file, int *i, int texture_type);
+void		set_map_grid_b(t_map *map, char *map_file, int *i);
+int			get_grid_x_size_b(char **grid);
+int			get_grid_y_size_b(char *map_string);
+int			get_player_x_b(t_map *map);
+int			get_player_y_b(t_map *map);
+void		verify_grid_b(t_map *map, char **grid);
+char		*clear_lines_b(char *map_file, int *i);
+char		*recreate_grid_line_b(char *grid_line, int grid_x_size);
 
 // Mlx and raycasting handling
 
-void		put_pixel(t_data *d, int x, int y, int color);
-void		draw_rays(t_data *d, int x, t_img texture);
-void		check_to_draw_rays(t_data *d, int x);
-void		render_frame(t_data *data);
-int			key_press(int key, t_data *data);
-int			close_window(void *pointer);
-t_raycast	*create_starting_position(t_data *data);
-void		init_engine(t_data *data);
-void		cast_rays(t_data *d);
-int			can_move_front_back(t_data *d, double x, \
+void		put_pixel_b(t_data *d, int x, int y, int color);
+void		draw_rays_b(t_data *d, int x, t_img texture);
+void		check_to_draw_rays_b(t_data *d, int x);
+void		render_frame_b(t_data *data);
+int			key_press_b(int key, t_data *data);
+int			close_window_b(void *pointer);
+t_raycast	*create_starting_position_b(t_data *data);
+void		init_engine_b(t_data *data);
+void		cast_rays_b(t_data *d);
+int			can_move_front_back_b(t_data *d, double x, \
 double y, double move_vect);
-int			can_move_side(t_data *d, double x, double y, double move_vector);
-void		set_wall_hit_direction(t_raycast *raycast);
-void		check_to_calculate_texture_positions(t_data *d);
+int			can_move_side_b(t_data *d, double x, double y, double move_vector);
+void		set_wall_hit_direction_b(t_raycast *raycast);
+void		check_to_calculate_texture_positions_b(t_data *d);
 
 // Validations
 
-int			map_name_validation(char *map_name);
-int			verify_coord(char *cords, int *i);
-int			verify_texture(t_map *map, int texture_type);
-int			validate_colorcoords(char *cords);
-int			validate_texture(char *texture_name);
+int			map_name_validation_b(char *map_name);
+int			verify_coord_b(char *cords, int *i);
+int			verify_texture_b(t_map *map, int texture_type);
+int			validate_colorcoords_b(char *cords);
+int			validate_texture_b(char *texture_name);
 
 // Error Utils
 
-void		read_error(int error_type);
-void		parse_error(int error_type, t_map *map);
-void		texture_error(int error_type, t_map *map, int texture_type);
-void		map_error(int error_type, t_map *map);
-void		general_errors(int error_type, t_data *data);
+void		read_error_b(int error_type);
+void		parse_error_b(int error_type, t_map *map);
+void		texture_error_b(int error_type, t_map *map, int texture_type);
+void		map_error_b(int error_type, t_map *map);
+void		general_errors_b(int error_type, t_data *data);
 
 // Free Utils 
 
-void		free_mlx(t_mlx *mlx);
-void		free_map(t_map *map);
-void		free_all(t_data *data);
+void		free_mlx_b(t_mlx *mlx);
+void		free_map_b(t_map *map);
+void		free_all_b(t_data *data);
 
 // Utils
 
-int			is_kitty3dconfig(char *c, int *i);
-int			config_len(int config_value);
-int			hexmap_atoi(char *str, int *i);
-int			rgb_to_int(char *floor_rgbcode);
-char		*generate_texture_text(int texture_type);
-int			is_map_direction(char c);
-char		*fill_line(int lenght_of_line);
+int			is_kitty3dconfig_b(char *c, int *i);
+int			config_len_b(int config_value);
+int			hexmap_atoi_b(char *str, int *i);
+int			rgb_to_int_b(char *floor_rgbcode);
+char		*generate_texture_text_b(int texture_type);
+int			is_map_direction_b(char c);
+char		*fill_line_b(int lenght_of_line);
 
 
 // Bonus: Minimap
 
-void		put_minimap_pixel(t_data *d, int x, int y, int color);
-void		init_bonuses(t_data *d);
-void		draw_minimap(t_data *d);
-void		draw_cat_paw(t_data *d);
+void		put_minimap_pixel_b(t_data *d, int x, int y, int color);
+void		init_bonuses_b(t_data *d);
+void		draw_minimap_b(t_data *d);
+void		draw_cat_paw_b(t_data *d);
 
 // Bonus: Mouse Movements
 
-int			mouse_move_handler(int x, int y, t_data *d);
+int			mouse_move_handler_b(int x, int y, t_data *d);
 
 #endif

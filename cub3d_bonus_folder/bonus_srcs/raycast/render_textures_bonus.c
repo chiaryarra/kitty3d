@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 23:13:30 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:49:53 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:50:15 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-void	set_wall_hit_direction(t_raycast *raycast)
+void	set_wall_hit_direction_b(t_raycast *raycast)
 {
 	if (raycast->ray->wall_is_horizontal == TRUE)
 	{
@@ -35,7 +35,7 @@ void	set_wall_hit_direction(t_raycast *raycast)
 	raycast->ray->wall_hit_point -= (int)raycast->ray->wall_hit_point;
 }
 
-void	calculate_texture_position(t_data *d, t_img texture)
+void	calculate_texture_position_b(t_data *d, t_img texture)
 {
 	d->raycast->ray->tex_x = (int)(texture.width * \
 	d->raycast->ray->wall_hit_point);
@@ -46,14 +46,14 @@ void	calculate_texture_position(t_data *d, t_img texture)
 	* d->raycast->ray->tex_step;
 }
 
-void	check_to_calculate_texture_positions(t_data *d)
+void	check_to_calculate_texture_positions_b(t_data *d)
 {
 	if (d->raycast->ray->wall_side_hit == NORTH)
-		calculate_texture_position(d, d->mlx->textures[0]);
+		calculate_texture_position_b(d, d->mlx->textures[0]);
 	if (d->raycast->ray->wall_side_hit == EAST)
-		calculate_texture_position(d, d->mlx->textures[1]);
+		calculate_texture_position_b(d, d->mlx->textures[1]);
 	if (d->raycast->ray->wall_side_hit == SOUTH)
-		calculate_texture_position(d, d->mlx->textures[2]);
+		calculate_texture_position_b(d, d->mlx->textures[2]);
 	if (d->raycast->ray->wall_side_hit == WEST)
-		calculate_texture_position(d, d->mlx->textures[3]);
+		calculate_texture_position_b(d, d->mlx->textures[3]);
 }

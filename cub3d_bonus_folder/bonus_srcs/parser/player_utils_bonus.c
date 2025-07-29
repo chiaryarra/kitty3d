@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:00:02 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:40:30 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-int	get_player_x(t_map *map)
+int	get_player_x_b(t_map *map)
 {
 	int	y;
 	int	x;
@@ -23,7 +23,7 @@ int	get_player_x(t_map *map)
 		x = 0;
 		while (x < map->grid_x_size - 1)
 		{
-			if (map->grid[y][x] && is_map_direction(map->grid[y][x]) == TRUE)
+			if (map->grid[y][x] && is_map_direction_b(map->grid[y][x]) == TRUE)
 				return (x);
 			x++;
 		}
@@ -32,7 +32,7 @@ int	get_player_x(t_map *map)
 	return (-1);
 }
 
-int	get_player_y(t_map *map)
+int	get_player_y_b(t_map *map)
 {
 	int	y;
 	int	x;
@@ -43,7 +43,7 @@ int	get_player_y(t_map *map)
 		x = 0;
 		while (x < map->grid_x_size - 1)
 		{
-			if (is_map_direction(map->grid[y][x]) == TRUE)
+			if (is_map_direction_b(map->grid[y][x]) == TRUE)
 				return (y);
 			x++;
 		}

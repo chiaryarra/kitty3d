@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:20:06 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:42:23 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-int	map_name_validation(char *map_name)
+int	map_name_validation_b(char *map_name)
 {
 	int	i;
 
@@ -28,11 +28,11 @@ int	map_name_validation(char *map_name)
 	return (FALSE);
 }
 
-int	verify_coord(char *cords, int *i)
+int	verify_coord_b(char *cords, int *i)
 {
 	while (cords[*i] && cords[*i] == ' ')
 		(*i)++;
-	if (hexmap_atoi(cords, i) == -1)
+	if (hexmap_atoi_b(cords, i) == -1)
 		return (-1);
 	while (cords[*i] && cords[*i] == ' ')
 		(*i)++;
@@ -42,7 +42,7 @@ int	verify_coord(char *cords, int *i)
 	return (0);
 }
 
-int	verify_texture(t_map *map, int texture_type)
+int	verify_texture_b(t_map *map, int texture_type)
 {
 	if (texture_type == NORTH && map->north_texture != NULL)
 		return (TRUE);
@@ -55,18 +55,18 @@ int	verify_texture(t_map *map, int texture_type)
 	return (FALSE);
 }
 
-int	validate_colorcoords(char *cords)
+int	validate_colorcoords_b(char *cords)
 {
 	int	i;
 
 	i = 0;
-	if (verify_coord(cords, &i) == -1)
+	if (verify_coord_b(cords, &i) == -1)
 		return (-1);
-	if (verify_coord(cords, &i) == -1)
+	if (verify_coord_b(cords, &i) == -1)
 		return (-1);
 	while (cords[i] && cords[i] == ' ')
 		i++;
-	if (hexmap_atoi(cords, &i) == -1)
+	if (hexmap_atoi_b(cords, &i) == -1)
 		return (-1);
 	while (cords[i] && cords[i] == ' ')
 		i++;
@@ -75,7 +75,7 @@ int	validate_colorcoords(char *cords)
 	return (0);
 }
 
-int	validate_texture(char *texture_name)
+int	validate_texture_b(char *texture_name)
 {
 	int	i;
 

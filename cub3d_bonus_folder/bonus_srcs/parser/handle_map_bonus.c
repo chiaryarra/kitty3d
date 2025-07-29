@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:39:12 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-char	*read_map(int fd)
+char	*read_map_b(int fd)
 {
 	char	*temp_map;
 	char	*return_map;
@@ -26,53 +26,55 @@ char	*read_map(int fd)
 		line = get_next_line(fd);
 	}
 	if (!temp_map)
-		read_error(EMPTY_FILE);
+		read_error_b(EMPTY_FILE);
 	return_map = ft_strtrim(temp_map, "\n ");
 	return_map = ft_strendtrim(return_map, " ");
 	free(temp_map);
 	return (return_map);
 }
 
-char	*open_map(char *map_name)
+char	*open_map_b(char *map_name)
 {
 	int		fd;
 	char	*map;
 
-	if (map_name_validation(map_name) == 0)
-		read_error(WRONG_FILENAME);
+	if (map_name_validation_b(map_name) == 0)
+		read_error_b(WRONG_FILENAME);
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
-		read_error(OPEN_ERROR);
-	map = read_map(fd);
+		read_error_b(OPEN_ERROR);
+	map = read_map_b(fd);
 	close(fd);
 	return (map);
 }
 
-void	set_map_configs(t_map *map, char *map_file, int *i)
+void	set_map_configs_b(t_map *map, char *map_file, int *i)
 {
 	int	config_value;
 
-	config_value = is_kitty3dconfig(map_file, i);
-	if ((*i - config_len(config_value) != 0) \
-	&& config_value > 0 && map_file[*i - config_len(config_value) - 1] != '\n')
-		parse_error(INDENTED_CONFIG, map);
+	config_value = is_kitty3dconfig_b(map_file, i);
+	if ((*i - config_len_b(config_value) != 0) \
+	&& config_value > 0 && map_file[*i - config_len_b(config_value) - 1] != '\n')
+		parse_error_b(INDENTED_CONFIG, map);
 	if (config_value == FLOOR)
-		set_floor(map, map_file, i);
+		set_floor_b(map, map_file, i);
 	else if (config_value == CEILING)
-		set_ceiling(map, map_file, i);
+		set_ceiling_b(map, map_file, i);
 	else if (config_value == NORTH)
-		set_texture(map, map_file, i, config_value);
+		set_texture_b(map, map_file, i, config_value);
 	else if (config_value == SOUTH)
-		set_texture(map, map_file, i, config_value);
+		set_texture_b(map, map_file, i, config_value);
 	else if (config_value == EAST)
-		set_texture(map, map_file, i, config_value);
+		set_texture_b(map, map_file, i, config_value);
 	else if (config_value == WEST)
-		set_texture(map, map_file, i, config_value);
+		set_texture_b(map, map_file, i, config_value);
+	else if (config_value == DOOR)
+		set_texture_b(map, map_file, i, config_value);
 	else
-		parse_error(INVALID_CONFIG, map);
+		parse_error_b(INVALID_CONFIG, map);
 }
 
-t_map	*parse_map(char	*map_file)
+t_map	*parse_map_b(char	*map_file)
 {
 	t_map	*map;
 	int		i;
@@ -85,11 +87,11 @@ t_map	*parse_map(char	*map_file)
 		if (ft_isspace(map->map[i]) == TRUE && map->map_configs_set == FALSE)
 			i++;
 		else if (map->map_configs_set == FALSE)
-			set_map_configs(map, map->map, &i);
+			set_map_configs_b(map, map->map, &i);
 		else
-			set_map_grid(map, map->map, &i);
+			set_map_grid_b(map, map->map, &i);
 	}
 	if (map->map_configs_set == FALSE || map->grid == NULL)
-		parse_error(MISSING_CONFIGS, map);
+		parse_error_b(MISSING_CONFIGS, map);
 	return (map);
 }

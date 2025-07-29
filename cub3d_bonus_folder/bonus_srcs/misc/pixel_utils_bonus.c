@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:41 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/27 16:39:22 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:50:32 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-void	put_pixel(t_data *d, int x, int y, int color)
+void	put_pixel_b(t_data *d, int x, int y, int color)
 {
 	char	*dst;
 
@@ -21,7 +21,7 @@ void	put_pixel(t_data *d, int x, int y, int color)
 	*(unsigned int *)dst = (unsigned int)color;
 }
 
-void	draw_rays(t_data *d, int x, t_img texture)
+void	draw_rays_b(t_data *d, int x, t_img texture)
 {
 	int	color;
 	int	y;
@@ -33,33 +33,33 @@ void	draw_rays(t_data *d, int x, t_img texture)
 		color = *(int *)(texture.addr + (d->raycast->ray->tex_y * \
 		texture.line + d->raycast->ray->tex_x * (texture.bpp / 8)));
 		d->raycast->ray->tex_y_start += d->raycast->ray->tex_step;
-		put_pixel(d, x, y, color);
+		put_pixel_b(d, x, y, color);
 		y++;
 	}
 	y = 0;
 	while (y < d->raycast->ray->draw_start)
 	{
-		put_pixel(d, x, y, d->map->ceiling_color);
+		put_pixel_b(d, x, y, d->map->ceiling_color);
 		y++;
 	}
 	y = d->raycast->ray->draw_end;
 	while (y < d->mlx->s_height)
 	{
-		put_pixel(d, x, y, d->map->floor_color);
+		put_pixel_b(d, x, y, d->map->floor_color);
 		y++;
 	}
 }
 
-void	check_to_draw_rays(t_data *d, int x)
+void	check_to_draw_rays_b(t_data *d, int x)
 {
 	if (d->raycast->ray->wall_side_hit == NORTH)
-		draw_rays(d, x, d->mlx->textures[0]);
+		draw_rays_b(d, x, d->mlx->textures[0]);
 	if (d->raycast->ray->wall_side_hit == EAST)
-		draw_rays(d, x, d->mlx->textures[1]);
+		draw_rays_b(d, x, d->mlx->textures[1]);
 	if (d->raycast->ray->wall_side_hit == SOUTH)
-		draw_rays(d, x, d->mlx->textures[2]);
+		draw_rays_b(d, x, d->mlx->textures[2]);
 	if (d->raycast->ray->wall_side_hit == WEST)
-		draw_rays(d, x, d->mlx->textures[3]);
+		draw_rays_b(d, x, d->mlx->textures[3]);
 }
 
 

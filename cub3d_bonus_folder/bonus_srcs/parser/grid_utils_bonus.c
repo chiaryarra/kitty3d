@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:56:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:34:51 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-char	*clear_lines(char *map_file, int *i)
+char	*clear_lines_b(char *map_file, int *i)
 {
 	char	*cleared_file;
 	int		space_count;
@@ -35,7 +35,7 @@ char	*clear_lines(char *map_file, int *i)
 	return (cleared_file);
 }
 
-char	*recreate_grid_line(char *grid_line, int grid_x_size)
+char	*recreate_grid_line_b(char *grid_line, int grid_x_size)
 {
 	char	*new_line;
 	int		i;

@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:31:59 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:42:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-int	can_move_front_back(t_data *d, double x, double y, double move_vector)
+int	can_move_front_back_b(t_data *d, double x, double y, double move_vector)
 {
 	int		mx;
 	int		my;
@@ -36,7 +36,7 @@ int	can_move_front_back(t_data *d, double x, double y, double move_vector)
 	return (1);
 }
 
-int	can_move_side(t_data *d, double x, double y, double move_vector)
+int	can_move_side_b(t_data *d, double x, double y, double move_vector)
 {	
 	int		mx;
 	int		my;

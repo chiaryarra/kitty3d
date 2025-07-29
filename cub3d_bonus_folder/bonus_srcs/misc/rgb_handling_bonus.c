@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:22:51 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:37:54 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:34:28 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-static void	extract_rgb(char *floor_rgbcode, int *i, int *rgb)
+static void	extract_rgb_b(char *floor_rgbcode, int *i, int *rgb)
 {
 	int	j;
 
@@ -23,13 +23,13 @@ static void	extract_rgb(char *floor_rgbcode, int *i, int *rgb)
 			(*i)++;
 		else
 		{
-			rgb[j] = hexmap_atoi(floor_rgbcode, i);
+			rgb[j] = hexmap_atoi_b(floor_rgbcode, i);
 			j++;
 		}
 	}
 }
 
-static char	decimal_to_hex(int decimal)
+static char	decimal_to_hex_b(int decimal)
 {
 	if (decimal == 15)
 		return ('F');
@@ -46,7 +46,7 @@ static char	decimal_to_hex(int decimal)
 	return (decimal + '0');
 }
 
-static int	hex_to_decimal(char hex)
+static int	hex_to_decimal_b(char hex)
 {
 	if (hex == 'F')
 		return (15);
@@ -63,7 +63,7 @@ static int	hex_to_decimal(char hex)
 	return (hex - '0');
 }
 
-int	rgb_to_int(char *floor_rgbcode)
+int	rgb_to_int_b(char *floor_rgbcode)
 {
 	int		rgb[3];
 	char	hex[6];
@@ -72,17 +72,17 @@ int	rgb_to_int(char *floor_rgbcode)
 
 	i = 0;
 	result = 0;
-	extract_rgb(floor_rgbcode, &i, rgb);
-	hex[5] = decimal_to_hex(rgb[2] % 16);
-	hex[4] = decimal_to_hex(rgb[2] / 16);
-	hex[3] = decimal_to_hex(rgb[1] % 16);
-	hex[2] = decimal_to_hex(rgb[1] / 16);
-	hex[1] = decimal_to_hex(rgb[0] % 16);
-	hex[0] = decimal_to_hex(rgb[0] / 16);
+	extract_rgb_b(floor_rgbcode, &i, rgb);
+	hex[5] = decimal_to_hex_b(rgb[2] % 16);
+	hex[4] = decimal_to_hex_b(rgb[2] / 16);
+	hex[3] = decimal_to_hex_b(rgb[1] % 16);
+	hex[2] = decimal_to_hex_b(rgb[1] / 16);
+	hex[1] = decimal_to_hex_b(rgb[0] % 16);
+	hex[0] = decimal_to_hex_b(rgb[0] / 16);
 	i = 0;
 	while (i < 6)
 	{
-		result += (hex_to_decimal(hex[i]) * pow(16, 5 - i));
+		result += (hex_to_decimal_b(hex[i]) * pow(16, 5 - i));
 		i++;
 	}
 	return (result);

@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 20:55:52 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/27 21:16:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:47:00 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-int	mouse_move_handler(int x, int y, t_data *d)
+int	mouse_move_handler_b(int x, int y, t_data *d)
 {
 	static int	prev_x = -1;
 	double		rot_speed;

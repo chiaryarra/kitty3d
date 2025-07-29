@@ -6,13 +6,13 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 20:54:08 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/27 20:41:30 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:46:12 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/kitty3d_bonus.h"
 
-void	put_minimap_pixel(t_data *d, int x, int y, int color)
+void	put_minimap_pixel_b(t_data *d, int x, int y, int color)
 {
 	char	*dst;
 
@@ -66,7 +66,7 @@ void	put_minimap_pixel(t_data *d, int x, int y, int color)
 // 	}
 // }
 
-static void	draw_map_blocks(t_data *d, int x, int y)
+static void	draw_map_blocks_b(t_data *d, int x, int y)
 {
 	int	py;
 	int	px;
@@ -84,7 +84,7 @@ static void	draw_map_blocks(t_data *d, int x, int y)
 				color = *(int *)(d->mlx->main_img.addr + \
 				((y * d->mlx->minimap_step_y + py) * d->mlx->main_img.line\
 				+ (x * d->mlx->minimap_step_x + px) * (d->mlx->main_img.bpp / 8)));
-			put_minimap_pixel(d, x * d->mlx->minimap_step_x + px, \
+			put_minimap_pixel_b(d, x * d->mlx->minimap_step_x + px, \
 			y * d->mlx->minimap_step_y + py, color);
 			px++;
 		}
@@ -92,10 +92,10 @@ static void	draw_map_blocks(t_data *d, int x, int y)
 	}
 	// draw_player_on_minimap(d);
 	// draw_player_direction(d);
-	draw_cat_paw(d);
+	draw_cat_paw_b(d);
 }
 
-void	draw_minimap(t_data *d)
+void	draw_minimap_b(t_data *d)
 {
 	int y;
 	int	x;
@@ -108,7 +108,7 @@ void	draw_minimap(t_data *d)
 		x = 0;
 		while (x < d->map->grid_x_size)
 		{
-			draw_map_blocks(d, x, y);
+			draw_map_blocks_b(d, x, y);
 			x++;
 		}
 		y++;
