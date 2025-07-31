@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/29 13:45:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 16:37:13 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_img	*init_textures_b(t_data *data)
 	import_texture_b(data->map->east_texture, data, &texts[1]);
 	import_texture_b(data->map->south_texture, data, &texts[2]);
 	import_texture_b(data->map->west_texture, data, &texts[3]);
+	import_texture_b(data->map->door_texture, data, &texts[4]);
 	return (texts);
 }
 
@@ -46,7 +47,7 @@ void	validate_textures_b(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (!data->mlx->textures[i].img)
 			general_errors_b(MLX_IMAGE_ERROR, data);

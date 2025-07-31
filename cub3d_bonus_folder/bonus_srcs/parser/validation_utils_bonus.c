@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:20:06 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:42:23 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:53:19 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	verify_texture_b(t_map *map, int texture_type)
 	if (texture_type == EAST && map->east_texture != NULL)
 		return (TRUE);
 	if (texture_type == WEST && map->west_texture != NULL)
+		return (TRUE);
+	if (texture_type == DOOR && map->door_texture != NULL)
 		return (TRUE);
 	return (FALSE);
 }

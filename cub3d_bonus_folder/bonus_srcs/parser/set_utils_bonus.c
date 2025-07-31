@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:45:12 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:52:43 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:52:06 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static void	verify_if_all_configs_set_b(t_map *map)
 {
 	if (map->ceiling_color_is_set == TRUE && map->floor_color_is_set == TRUE \
 	&& map->north_texture != NULL && map->south_texture != NULL \
-	&& map->west_texture != NULL && map->east_texture != NULL)
+	&& map->west_texture != NULL && map->east_texture != NULL \
+	&& map->door_texture != NULL)
 		map->map_configs_set = TRUE;
 }
 
@@ -81,6 +82,8 @@ static void	set_texture_address_b(t_map *map, char *texture_name, \
 		map->east_texture = texture_name;
 	if (texture_type == WEST)
 		map->west_texture = texture_name;
+	if (texture_type == DOOR)
+		map->door_texture = texture_name;
 }
 
 void	set_texture_b(t_map *map, char *map_file, int *i, int texture_type)

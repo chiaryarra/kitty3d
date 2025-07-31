@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:10:27 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:54:23 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:50:18 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	config_len_b(int config_value)
 	if (config_value == FLOOR || config_value == CEILING)
 		return (1);
 	else if (config_value == NORTH || config_value == SOUTH \
-	|| config_value == EAST || config_value == WEST)
+	|| config_value == EAST || config_value == WEST || config_value == DOOR)
 		return (2);
 	else
 		return (0);
@@ -87,6 +87,8 @@ char	*generate_texture_text_b(int texture_type)
 		texture_text = ft_strdup("east texture(EA)");
 	else if (texture_type == WEST)
 		texture_text = ft_strdup("west texture(WE)");
+	else if (texture_type == DOOR)
+		texture_text = ft_strdup("door texture(DO)");
 	else
 		texture_text = ft_strdup("invalid texture");
 	return (texture_text);
