@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:54:28 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 16:49:08 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ typedef struct s_rays {
 	int		draw_end;
 	t_bool	wall_hit;
 	t_bool	wall_is_horizontal;
+	t_bool	door_hit;
 	int		wall_side_hit;
 	double	wall_hit_point;
 	double	tex_step;

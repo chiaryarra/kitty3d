@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/30 23:24:55 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 16:52:11 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,14 @@ static void	wall_check_b(t_data *d)
 			d->raycast->ray->map_y += d->raycast->ray->step_y;
 			d->raycast->ray->wall_is_horizontal = TRUE;
 		}
-		if (d->map->grid[d->raycast->ray->map_y][d->raycast->ray->map_x] \
-		== '1')
+		if (ft_strchr("1D", d->map->grid[d->raycast->ray->map_y]\
+		[d->raycast->ray->map_x]))
+		{
 			d->raycast->ray->wall_hit = TRUE;
+			if (d->map->grid[d->raycast->ray->map_y]\
+			[d->raycast->ray->map_x] == 'D')
+				d->raycast->ray->door_hit = TRUE;
+		}
 	}
 }
 

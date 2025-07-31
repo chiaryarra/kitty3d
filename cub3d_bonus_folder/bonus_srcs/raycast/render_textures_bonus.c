@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 23:13:30 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/30 23:27:13 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 16:58:24 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,17 @@ void	calculate_texture_position_b(t_data *d, t_img texture)
 
 void	check_to_calculate_texture_positions_b(t_data *d)
 {
-	if (d->raycast->ray->wall_side_hit == NORTH)
-		calculate_texture_position_b(d, d->mlx->textures[0]);
-	if (d->raycast->ray->wall_side_hit == EAST)
-		calculate_texture_position_b(d, d->mlx->textures[1]);
-	if (d->raycast->ray->wall_side_hit == SOUTH)
-		calculate_texture_position_b(d, d->mlx->textures[2]);
-	if (d->raycast->ray->wall_side_hit == WEST)
-		calculate_texture_position_b(d, d->mlx->textures[3]);
+	if (d->raycast->ray->door_hit == TRUE)
+		calculate_texture_position_b(d, d->mlx->textures[4]);
+	else
+	{
+		if (d->raycast->ray->wall_side_hit == NORTH)
+			calculate_texture_position_b(d, d->mlx->textures[0]);
+		if (d->raycast->ray->wall_side_hit == EAST)
+			calculate_texture_position_b(d, d->mlx->textures[1]);
+		if (d->raycast->ray->wall_side_hit == SOUTH)
+			calculate_texture_position_b(d, d->mlx->textures[2]);
+		if (d->raycast->ray->wall_side_hit == WEST)
+			calculate_texture_position_b(d, d->mlx->textures[3]);
+	}
 }
