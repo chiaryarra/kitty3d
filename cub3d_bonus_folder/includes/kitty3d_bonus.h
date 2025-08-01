@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/31 16:49:08 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:40:26 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ enum	e_keycodes {
 	W = 119,
 	S = 115,
 	D = 100,
+	SPACE = 32,
 	ESC = 65307
 };
 
@@ -282,5 +283,9 @@ void		draw_cat_paw_b(t_data *d);
 // Bonus: Mouse Movements
 
 int			mouse_move_handler_b(int x, int y, t_data *d);
+
+// Bonus: Door
+
+void		open_close_door(t_data *d);
 
 #endif

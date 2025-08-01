@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/29 13:45:33 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:44:05 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	key_press_b(int key, t_data *data)
 		move_sides_b(data, key);
 	else if (key == LEFT || key == RIGHT)
 		rotate_pov_b(data, key);
+	else if (key == SPACE)
+		open_close_door(data);
 	else if (key == ESC)
 		close_window_b(data);
 	return (0);
