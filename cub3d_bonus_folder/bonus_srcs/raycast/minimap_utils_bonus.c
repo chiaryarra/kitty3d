@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 20:54:08 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:46:12 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 22:56:34 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ static void	draw_map_blocks_b(t_data *d, int x, int y)
 		{
 			if (ft_strchr("1", d->map->grid[y][x]))
 				color = 0xBB8D67;
+			else if (ft_strchr("D", d->map->grid[y][x]))
+				color = 0x999999;
 			else
 				color = *(int *)(d->mlx->main_img.addr + \
 				((y * d->mlx->minimap_step_y + py) * d->mlx->main_img.line\
@@ -90,8 +92,6 @@ static void	draw_map_blocks_b(t_data *d, int x, int y)
 		}
 		py++;
 	}
-	// draw_player_on_minimap(d);
-	// draw_player_direction(d);
 	draw_cat_paw_b(d);
 }
 
