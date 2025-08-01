@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 20:54:08 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/31 22:56:34 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/01 14:18:22 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,47 +24,19 @@ void	put_minimap_pixel_b(t_data *d, int x, int y, int color)
 	*(unsigned int *)dst = (unsigned int)color;
 }
 
-// static void draw_player_on_minimap(t_data *d)
-// {
-// 	int	x;
-// 	int	y;
-// 	int	py;
-// 	int	px;
-// 	int	radius;
+static int	define_color(t_data *d, int x, int y)
+{
+	int	color;
 
-// 	py = (int)(d->raycast->pos_y * d->mlx->minimap_cs);
-// 	px = (int)(d->raycast->pos_x * d->mlx->minimap_cs);
-// 	radius = d->mlx->minimap_cs / 3;
-
-// 	y = -radius;
-// 	while (y <= radius)
-// 	{
-// 		x = -radius;
-// 		while (x <= radius)
-// 		{
-// 			if (x * x + y * y <= radius * radius)
-// 				put_minimap_pixel(d, px + x, py + y, 0xFF0000);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
-
-// static void	draw_player_direction(t_data *d)
-// {
-// 	int	cy;
-// 	int	cx;
-// 	int	i;
-
-// 	cy = d->mlx->minimap_cs_py;
-// 	cx = d->mlx->minimap_cs_px;
-// 	i = 0;
-// 	while (i < d->mlx->minimap_cs * 1.5)
-// 	{
-// 		put_minimap_pixel(d, cx + (int)(d->raycast->pov_x * i), cy + (int)(d->raycast->pov_y * i), 0xFFA500);
-// 		i++;
-// 	}
-// }
+	color = 0;
+	if (ft_strchr("1", d->map->grid[y][x]))
+		color = 0xBB8D67;
+	else if (ft_strchr("D", d->map->grid[y][x]))
+		color = 0x23429E;
+	else if (ft_strchr("d", d->map->grid[y][x]))
+		color = 0xB3EDE3;
+	return (color);
+}
 
 static void	draw_map_blocks_b(t_data *d, int x, int y)
 {
@@ -78,14 +50,11 @@ static void	draw_map_blocks_b(t_data *d, int x, int y)
 		px = 0;
 		while (px < d->mlx->minimap_step_x)
 		{
-			if (ft_strchr("1", d->map->grid[y][x]))
-				color = 0xBB8D67;
-			else if (ft_strchr("D", d->map->grid[y][x]))
-				color = 0x999999;
-			else
-				color = *(int *)(d->mlx->main_img.addr + \
-				((y * d->mlx->minimap_step_y + py) * d->mlx->main_img.line\
-				+ (x * d->mlx->minimap_step_x + px) * (d->mlx->main_img.bpp / 8)));
+			color = *(int *)(d->mlx->main_img.addr + \
+			((y * d->mlx->minimap_step_y + py) * d->mlx->main_img.line\
+			+ (x * d->mlx->minimap_step_x + px) * (d->mlx->main_img.bpp / 8)));
+			if (ft_strchr("1Dd", d->map->grid[y][x]))
+				color = define_color(d, x, y);
 			put_minimap_pixel_b(d, x * d->mlx->minimap_step_x + px, \
 			y * d->mlx->minimap_step_y + py, color);
 			px++;

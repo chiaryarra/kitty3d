@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/01 11:40:26 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:56:45 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../../libs/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 // Generic macros
 
@@ -286,6 +287,6 @@ int			mouse_move_handler_b(int x, int y, t_data *d);
 
 // Bonus: Door
 
-void		open_close_door(t_data *d);
+void		open_close_door_b(t_data *d);
 
 #endif

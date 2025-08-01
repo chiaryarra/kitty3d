@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:31:44 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/01 14:24:22 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	free_map_b(t_map *map)
 		free(map->east_texture);
 	if (map->west_texture)
 		free(map->west_texture);
+	if (map->door_texture)
+		free(map->door_texture);
 	if (map->map_string)
 		free(map->map_string);
 	if (map->grid_x_size != 0 && map->grid_y_size != 0)
@@ -42,7 +44,7 @@ static void	free_textures_b(t_mlx *mlx)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (mlx->textures[i].img)
 			mlx_destroy_image(mlx->mlx, (&mlx->textures[i])->img);
