@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:31:59 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/29 13:42:45 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 22:44:14 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	can_move_front_back_b(t_data *d, double x, double y, double move_vector)
 		return (0);
 	if (my >= d->map->grid_y_size)
 		return (0);
-	if (d->map->grid[(int)check_y][(int)check_x] == '1')
+	if (ft_strchr("1D", d->map->grid[(int)check_y][(int)check_x]))
 		return (0);
 	return (1);
 }
@@ -55,7 +55,7 @@ int	can_move_side_b(t_data *d, double x, double y, double move_vector)
 		return (0);
 	if (my >= d->map->grid_y_size)
 		return (0);
-	if (d->map->grid[(int)check_y][(int)check_x] == '1')
+	if (ft_strchr("1D", d->map->grid[(int)check_y][(int)check_x]))
 		return (0);
 	return (1);
 }

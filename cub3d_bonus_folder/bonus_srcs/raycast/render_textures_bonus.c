@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 23:13:30 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/31 16:58:24 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/07/31 22:42:21 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	calculate_texture_position_b(t_data *d, t_img texture)
 {
 	d->raycast->ray->tex_x = (int)(texture.width * \
 	d->raycast->ray->wall_hit_point);
+	if (d->raycast->ray->wall_side_hit == WEST \
+	|| d->raycast->ray->wall_side_hit == SOUTH)
+		d->raycast->ray->tex_x = texture.width - d->raycast->ray->tex_x;
 	d->raycast->ray->tex_step = (double)(texture.height) \
 	/ d->raycast->ray->line_h;
 	d->raycast->ray->tex_y_start = (d->raycast->ray->draw_start - \
