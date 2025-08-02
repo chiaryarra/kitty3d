@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/31 15:52:41 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/01 23:45:03 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_map	*parse_map_b(char	*map_file)
 	i = 0;
 	map = (t_map *)ft_calloc(sizeof(t_map), 1);
 	map->map = map_file;
+	map->start_time = get_start_time_b();
 	while (map->map[i])
 	{
 		if (ft_isspace(map->map[i]) == TRUE && map->map_configs_set == FALSE)

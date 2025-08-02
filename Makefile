@@ -7,13 +7,13 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
 # Includes e linkers da MinilibX
-MLXFLAGS = -lmlx_Linux -L./includes/minilibx-linux -lXext -lX11 -lm
+MLXFLAGS = -lmlx_Linux -L./libs/minilibx-linux -lXext -lX11 -lm
 
 # Include da libft
-LIB = includes/libft/libft.a
+LIB = libs/libft/libft.a
 
 # Diretório da MiniLibX
-MLX_DIR = includes/minilibx-linux
+MLX_DIR = libs/minilibx-linux
 
 # Fontes dos arquivos .c para compilar
 SRCS = cub3d_folder/srcs/misc/kitty3d.c \
@@ -48,6 +48,7 @@ cub3d_bonus_folder/bonus_srcs/misc/general_utils_bonus.c \
 cub3d_bonus_folder/bonus_srcs/misc/rgb_handling_bonus.c \
 cub3d_bonus_folder/bonus_srcs/misc/free_utils_bonus.c \
 cub3d_bonus_folder/bonus_srcs/misc/pixel_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/time_utils_bonus.c \
 cub3d_bonus_folder/bonus_srcs/parser/handle_map_bonus.c \
 cub3d_bonus_folder/bonus_srcs/parser/validation_utils_bonus.c \
 cub3d_bonus_folder/bonus_srcs/parser/set_utils_bonus.c \
@@ -66,7 +67,8 @@ cub3d_bonus_folder/bonus_srcs/raycast/init_utils_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/minimap_utils_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/minimap_utils2_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/mouse_movement_bonus.c \
-cub3d_bonus_folder/bonus_srcs/raycast/door_keys_bonus.c
+cub3d_bonus_folder/bonus_srcs/raycast/door_keys_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/animation_utils_bonus.c
 
 # Objetos .o dos arquivos da parte bônus a compilar
 
@@ -100,4 +102,6 @@ fclean: clean
 re: fclean $(NAME)
 
 bonus: $(BONUS_OBJS)
+	make -C libs/libft
+	make -C libs/minilibx-linux
 	$(CC) $(BONUS_OBJS) -o $(BONUS_NAME) $(LIB) $(MLXFLAGS)

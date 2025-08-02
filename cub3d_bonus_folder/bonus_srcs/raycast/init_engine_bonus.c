@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/31 16:37:13 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 00:05:19 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 static int	render_loop_b(void *param)
 {
+	t_data	*data;
+
+	data = (t_data *)param;
+	data->map->run_time = get_run_time_b(data->map->start_time);
+	printf("run time: %ld\n", data->map->run_time);
 	render_frame_b((t_data *)param);
 	return (0);
 }
 
-static void	import_texture_b(char *file_path, t_data *data, t_img *texture)
+void	import_texture_b(char *file_path, t_data *data, t_img *texture)
 {
 	texture->img = mlx_xpm_file_to_image(data->mlx->mlx, file_path, \
 	&texture->width, &texture->height);
@@ -68,6 +73,7 @@ void	init_engine_b(t_data *data)
 		general_errors_b(MLX_INIT_ERROR, data);
 	mlx->textures = init_textures_b(data);
 	validate_textures_b(data);
+	init_nyancat_textures(data);
 	mlx_get_screen_size(mlx->mlx, &mlx->s_width, &mlx->s_height);
 	mlx->window = mlx_new_window(mlx->mlx, mlx->s_width, \
 	mlx->s_height, "Kitty3D");

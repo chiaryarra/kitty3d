@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/01 13:56:45 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 00:00:00 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../../libs/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <math.h>
+# include <sys/time.h>
 # include <stdio.h>
 
 // Generic macros
@@ -118,6 +119,7 @@ typedef struct s_mlx {
 	void	*mlx;
 	void	*window;
 	t_img	*textures;
+	t_img	*nyan_cat;
 	t_img	main_img;
 	t_img	minimap;
 	int		s_width;
@@ -196,6 +198,8 @@ typedef struct s_map {
 	int		map_configs_set;
 	int		player_x;
 	int		player_y;
+	long	start_time;
+	long	run_time;
 }	t_map;
 
 // Struct unifying everything
@@ -240,6 +244,7 @@ double y, double move_vect);
 int			can_move_side_b(t_data *d, double x, double y, double move_vector);
 void		set_wall_hit_direction_b(t_raycast *raycast);
 void		check_to_calculate_texture_positions_b(t_data *d);
+void		import_texture_b(char *file_path, t_data *data, t_img *texture);
 
 // Validations
 
@@ -288,5 +293,11 @@ int			mouse_move_handler_b(int x, int y, t_data *d);
 // Bonus: Door
 
 void		open_close_door_b(t_data *d);
+
+// Bonus: Animations
+
+long		get_start_time_b(void);
+long		get_run_time_b(long start_time);
+void		init_nyancat_textures(t_data *d);
 
 #endif
