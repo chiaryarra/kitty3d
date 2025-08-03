@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:58 by yathayde          #+#    #+#             */
-/*   Updated: 2025/08/01 14:21:24 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 16:46:09 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	close_window_b(void *pointer)
 	t_data	*data;
 
 	data = (t_data *)pointer;
+	free_mlx_b(data->mlx, data);
 	free_map_b(data->map);
-	free_mlx_b(data->mlx);
 	free(data->raycast);
 	free(data);
 	exit(0);
@@ -86,6 +86,7 @@ int	close_window_b(void *pointer)
 
 int	key_press_b(int key, t_data *data)
 {
+	easter_egg_key_press(key, data);
 	if (key == W || key == S)
 		move_front_back_b(data, key);
 	else if (key == A || key == D)

@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 23:52:05 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/02 00:04:47 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:37:20 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_nyancat_textures(t_data *d)
 {
-	d->mlx->nyan_cat = (t_img *)malloc(sizeof(t_img) * 9);
+	d->mlx->nyan_cat = (t_img *)ft_calloc(sizeof(t_img), 10);
 	if (!d->mlx->nyan_cat)
 		general_errors_b(MALLOC_ERROR, d);
 	import_texture_b("./assets/animations/.nyan_cat/frame_0_delay-0.1s.xpm", \
@@ -35,4 +35,43 @@ void	init_nyancat_textures(t_data *d)
 	d, &d->mlx->nyan_cat[7]);
 	import_texture_b("./assets/animations/.nyan_cat/frame_0_delay-0.1s-8.xpm", \
 	d, &d->mlx->nyan_cat[8]);
+}
+
+static int	get_frames_count(t_img *animation)
+{
+	int	frames_count;
+
+	frames_count = 0;
+	while (animation[frames_count].img)
+		frames_count++;
+	return (frames_count);
+}
+
+t_img	get_animation_frame_b(t_data *d, t_img *animation)
+{
+	int		frames_count;
+	int		frames_duration;	
+
+	frames_count = get_frames_count(animation);
+	frames_duration = 1000 / frames_count;
+
+	return (animation[(d->map->run_time / frames_duration) % frames_count]);
+}
+
+void	set_easter_egg_animation(t_data *d, t_img *animation)
+{
+	static	int first_call;
+
+	if (first_call == 0)
+	{
+		while (first_call < 4)
+		{
+			mlx_destroy_image(d->mlx->mlx, d->mlx->textures[first_call].img);
+			first_call++;
+		}
+	}
+	d->mlx->textures[0] = get_animation_frame_b(d, animation);
+	d->mlx->textures[1] = get_animation_frame_b(d, animation);
+	d->mlx->textures[2] = get_animation_frame_b(d, animation);
+	d->mlx->textures[3] = get_animation_frame_b(d, animation);
 }

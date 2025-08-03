@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 19:29:17 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/01 14:24:22 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 17:02:30 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,30 @@ static void	free_textures_b(t_mlx *mlx)
 	free(mlx->textures);
 }
 
-void	free_mlx_b(t_mlx *mlx)
+static void	free_nyancat_b(t_mlx *mlx)
 {
-	free_textures_b(mlx);
+	int	i;
+
+	i = 0;
+	while (i < 9)
+	{
+		if (mlx->nyan_cat[i].img)
+			mlx_destroy_image(mlx->mlx, (&mlx->nyan_cat[i])->img);
+		i++;
+	}
+	free(mlx->nyan_cat);
+}
+
+void	free_mlx_b(t_mlx *mlx, t_data *d)
+{
+	free_nyancat_b(mlx);
+	if (d->map->easter_egg_on == FALSE)
+		free_textures_b(mlx);
+	else
+	{
+		mlx_destroy_image(mlx->mlx, (&mlx->textures[4])->img);
+		free(mlx->textures);
+	}
 	if (mlx->main_img.img && mlx->mlx)
 		mlx_destroy_image(mlx->mlx, mlx->main_img.img);
 	if (mlx->minimap.img && mlx->mlx)
@@ -77,7 +98,7 @@ void	free_all_b(t_data *data)
 	if (data->raycast != NULL)
 		free(data->raycast);
 	if (data->mlx != NULL)
-		free_mlx_b(data->mlx);
+		free_mlx_b(data->mlx, data);
 	if (data->map != NULL)
 		free_map_b(data->map);
 	free(data);

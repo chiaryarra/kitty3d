@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/02 00:00:00 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:37:37 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,14 @@ enum	e_keycodes {
 	RIGHT = 65363,
 	DOWN = 65364,
 	A = 97,
-	W = 119,
-	S = 115,
+	C = 99,
 	D = 100,
+	H = 104,
+	I = 105,
+	R = 114,
+	S = 115,
+	W = 119,
+	Y = 121,
 	SPACE = 32,
 	ESC = 65307
 };
@@ -120,6 +125,7 @@ typedef struct s_mlx {
 	void	*window;
 	t_img	*textures;
 	t_img	*nyan_cat;
+	t_img	*left_cat;
 	t_img	main_img;
 	t_img	minimap;
 	int		s_width;
@@ -200,6 +206,8 @@ typedef struct s_map {
 	int		player_y;
 	long	start_time;
 	long	run_time;
+	t_bool	easter_egg_on;
+	int		easter_egg_count;
 }	t_map;
 
 // Struct unifying everything
@@ -244,6 +252,7 @@ double y, double move_vect);
 int			can_move_side_b(t_data *d, double x, double y, double move_vector);
 void		set_wall_hit_direction_b(t_raycast *raycast);
 void		check_to_calculate_texture_positions_b(t_data *d);
+void		calculate_texture_position_b(t_data *d, t_img texture);
 void		import_texture_b(char *file_path, t_data *data, t_img *texture);
 
 // Validations
@@ -264,7 +273,7 @@ void		general_errors_b(int error_type, t_data *data);
 
 // Free Utils 
 
-void		free_mlx_b(t_mlx *mlx);
+void		free_mlx_b(t_mlx *mlx, t_data *d);
 void		free_map_b(t_map *map);
 void		free_all_b(t_data *data);
 
@@ -298,6 +307,9 @@ void		open_close_door_b(t_data *d);
 
 long		get_start_time_b(void);
 long		get_run_time_b(long start_time);
+t_img		get_animation_frame_b(t_data *d, t_img *animation);
+void		set_easter_egg_animation(t_data *d, t_img *animation);
+void		easter_egg_key_press(int key, t_data *d);
 void		init_nyancat_textures(t_data *d);
 
 #endif

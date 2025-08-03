@@ -68,7 +68,8 @@ cub3d_bonus_folder/bonus_srcs/raycast/minimap_utils_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/minimap_utils2_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/mouse_movement_bonus.c \
 cub3d_bonus_folder/bonus_srcs/raycast/door_keys_bonus.c \
-cub3d_bonus_folder/bonus_srcs/raycast/animation_utils_bonus.c
+cub3d_bonus_folder/bonus_srcs/raycast/animation_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/easter_egg_bonus.c
 
 # Objetos .o dos arquivos da parte bônus a compilar
 

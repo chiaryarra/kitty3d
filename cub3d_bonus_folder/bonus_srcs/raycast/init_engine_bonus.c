@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/08/02 00:05:19 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:33:36 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static int	render_loop_b(void *param)
 
 	data = (t_data *)param;
 	data->map->run_time = get_run_time_b(data->map->start_time);
-	printf("run time: %ld\n", data->map->run_time);
+	if (data->map->easter_egg_on == TRUE)
+		set_easter_egg_animation(data, data->mlx->nyan_cat);
 	render_frame_b((t_data *)param);
 	return (0);
 }
@@ -27,6 +28,8 @@ void	import_texture_b(char *file_path, t_data *data, t_img *texture)
 {
 	texture->img = mlx_xpm_file_to_image(data->mlx->mlx, file_path, \
 	&texture->width, &texture->height);
+	if (!texture->img)
+		general_errors_b(MLX_IMAGE_ERROR, data);
 	if (texture->img)
 		texture->addr = mlx_get_data_addr(texture->img, &texture->bpp, \
 		&texture->line, &texture->endian);
@@ -36,7 +39,7 @@ t_img	*init_textures_b(t_data *data)
 {
 	t_img	*texts;
 
-	texts = (t_img *)ft_calloc(sizeof(t_img), 5);
+	texts = (t_img *)ft_calloc(sizeof(t_img), 6);
 	if (!texts)
 		general_errors_b(MALLOC_ERROR, data);
 	import_texture_b(data->map->north_texture, data, &texts[0]);
