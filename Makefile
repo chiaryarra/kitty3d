@@ -7,47 +7,81 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
 # Includes e linkers da MinilibX
-MLXFLAGS = -lmlx_Linux -L./includes/minilibx-linux -lXext -lX11 -lm
+MLXFLAGS = -lmlx_Linux -L./libs/minilibx-linux -lXext -lX11 -lm
 
 # Include da libft
-LIB = includes/libft/libft.a
+LIB = libs/libft/libft.a
 
 # Diretório da MiniLibX
-MLX_DIR = includes/minilibx-linux
+MLX_DIR = libs/minilibx-linux
 
 # Fontes dos arquivos .c para compilar
-SRCS = srcs/misc/kitty3d.c \
-srcs/misc/error_utils.c \
-srcs/misc/general_utils.c \
-srcs/misc/rgb_handling.c \
-srcs/misc/free_utils.c \
-srcs/misc/pixel_utils.c \
-srcs/parser/handle_map.c \
-srcs/parser/validation_utils.c \
-srcs/parser/set_utils.c \
-srcs/parser/handle_grid.c \
-srcs/parser/map_grid_utils.c \
-srcs/parser/player_utils.c \
-srcs/parser/grid_utils.c \
-srcs/raycast/keys.c \
-srcs/raycast/collision.c \
-srcs/raycast/init_engine.c \
-srcs/raycast/raycast.c \
-srcs/raycast/render_frame.c \
-srcs/raycast/set_raycast.c \
-srcs/raycast/render_textures.c
-
+SRCS = cub3d_folder/srcs/misc/kitty3d.c \
+cub3d_folder/srcs/misc/error_utils.c \
+cub3d_folder/srcs/misc/general_utils.c \
+cub3d_folder/srcs/misc/rgb_handling.c \
+cub3d_folder/srcs/misc/free_utils.c \
+cub3d_folder/srcs/misc/pixel_utils.c \
+cub3d_folder/srcs/parser/handle_map.c \
+cub3d_folder/srcs/parser/validation_utils.c \
+cub3d_folder/srcs/parser/set_utils.c \
+cub3d_folder/srcs/parser/handle_grid.c \
+cub3d_folder/srcs/parser/map_grid_utils.c \
+cub3d_folder/srcs/parser/player_utils.c \
+cub3d_folder/srcs/parser/grid_utils.c \
+cub3d_folder/srcs/raycast/keys.c \
+cub3d_folder/srcs/raycast/collision.c \
+cub3d_folder/srcs/raycast/init_engine.c \
+cub3d_folder/srcs/raycast/raycast.c \
+cub3d_folder/srcs/raycast/render_frame.c \
+cub3d_folder/srcs/raycast/set_raycast.c \
+cub3d_folder/srcs/raycast/render_textures.c
 
 # Objetos .o dos arquivos a compilar
 OBJS = $(SRCS:.c=.o)
+
+# Fontes do arquivos .c da parte bônus para compilar
+
+BONUS_SRCS = cub3d_bonus_folder/bonus_srcs/misc/kitty3d_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/error_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/general_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/rgb_handling_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/free_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/pixel_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/misc/time_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/handle_map_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/validation_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/set_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/handle_grid_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/map_grid_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/player_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/parser/grid_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/keys_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/collision_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/init_engine_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/raycast_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/render_frame_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/set_raycast_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/render_textures_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/init_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/minimap_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/minimap_utils2_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/mouse_movement_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/door_keys_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/animation_utils_bonus.c \
+cub3d_bonus_folder/bonus_srcs/raycast/easter_egg_bonus.c
+
+# Objetos .o dos arquivos da parte bônus a compilar
+
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 # Regra padrão: compila MLX, libft e binário principal
 all: $(NAME)
 
 # Linka o executável com os objetos e libft, mlx e do projeto
 $(NAME): $(OBJS)
-	make -C includes/libft
-	make -C includes/minilibx-linux
+	make -C libs/libft
+	make -C libs/minilibx-linux
 	$(CC) $(OBJS) -o $(NAME) $(LIB) $(MLXFLAGS)
 
 # Regra genérica de compilação de cada .c como um .o
@@ -56,14 +90,19 @@ $(NAME): $(OBJS)
 
 # Limpa todos os objetos .o do projeto, libft e minilibx 
 clean:
-	make clean -C includes/libft
-	make clean -C includes/minilibx-linux
-	rm -f $(OBJS)
+	make clean -C libs/libft
+	make clean -C libs/minilibx-linux
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 # Limpa tudo: objetos + executáveis
 fclean: clean
-	make fclean -C includes/libft
-	rm -f $(NAME)
+	make fclean -C libs/libft
+	rm -f $(NAME) $(BONUS_NAME)
 
 # Rebuild completo
 re: fclean $(NAME)
+
+bonus: $(BONUS_OBJS)
+	make -C libs/libft
+	make -C libs/minilibx-linux
+	$(CC) $(BONUS_OBJS) -o $(BONUS_NAME) $(LIB) $(MLXFLAGS)
