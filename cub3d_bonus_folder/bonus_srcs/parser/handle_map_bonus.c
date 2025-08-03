@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 19:12:46 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/01 23:45:03 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 22:00:11 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	set_map_configs_b(t_map *map, char *map_file, int *i)
 
 	config_value = is_kitty3dconfig_b(map_file, i);
 	if ((*i - config_len_b(config_value) != 0) \
-	&& config_value > 0 && map_file[*i - config_len_b(config_value) - 1] != '\n')
+	&& config_value > 0 && map_file[*i - config_len_b \
+	(config_value) - 1] != '\n')
 		parse_error_b(INDENTED_CONFIG, map);
 	if (config_value == FLOOR)
 		set_floor_b(map, map_file, i);

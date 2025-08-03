@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:48 by yathayde          #+#    #+#             */
-/*   Updated: 2025/08/02 21:33:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 22:01:55 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	init_engine_b(t_data *data)
 		general_errors_b(MLX_INIT_ERROR, data);
 	mlx->textures = init_textures_b(data);
 	validate_textures_b(data);
-	init_nyancat_textures(data);
 	mlx_get_screen_size(mlx->mlx, &mlx->s_width, &mlx->s_height);
 	mlx->window = mlx_new_window(mlx->mlx, mlx->s_width, \
 	mlx->s_height, "Kitty3D");

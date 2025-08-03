@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:24:13 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/31 16:13:52 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:59:19 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	verify_grid_characters_b(t_map *map, char *map_file, int *i)
 				map->start_direction = direction_setter_b(map_file[*i]);
 			recent_newline = FALSE;
 		}
-		else if (ft_strchr("10Dd",map_file[*i]))
+		else if (ft_strchr("10Dd", map_file[*i]))
 			recent_newline = FALSE;
 		else if (map_file[*i] == '\n' && recent_newline == TRUE)
 			map_error_b(MAP_EMPTY_LINE, map);

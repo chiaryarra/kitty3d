@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:31:59 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/25 16:46:09 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:48:42 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	can_move_front_back(t_data *d, double x, double y, double move_vector)
 }
 
 int	can_move_side(t_data *d, double x, double y, double move_vector)
-{	
+{
 	int		mx;
 	int		my;
 	double	check_x;

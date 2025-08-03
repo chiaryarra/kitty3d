@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 16:36:58 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:46:50 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:56:43 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_cat_paw_b(t_data *d)
 	angle = atan2f((float)d->raycast->plane_y, (float)d->raycast->plane_x);
 	paw_size = d->mlx->minimap_cs / 2;
 	i = -1;
-	while(i <= 1)
+	while (i <= 1)
 	{
 		toe.x = d->mlx->minimap_cs_px + i * paw_size * 0.8f;
 		toe.y = d->mlx->minimap_cs_py - paw_size * 0.8f;

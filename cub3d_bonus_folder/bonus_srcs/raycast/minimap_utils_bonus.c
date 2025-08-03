@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 20:54:08 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/01 14:18:22 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:56:27 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ static void	draw_map_blocks_b(t_data *d, int x, int y)
 		while (px < d->mlx->minimap_step_x)
 		{
 			color = *(int *)(d->mlx->main_img.addr + \
-			((y * d->mlx->minimap_step_y + py) * d->mlx->main_img.line\
-			+ (x * d->mlx->minimap_step_x + px) * (d->mlx->main_img.bpp / 8)));
+			((y * d->mlx->minimap_step_y + py) * d->mlx->main_img.line \
+			+ (x * d->mlx->minimap_step_x + px) * \
+			(d->mlx->main_img.bpp / 8)));
 			if (ft_strchr("1Dd", d->map->grid[y][x]))
 				color = define_color(d, x, y);
 			put_minimap_pixel_b(d, x * d->mlx->minimap_step_x + px, \
@@ -66,9 +67,9 @@ static void	draw_map_blocks_b(t_data *d, int x, int y)
 
 void	draw_minimap_b(t_data *d)
 {
-	int y;
 	int	x;
-	
+	int	y;
+
 	y = 0;
 	d->mlx->minimap_cs_py = (int)(d->raycast->pos_y * d->mlx->minimap_cs);
 	d->mlx->minimap_cs_px = (int)(d->raycast->pos_x * d->mlx->minimap_cs);

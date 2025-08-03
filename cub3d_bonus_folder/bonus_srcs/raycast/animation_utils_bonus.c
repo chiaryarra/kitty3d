@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 23:52:05 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/02 21:37:20 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:58:30 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,12 @@ t_img	get_animation_frame_b(t_data *d, t_img *animation)
 
 	frames_count = get_frames_count(animation);
 	frames_duration = 1000 / frames_count;
-
 	return (animation[(d->map->run_time / frames_duration) % frames_count]);
 }
 
 void	set_easter_egg_animation(t_data *d, t_img *animation)
 {
-	static	int first_call;
+	static int	first_call;
 
 	if (first_call == 0)
 	{

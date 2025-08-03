@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:28:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/01 14:21:17 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:57:43 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	open_close_door_b(t_data *d)
 	double	distance;
 
 	set_door_directions_b(d, &direction_x, &direction_y);
-	distance = hypot(d->raycast->pos_x - direction_x,\
+	distance = hypot(d->raycast->pos_x - direction_x, \
 	d->raycast->pos_y - direction_y);
 	distance -= (int)distance;
 	if (d->map->grid[direction_y][direction_x] == 'D')

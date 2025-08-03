@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:26:04 by yathayde          #+#    #+#             */
-/*   Updated: 2025/07/31 16:52:11 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:52:26 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ static void	wall_check_b(t_data *d)
 			d->raycast->ray->map_y += d->raycast->ray->step_y;
 			d->raycast->ray->wall_is_horizontal = TRUE;
 		}
-		if (ft_strchr("1D", d->map->grid[d->raycast->ray->map_y]\
+		if (ft_strchr("1D", d->map->grid[d->raycast->ray->map_y] \
 		[d->raycast->ray->map_x]))
 		{
 			d->raycast->ray->wall_hit = TRUE;
-			if (d->map->grid[d->raycast->ray->map_y]\
+			if (d->map->grid[d->raycast->ray->map_y] \
 			[d->raycast->ray->map_x] == 'D')
 				d->raycast->ray->door_hit = TRUE;
 		}
@@ -92,7 +92,7 @@ void	set_draw_points_b(t_data *d)
 		d->raycast->ray->perp_dist = \
 		(d->raycast->ray->map_y - d->raycast->pos_y + \
 		(1 - d->raycast->ray->step_y) / 2.0) / d->raycast->ray->ray_dir_y;
-	d->raycast->ray->line_h = (int)\
+	d->raycast->ray->line_h = (int) \
 	(d->mlx->s_height / d->raycast->ray->perp_dist);
 	d->raycast->ray->draw_start = -d->raycast->ray->line_h / 2 + \
 	d->mlx->s_height / 2;

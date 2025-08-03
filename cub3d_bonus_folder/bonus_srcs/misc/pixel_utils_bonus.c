@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:00:41 by yathayde          #+#    #+#             */
-/*   Updated: 2025/08/01 12:40:28 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:59:38 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,3 @@ void	check_to_draw_rays_b(t_data *d, int x)
 			draw_rays_b(d, x, d->mlx->textures[3]);
 	}
 }
-
-

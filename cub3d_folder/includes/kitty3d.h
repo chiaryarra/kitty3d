@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/26 15:27:37 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:48:10 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@
 
 typedef int	t_bool;
 
-enum	e_errors {
+enum	e_errors
+{
 	WRONG_FILENAME,
 	OPEN_ERROR,
 	EMPTY_FILE,
@@ -53,7 +54,8 @@ enum	e_errors {
 	MLX_IMAGE_ERROR
 };
 
-enum	e_keycodes {
+enum	e_keycodes
+{
 	LEFT = 65361,
 	UP = 65362,
 	RIGHT = 65363,
@@ -65,7 +67,8 @@ enum	e_keycodes {
 	ESC = 65307
 };
 
-enum	e_configs {
+enum	e_configs
+{
 	FLOOR = 1,
 	CEILING,
 	NORTH,
@@ -85,14 +88,16 @@ typedef struct s_img
 	int		height;
 }	t_img;
 
-typedef struct s_mlx {
+typedef struct s_mlx
+{
 	void	*mlx;
 	void	*window;
 	t_img	*textures;
 	t_img	main_img;
 }	t_mlx;
 
-typedef struct s_rays {
+typedef struct s_rays
+{
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -120,7 +125,8 @@ typedef struct s_rays {
 	double	tex_y_start;
 }	t_rays;
 
-typedef struct s_raycast {
+typedef struct s_raycast
+{
 	double	pos_x;
 	double	pos_y;
 	double	pov_x;
@@ -133,7 +139,8 @@ typedef struct s_raycast {
 	t_rays	*ray;
 }	t_raycast;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char	*map;
 	char	**grid;
 	char	*map_string;
@@ -153,7 +160,8 @@ typedef struct s_map {
 	int		player_y;
 }	t_map;
 
-typedef struct s_data {
+typedef struct s_data
+{
 	t_map		*map;
 	t_raycast	*raycast;
 	t_mlx		*mlx;

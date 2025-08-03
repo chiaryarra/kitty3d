@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 17:19:04 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/07/29 13:44:36 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 22:02:21 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ static void	init_minimap_b(t_data *d)
 
 void	init_bonuses_b(t_data *d)
 {
+	init_nyancat_textures(d);
 	init_minimap_b(d);
 }

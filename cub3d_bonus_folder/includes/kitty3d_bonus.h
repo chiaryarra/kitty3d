@@ -6,7 +6,7 @@
 /*   By: lbarreto <lbarreto@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:36:07 by lbarreto          #+#    #+#             */
-/*   Updated: 2025/08/02 21:37:37 by lbarreto         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:47:18 by lbarreto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef int	t_bool;
 
 // Errors enum
 
-enum	e_errors {
+enum	e_errors
+{
 	WRONG_FILENAME,
 	OPEN_ERROR,
 	EMPTY_FILE,
@@ -66,9 +67,10 @@ enum	e_errors {
 	MLX_IMAGE_ERROR
 };
 
-// Enum with the keycodes of the keyboard (could have been defined with #define too)
+// Enum with the keycodes of the keyboard (could have been used #define)
 
-enum	e_keycodes {
+enum	e_keycodes
+{
 	LEFT = 65361,
 	UP = 65362,
 	RIGHT = 65363,
@@ -88,7 +90,8 @@ enum	e_keycodes {
 
 // Enum with some macros used by the program
 
-enum	e_configs {
+enum	e_configs
+{
 	FLOOR = 1,
 	CEILING,
 	NORTH,
@@ -100,7 +103,8 @@ enum	e_configs {
 
 // Struct for vectors and coordinates
 
-typedef struct s_vec {
+typedef struct s_vec
+{
 	float	x;
 	float	y;
 }	t_vec;
@@ -120,7 +124,8 @@ typedef struct s_img
 
 // Struct with all mlx referent data used by the program
 
-typedef struct s_mlx {
+typedef struct s_mlx
+{
 	void	*mlx;
 	void	*window;
 	t_img	*textures;
@@ -139,7 +144,8 @@ typedef struct s_mlx {
 
 // Struct with all data used by the cast_rays function
 
-typedef struct s_rays {
+typedef struct s_rays
+{
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -170,7 +176,8 @@ typedef struct s_rays {
 
 // Struct with my basic double type data gathered from the map
 
-typedef struct s_raycast {
+typedef struct s_raycast
+{
 	double		pos_x;
 	double		pos_y;
 	double		pov_x;
@@ -185,7 +192,8 @@ typedef struct s_raycast {
 
 // Struct with the data gathered by the parser of the program
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char	*map;
 	char	**grid;
 	char	*map_string;
@@ -212,7 +220,8 @@ typedef struct s_map {
 
 // Struct unifying everything
 
-typedef struct s_data {
+typedef struct s_data
+{
 	t_map		*map;
 	t_raycast	*raycast;
 	t_mlx		*mlx;
@@ -286,7 +295,6 @@ int			rgb_to_int_b(char *floor_rgbcode);
 char		*generate_texture_text_b(int texture_type);
 int			is_map_direction_b(char c);
 char		*fill_line_b(int lenght_of_line);
-
 
 // Bonus: Minimap
 
